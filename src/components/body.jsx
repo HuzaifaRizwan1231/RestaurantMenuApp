@@ -1,7 +1,11 @@
-import React from "react";
+import React, {useState} from "react";
 import { Link } from "react-router-dom";
 
+
 export default function Body() {
+  
+
+
   return (
     <>
 
@@ -181,11 +185,13 @@ export default function Body() {
                 <b className="foodPrice ">Rs. 650</b>
                 <br />
                 <p className="foodDesc ">Ik Vaari Kha k te wekh</p>
+                <Link to = "/order"><button className="btn btn-primary">Order Now</button></Link>
               </div>
             </div>
           </div>
         </div>
       </div>
     </>
+   
   );
 }

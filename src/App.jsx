@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Body from "./components/body";
 import Cart from "./components/cart";
 import Menu from "./components/Menu";
+import OrderItem from "./components/OrderItem";
 
 import {
   BrowserRouter as Router,
@@ -29,6 +30,7 @@ function App() {
             <Route path="/" element={<Body/>}/>           
             <Route path="/cart" element={<Cart/>}/>           
             <Route path="/exploreMenu" element={<Menu/>}/>      
+            <Route path="/order" element={<OrderItem/>}/>      
           </Routes>
       </Router>
       

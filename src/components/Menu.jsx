@@ -3,34 +3,34 @@ import React from "react";
 export default function Menu() {
   return (
     <>
-      <header class=" MenuBar top-0 inset-x-0 flex  justify-start  d-flex w-full dark:bg-gray-800">
+      <header className=" MenuBar top-0 inset-x-0 flex  justify-start  d-flex w-full dark:bg-gray-800">
         <nav
-          class="mx-auto  d-flex justify-between"
+          className="mx-auto  d-flex justify-between"
           aria-label="Global"
         >
           <div
             id="navbar-collapse-basic"
-            class=" overflow-hidden flex transition-all duration-300 basis  "
+            className=" overflow-hidden flex transition-all duration-300 basis  "
           >
             <div
               data-hs-scrollspy="#scrollspy-1"
               data-hs-scrollspy-scrollable-parent="#scrollspy-scrollable-parent-1"
-              class="flex d-flex gap-2  sm:flex-row sm:items-center sm:justify-end "
+              className="flex d-flex gap-2  sm:flex-row sm:items-center sm:justify-end "
             >
               <a
-                class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400 active"
+                className="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400 active"
                 href="#first"
               >
                 Fast Food
               </a>
               <a
-                class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
+                className="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
                 href="#second"
               >
                 Desi
               </a>
               <a
-                class="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
+                className="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
                 href="#third"
               >
                 Broast
@@ -40,7 +40,7 @@ export default function Menu() {
         </nav>
       </header>
 
-      <div id="scrollspy-1" class="mt-3  space-y-4 ">
+      <div id="scrollspy-1" className="mt-3  space-y-4 ">
         <div id="first">
           <div className="container-fluid menuSection mb-1">
           <div className="row">
@@ -104,7 +104,7 @@ export default function Menu() {
               </div>
             </div>
           </div>
-            {/* <p class="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">
+            {/* <p className="mt-1 text-sm leading-6 text-gray-600 dark:text-gray-400">
               This is fast food
             </p> */}
         </div>
@@ -144,6 +144,7 @@ export default function Menu() {
                     <b className="foodPrice ">Rs. 650</b>
                     <br />
                     <p className="foodDesc ">Ik Vaari Kha k te wekh</p>
+                   
                   </div>
                 </div>
               </div>

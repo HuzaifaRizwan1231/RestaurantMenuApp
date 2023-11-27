@@ -1,0 +1,114 @@
+* {
+  font-family: "Poppins", sans-serif;
+  padding: 0px;
+  margin: 0px;
+}
+
+a {
+  text-decoration: none;
+}
+
+Body {
+  background-color: #333533;
+  color: white;
+}
+
+
+/* NavBar */
+
+.Logo {
+  color: #ffd100 !important;
+}
+
+
+/* SideBar */
+
+.sidebar{
+  background-color: #202020 !important;
+}
+
+/* ProfileBar */
+
+.profilebar{
+  background-color: #202020 !important;
+}
+
+
+/* TopButtons */
+.button {
+  font-size: 14px;
+  padding: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 6px;
+  color: #ffd100;
+  background-color: #000;
+  margin: 5px;
+}
+
+/* Menu */
+.Heading {
+  font-size: 23px;
+}
+
+.rightHeadingLink {
+  text-align: right;
+}
+
+.underLine {
+  border: red solid 1px;
+  width: 20%;
+  margin-left: 12.5px;
+  background-color: red;
+  padding: 1px;
+}
+
+/* ExploreMenu */
+.exploreMenuImage {
+  display: grid;
+  align-items: center;
+  max-width: 100%;
+  height: 100%;
+}
+
+.cardImage {
+  margin: auto;
+  max-width: 17vh;
+}
+
+
+/* Top Deals */
+
+.card {
+  background-color: #333533;
+  color: white;
+}
+
+.foodImage {
+  max-width: 100%;
+  height: 100%;
+}
+
+
+
+.foodName {
+  font-size: 20px;
+}
+
+.foodPrice {
+  font-size: 20px;
+}
+
+.foodDesc {
+  font-size: 12px;
+}
+
+
+
+/* Menu.jsx */
+
+.MenuBar{
+  background-color: #202020 !important;
+}
+
+

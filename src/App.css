@@ -154,3 +154,11 @@ Body {
 .form-check-input{
   color: #000;
 }
+
+
+/* Login / SignUp Forms */
+
+.LoginForm{
+  background-color: #202020 !important;
+  color: white;
+}

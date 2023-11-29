@@ -8,6 +8,7 @@ import Body from "./components/body";
 import Cart from "./components/cart";
 import Menu from "./components/Menu";
 import OrderItem from "./components/OrderItem";
+import Login from "./components/Login";
 
 import {
   BrowserRouter as Router,
@@ -15,6 +16,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import SignUp from "./components/SignUp";
 
 
 
@@ -31,6 +33,8 @@ function App() {
             <Route path="/cart" element={<Cart/>}/>           
             <Route path="/exploreMenu" element={<Menu/>}/>      
             <Route path="/order" element={<OrderItem/>}/>      
+            <Route path="/login" element={<Login/>}/>      
+            <Route path="/signup" element={<SignUp/>}/>      
           </Routes>
       </Router>
       

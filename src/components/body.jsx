@@ -4,7 +4,11 @@ import { Link } from "react-router-dom";
 
 export default function Body() {
   
+  const [scrollToTop, setscrollToTop] = useState();
 
+  const HandleScroll = ()=>{
+    setscrollToTop(window.scrollTo(0, 0))
+  }
 
   return (
     <>
@@ -185,7 +189,7 @@ export default function Body() {
                 <b className="foodPrice ">Rs. 650</b>
                 <br />
                 <p className="foodDesc ">Ik Vaari Kha k te wekh</p>
-                <Link to = "/order"><button className="btn btn-primary">Order Now</button></Link>
+                <Link onClick={HandleScroll} to = "/order"><button className="btn btn-primary">Order Now</button></Link>
               </div>
             </div>
           </div>

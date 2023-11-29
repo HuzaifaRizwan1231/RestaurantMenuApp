@@ -27,6 +27,10 @@ Body {
   background-color: #202020 !important;
 }
 
+.sidebar i {
+  width: 20px;
+}
+
 /* ProfileBar */
 
 .profilebar{
@@ -161,4 +165,6 @@ Body {
 .LoginForm{
   background-color: #202020 !important;
   color: white;
+ 
 }
+

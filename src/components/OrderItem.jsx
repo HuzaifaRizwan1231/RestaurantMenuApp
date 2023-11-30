@@ -1,6 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 
 export default function OrderItem() {
+
+  const [Quantity, setQuantity] = useState(1);
+
+  const HandleIncreaseQuantity = () =>{
+    
+    setQuantity(Quantity+1);
+  }
+
+  const HandleDecreaseQuantity = () =>{
+    if (Quantity>1){
+      setQuantity(Quantity-1);
+    }
+  }
+
+
+
   return (
     <>
       <div className="container-fuid ">
@@ -34,16 +50,16 @@ export default function OrderItem() {
 
           <div className="container text-center">
             <div className="row mx-auto">
-              <div className="col-4">
+              <div className="col-5">
                 <b>
-                  <button className="btn btnQuantity">+</button>
+                  <button onClick={HandleIncreaseQuantity} className="btn btnQuantity">+</button>
                 </b>
               </div>
-              <div className="col-4 mt-2">
-                <b>1</b>
+              <div className="col-2 mt-2">
+                <b>{Quantity}</b>
               </div>
-              <div className="col-4">
-                <button className="btn btnQuantity">-</button>
+              <div className="col-5">
+                <button onClick={HandleDecreaseQuantity} className="btn btnQuantity">-</button>
               </div>
             </div>
           </div>

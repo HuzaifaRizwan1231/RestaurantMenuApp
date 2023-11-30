@@ -5,7 +5,7 @@ import "./App.css";
 
 import Navbar from "./components/Navbar";
 import Body from "./components/body";
-import Cart from "./components/cart";
+import Cart from "./components/Cart";
 import Menu from "./components/Menu";
 import OrderItem from "./components/OrderItem";
 import Login from "./components/Login";

@@ -178,3 +178,14 @@ Body {
   max-width: 60vh;
   border-radius: 20px;
 }
+
+/* Contact Us */
+.ContactUs{
+  background-color: #202020 !important;
+  max-width: 60vh;
+  border-radius: 20px;
+}
+
+.ContactUs p {
+  font-size: 20px;
+}

@@ -18,6 +18,7 @@ import {
 } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import AboutUs from "./components/AboutUs";
+import ContactUs from "./components/ContactUs";
 
 
 
@@ -37,6 +38,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>      
             <Route path="/signup" element={<SignUp/>}/>      
             <Route path="/about" element={<AboutUs/>}/>      
+            <Route path="/contact" element={<ContactUs/>}/>      
           </Routes>
       </Router>
       

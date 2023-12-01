@@ -262,7 +262,6 @@ export default function Navbar() {
               <Link 
                 to="/about"
                 onClick={toggleNav}
-                href="#"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <i className="fa-solid fa-circle-info" style={{color:'#9ca3af'}}></i>
@@ -272,7 +271,7 @@ export default function Navbar() {
             </li>
             <li>
               <a
-                href="#"
+                to="/"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <i className="fa-solid fa-comment" style={{color:'#9ca3af'}}></i>
@@ -281,14 +280,15 @@ export default function Navbar() {
               </a>
             </li>
             <li>
-              <a
-                href="#"
+              <Link
+                onClick={toggleNav}
+                to="/contact"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
                 <i className="fa-solid fa-phone" style={{color:'#9ca3af'}}></i>
                 
                 <span className="flex-1 ms-3 whitespace-nowrap">Contact Us</span>
-              </a>
+              </Link>
             </li>
           </ul>
         </div>

@@ -92,7 +92,7 @@ export default function Body() {
             </h3>
           </div>
           <div className="col-6 rightHeadingLink">
-            <h5><Link to="/exploreMenu">View All</Link></h5>
+            <h5><Link onClick={HandleScroll} to="/exploreMenu">View All</Link></h5>
           </div>
         </div>
       </div>

@@ -169,3 +169,12 @@ Body {
  
 }
 
+
+/* About Us */
+
+.AboutUs{
+  background-color: #202020 !important;
+  min-height: 50vh;
+  max-width: 60vh;
+  border-radius: 20px;
+}

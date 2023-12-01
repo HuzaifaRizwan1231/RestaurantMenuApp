@@ -23,7 +23,7 @@ export default function OrderItem() {
         <div className="container mt-4 mb-2 text-center">
           <img
             className=" orderImage mx-auto"
-            src="public/images/burger.png"
+            src="/images/burger.png"
             alt=""
           />
         </div>

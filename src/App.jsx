@@ -17,6 +17,7 @@ import {
   Link
 } from "react-router-dom";
 import SignUp from "./components/SignUp";
+import AboutUs from "./components/AboutUs";
 
 
 
@@ -35,6 +36,7 @@ function App() {
             <Route path="/order" element={<OrderItem/>}/>      
             <Route path="/login" element={<Login/>}/>      
             <Route path="/signup" element={<SignUp/>}/>      
+            <Route path="/about" element={<AboutUs/>}/>      
           </Routes>
       </Router>
       

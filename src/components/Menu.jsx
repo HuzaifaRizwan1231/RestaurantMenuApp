@@ -64,7 +64,7 @@ export default function Menu() {
                 <div className="row">
                   <div className="col-7 text-center ">
                     <img
-                      src="/images/download1.png"
+                      src="/images/burger.png"
                       className="card-img-top foodImage"
                       alt="food"
                     />
@@ -87,7 +87,7 @@ export default function Menu() {
                 <div className="row">
                   <div className="col-7 text-center ">
                     <img
-                      src="/images/download1.png"
+                      src="/images/burger.png"
                       className="card-img-top foodImage"
                       alt="food"
                     />
@@ -132,7 +132,7 @@ export default function Menu() {
                 <div className="row">
                   <div className="col-7 text-center ">
                     <img
-                      src="/images/download1.png"
+                      src="/images/burger.png"
                       className="card-img-top foodImage"
                       alt="food"
                     />
@@ -156,7 +156,7 @@ export default function Menu() {
                 <div className="row">
                   <div className="col-7 text-center ">
                     <img
-                      src="/images/download1.png"
+                      src="/images/burger.png"
                       className="card-img-top foodImage"
                       alt="food"
                     />
@@ -198,7 +198,7 @@ export default function Menu() {
                 <div className="row">
                   <div className="col-7 text-center ">
                     <img
-                      src="/images/download1.png"
+                      src="/images/burger.png"
                       className="card-img-top foodImage"
                       alt="food"
                     />
@@ -221,7 +221,7 @@ export default function Menu() {
                 <div className="row">
                   <div className="col-7 text-center ">
                     <img
-                      src="/images/download1.png"
+                      src="/images/burger.png"
                       className="card-img-top foodImage"
                       alt="food"
                     />

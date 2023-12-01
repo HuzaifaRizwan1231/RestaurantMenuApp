@@ -111,7 +111,7 @@ export default function Body() {
             <div className="card exploreMenuImage ">
               <div className="card-body ">
                 <img
-                  src="/images/download1.png"
+                  src="/images/burger.png"
                   className="card-img-top"
                   alt="..."
                 />
@@ -127,7 +127,7 @@ export default function Body() {
                 <div className="card exploreMenuImage ">
                   <div className="card-body">
                     <img
-                      src="/images/download1.png"
+                      src="/images/burger.png"
                       className="card-img-top "
                       alt="..."
                     />
@@ -141,7 +141,7 @@ export default function Body() {
                 <div className="card exploreMenuImage ">
                   <div className="card-body">
                     <img
-                      src="/images/download1.png"
+                      src="/images/burger.png"
                       className="card-img-top "
                       alt="..."
                     />
@@ -177,7 +177,7 @@ export default function Body() {
             <div className="row">
               <div className="col-7 text-center ">
                 <img
-                  src="/images/download1.png"
+                  src="/images/burger.png"
                   className="card-img-top foodImage"
                   alt="food"
                 />

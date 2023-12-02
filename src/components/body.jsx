@@ -112,7 +112,7 @@ export default function Body() {
               <div className="card-body ">
                 <img
                   src="/images/burger.png"
-                  className="card-img-top"
+                  className=" cardImage card-img-top"
                   alt="..."
                 />
               </div>
@@ -128,7 +128,7 @@ export default function Body() {
                   <div className="card-body">
                     <img
                       src="/images/burger.png"
-                      className="card-img-top "
+                      className=" cardImage card-img-top "
                       alt="..."
                     />
                   </div>
@@ -142,7 +142,7 @@ export default function Body() {
                   <div className="card-body">
                     <img
                       src="/images/burger.png"
-                      className="card-img-top "
+                      className="cardImage card-img-top "
                       alt="..."
                     />
                   </div>
@@ -175,21 +175,19 @@ export default function Body() {
         <div className="card">
           <div className="card-body">
             <div className="row">
-              <div className="col-7 text-center ">
+              <div className="col-6 text-center ">
                 <img
                   src="/images/burger.png"
                   className="card-img-top foodImage"
                   alt="food"
                 />
               </div>
-              <div className="col-5 mt-3 ">
-                <b className="foodName ">HEAVY ZINGER</b>
-                <br />
-                <br />
-                <b className="foodPrice ">Rs. 650</b>
-                <br />
-                <p className="foodDesc ">Ik Vaari Kha k te wekh</p>
-                <Link onClick={HandleScroll} to = "/order"><button className="btn btn-primary">Order Now</button></Link>
+              <div className="col-6 my-3 TopDealsCard">
+                <h1 className="foodName mb-3"><b>HEAVY ZINGER</b></h1>
+               
+                <h1 className="foodPrice mb-3"><b>Rs. 650</b></h1>
+                
+                <Link onClick={HandleScroll} to = "/order"><button className="button m-0">Order Now</button></Link>
               </div>
             </div>
           </div>

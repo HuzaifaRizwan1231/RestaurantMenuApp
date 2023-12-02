@@ -114,13 +114,15 @@ export default function OrderItem() {
             </div>
           </div>
           <div className="fixed z-49 bottom-0 left-0 rounded-lg container-fluid bg-black p-2 ">
+            <div className="container">
             <div className="row text-center">
               <div className="col-4">
-                <button className="btn btnOrder">Rs. 650</button>
+                <button className=" btnOrder">Rs. 650</button>
               </div>
               <div className="col-8">
-                <button className="btn btnOrder">Add to Cart</button>
+                <button className=" btnOrder">Add to Cart</button>
               </div>
+            </div>
             </div>
           </div>
         </div>

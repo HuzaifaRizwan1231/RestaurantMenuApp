@@ -60,10 +60,10 @@ Body {
 }
 
 .underLine {
-  border: red solid 1px;
+  border: #ffd100 solid 1px;
   width: 20%;
   margin-left: 12.5px;
-  background-color: red;
+  background-color: #ffd100;
   padding: 1px;
 }
 
@@ -152,9 +152,17 @@ Body {
 }
 
 .btnOrder{
-  background: #333533;
-  color: white;
+  background-color: #333533;
   width: 100%;
+
+
+  font-size: 14px;
+  padding: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 6px;
+  color: #ffd100;
+  margin: 5px;
 }
 
 .form-check-input{
@@ -208,4 +216,8 @@ Body {
 .FeedBackSubmit .button{
   width: 50%;
   font-size: 18px;
+}
+
+::-webkit-input-placeholder{
+  color:white;
 }

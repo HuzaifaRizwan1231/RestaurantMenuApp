@@ -123,17 +123,17 @@ export default function Navbar() {
       >
         <div className="px-4 py-3" role="none">
           <p className="text-sm text-gray-900 dark:text-white" role="none">
-            Neil Sims
+            Rabi Bhai
           </p>
           <p
             className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
             role="none"
           >
-            neil.sims@flowbite.com
+            rabi.bhai@rfc.com
           </p>
         </div>
         <ul className="py-1" role="none">
-          <li>
+          {/* <li>
             <a
               href="#"
               className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -159,7 +159,7 @@ export default function Navbar() {
             >
               Earnings
             </a>
-          </li>
+          </li> */}
           <li>
             <a
               href="#"
@@ -201,7 +201,18 @@ export default function Navbar() {
               >
                 <i className="fa-solid fa-user" style={{color:'#9ca3af'}}></i>
                 
-                <span className="ms-3">Login / Sign Up</span>
+                <span className="ms-3">Login</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                onClick={toggleNav}
+                to="/signup"
+                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+              >
+                <i className="fa-solid fa-user" style={{color:'#9ca3af'}}></i>
+                
+                <span className="ms-3">Sign Up</span>
               </Link>
             </li>
             {/* <li>

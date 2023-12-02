@@ -19,6 +19,7 @@ import {
 import SignUp from "./components/SignUp";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
+import Feedback from "./components/Feedback";
 
 
 
@@ -38,6 +39,7 @@ function App() {
             <Route path="/login" element={<Login/>}/>      
             <Route path="/signup" element={<SignUp/>}/>      
             <Route path="/about" element={<AboutUs/>}/>      
+            <Route path="/feedback" element={<Feedback/>}/>      
             <Route path="/contact" element={<ContactUs/>}/>      
           </Routes>
       </Router>

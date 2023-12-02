@@ -190,3 +190,22 @@ Body {
 .ContactUs p {
   font-size: 20px;
 }
+
+
+
+
+/* Feedback */
+
+.FeedBackField{
+  background-color: #202020 !important;
+  color: white !important;
+  border: none;
+  min-height: 50vh;
+  max-width: 60vh;
+  border-radius: 20px;
+}
+
+.FeedBackSubmit .button{
+  width: 50%;
+  font-size: 18px;
+}

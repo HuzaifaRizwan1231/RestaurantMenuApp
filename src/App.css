@@ -262,3 +262,14 @@ Body {
   background-color: #202020;
   border-radius: 25px;
 }
+
+
+/* Cart */
+.btnQuantityCart{
+  width: 40%;
+  font-size: 14px;
+  padding: 7px;
+  border-radius: 6px;
+  color: #ffd100;
+  background-color: #000;
+}

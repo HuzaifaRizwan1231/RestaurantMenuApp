@@ -114,6 +114,7 @@ Body {
 
 .MenuBar{
   background-color: #202020 !important;
+
 }
 
 
@@ -172,10 +173,23 @@ Body {
 
 /* Login / SignUp Forms */
 
-.LoginForm{
+.loginFormField{
   background-color: #202020 !important;
   color: white;
  
+}
+
+.LoginButton{
+  
+  background-color: #000 !important;
+  width: 50%;
+  font-size: 14px;
+  padding: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 6px;
+  color: #ffd100;
+  
 }
 
 
@@ -218,6 +232,3 @@ Body {
   font-size: 18px;
 }
 
-::-webkit-input-placeholder{
-  color:white;
-}

@@ -117,6 +117,11 @@ Body {
 
 }
 
+.cardContainer{
+  background-color: #202020 !important;
+  border-radius: 25px;
+}
+
 
 /* OrderPage */
 
@@ -231,3 +236,28 @@ Body {
   font-size: 18px;
 }
 
+/* History */
+
+.foodNameHistory {
+  font-size: 15px;
+}
+
+.foodPriceHistory {
+  font-size: 15px;
+}
+
+.ReorderButton{
+  font-size: 14px;
+  padding: 7px;
+  padding-left: 16px;
+  padding-right: 16px;
+  border-radius: 6px;
+  color: #ffd100;
+  background-color: #000;
+  margin: 5px;
+}
+
+.HistoryPage{
+  background-color: #202020;
+  border-radius: 25px;
+}

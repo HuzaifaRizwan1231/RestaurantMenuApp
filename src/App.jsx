@@ -20,6 +20,7 @@ import SignUp from "./components/SignUp";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Feedback from "./components/Feedback";
+import OrderHistory from "./components/OrderHistory";
 
 
 
@@ -41,6 +42,7 @@ function App() {
             <Route path="/about" element={<AboutUs/>}/>      
             <Route path="/feedback" element={<Feedback/>}/>      
             <Route path="/contact" element={<ContactUs/>}/>      
+            <Route path="/history" element={<OrderHistory/>}/>      
           </Routes>
       </Router>
       

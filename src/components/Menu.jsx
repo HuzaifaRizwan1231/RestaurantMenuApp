@@ -62,8 +62,8 @@ export default function Menu() {
             </div>
           </div>
 
-          <div className="container mb-4">
-            <div className="card">
+          <div className="container  mb-4">
+            <div className="card cardContainer">
               <div className="card-body">
                 <div className="row">
                   <div className="col-6 text-center ">
@@ -90,8 +90,8 @@ export default function Menu() {
               </div>
             </div>
           </div>
-          <div className="container mb-4">
-            <div className="card">
+          <div className="container  mb-4">
+            <div className="card cardContainer">
               <div className="card-body">
                 <div className="row">
                   <div className="col-6 text-center ">
@@ -140,8 +140,8 @@ export default function Menu() {
             </div>
           </div>
 
-          <div className="container mb-4">
-            <div className="card">
+          <div className="container  mb-4">
+            <div className="card cardContainer">
               <div className="card-body">
                 <div className="row">
                   <div className="col-6 text-center ">
@@ -168,8 +168,9 @@ export default function Menu() {
               </div>
             </div>
           </div>
-          <div className="container mb-4">
-            <div className="card">
+
+          <div className="container  mb-4">
+            <div className="card cardContainer">
               <div className="card-body">
                 <div className="row">
                   <div className="col-6 text-center ">
@@ -216,8 +217,8 @@ export default function Menu() {
             </div>
           </div>
 
-          <div className="container mb-4">
-            <div className="card">
+          <div className="container  mb-4">
+            <div className="card cardContainer">
               <div className="card-body">
                 <div className="row">
                   <div className="col-6 text-center ">
@@ -244,8 +245,8 @@ export default function Menu() {
               </div>
             </div>
           </div>
-          <div className="container mb-4">
-            <div className="card">
+          <div className="container  mb-4">
+            <div className="card cardContainer">
               <div className="card-body">
                 <div className="row">
                   <div className="col-6 text-center ">
@@ -292,8 +293,8 @@ export default function Menu() {
             </div>
           </div>
 
-          <div className="container mb-4">
-            <div className="card">
+          <div className="container  mb-4">
+            <div className="card cardContainer">
               <div className="card-body">
                 <div className="row">
                   <div className="col-6 text-center ">
@@ -320,8 +321,8 @@ export default function Menu() {
               </div>
             </div>
           </div>
-          <div className="container mb-4">
-            <div className="card">
+          <div className="container  mb-4">
+            <div className="card cardContainer">
               <div className="card-body">
                 <div className="row">
                   <div className="col-6 text-center ">

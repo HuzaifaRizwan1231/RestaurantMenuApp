@@ -104,7 +104,7 @@ export default function Navbar() {
                     <span className="sr-only">Open user menu</span>
                     <img
                       className="w-8 h-8 rounded-full"
-                      src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
+                      src="public/images/TQFdxPei_400x400.jpg"
                       alt="user photo"
                     />
                   </button>
@@ -123,13 +123,13 @@ export default function Navbar() {
       >
         <div className="px-4 py-3" role="none">
           <p className="text-sm text-gray-900 dark:text-white" role="none">
-            Rabi Bhai
+            Ustaad Chahat
           </p>
           <p
             className="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
             role="none"
           >
-            rabi.bhai@rfc.com
+            assalaamulaikum@rfc.com
           </p>
         </div>
         <ul className="py-1" role="none">

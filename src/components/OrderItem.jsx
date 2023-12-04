@@ -80,8 +80,8 @@ export default function OrderItem() {
             </div>
           </div>
 
-          <div className="container border-black border-2 DrinksMenu p-2">
-            <div className="row text-center">
+          <div className="container">
+            <div className="row DrinksMenu text-center mx-auto p-4">
               <div className="col-6 p-1 ">Pepsi</div>
               <div className="col-6 p-1">
                   <input
@@ -115,7 +115,7 @@ export default function OrderItem() {
           </div>
           <div className="fixed z-49 bottom-0 left-0 rounded-lg container-fluid bg-black p-2 ">
             <div className="container">
-            <div className="row text-center">
+            <div className="row text-center my-1">
               <div className="col-4">
                 <button className=" btnOrder">Rs. 650</button>
               </div>

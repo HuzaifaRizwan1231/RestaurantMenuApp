@@ -155,20 +155,21 @@ Body {
 
 .DrinksMenu{
   border-radius: 20px;
+  border: #ffd100 2px solid;
+  border-radius: 40px;
+  width: 95%;
+
 }
 
 .btnOrder{
   background-color: #333533;
   width: 100%;
-
-
-  font-size: 14px;
+  font-size: 18px;
   padding: 7px;
   padding-left: 8px;
   padding-right: 8px;
-  border-radius: 6px;
+  border-radius: 12px;
   color: #ffd100;
-  margin: 5px;
 }
 
 .form-check-input{

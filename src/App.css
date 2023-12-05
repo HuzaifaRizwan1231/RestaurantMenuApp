@@ -198,6 +198,10 @@ Body {
   
 }
 
+.errorMessage{
+  color: red;
+  font-size: 14px;
+}
 /* About Us */
 
 .AboutUs{

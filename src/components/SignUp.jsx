@@ -3,18 +3,34 @@ import React, {useState} from 'react'
 import { Link ,useNavigate} from 'react-router-dom'
 
 
-export default function SignUp() {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+export default function SignUp(props) {
   const [cpassword, setCpassword] = useState("");
+  const [emailError, setEmailError]=useState("");
+  const [passwordError, setPasswordError]=useState("");
 
   const navigate = useNavigate();
 
   const SignUpUser = (event)=>{
     event.preventDefault();
-    axios.post('http://localhost:3002/signup', {userName: userName,password: password,cpassword:cpassword})
-    .then(
-      // navigate('/')
+    axios.post('http://localhost:3002/signup', {userName: props.userName,password: props.password,cpassword:cpassword, userEmail: props.userEmail})
+    .then(res=>{
+      
+      if (res.data == "Email is already registered"){
+        setEmailError(res.data);
+      }
+      else{
+        setEmailError("");
+      }
+      if (res.data == "Passwords do not match"){
+        setPasswordError(res.data);
+      }
+      else{
+        setPasswordError("");
+      }
+      if (res.data != "Email is already registered" && res.data !="Passwords do not match"){
+        navigate('/')
+      }
+    }
     )
     .catch(err=>console.log(err));
   }
@@ -31,21 +47,40 @@ export default function SignUp() {
             <form className="space-y-4 md:space-y-6" onSubmit={SignUpUser}>
               <div>
                 <label
-                  htmlFor="email"
+                  htmlFor="username"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Username
+                  Full Name
                 </label>
                 <input
                   onChange={(e)=>{
-                    setUserName(e.target.value)
+                    props.setUserName(e.target.value)
+                  }}
+                  type="text"
+                  name="username"
+                  id="username"
+                  className="loginFormField  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
+                  required
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >
+                  Email
+                </label>
+                <input
+                  onChange={(e)=>{
+                    props.setUserEmail(e.target.value)
                   }}
                   type="text"
                   name="email"
                   id="email"
-                  className="loginFormField  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
-                  required=""
+                  className={`loginFormField text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${emailError=== "" ? "mb-4": "mb-1"}`}
+                  required
                 />
+                <span className={`errorMessage mb-4 mx-2 ${emailError=== "" ? "hidden": ""}`}>{emailError}</span>
               </div>
               <div>
                 <label
@@ -56,13 +91,13 @@ export default function SignUp() {
                 </label>
                 <input
                  onChange={(e)=>{
-                  setPassword(e.target.value)
+                  props.setPassword(e.target.value)
                 }}
                   type="password"
                   name="password"
                   id="password"
                   className=" loginFormField text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
-                  required=""
+                  required
                 />
               </div>
               <div>
@@ -78,10 +113,13 @@ export default function SignUp() {
                 }}
                   type="password"
                   name="confirmPassword"
-                  id="password"
-                  className=" loginFormField text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
-                  required=""
+                  id="cpassword"
+                  className={`loginFormField text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${passwordError=== "" ? "mb-4": "mb-1"}`}
+                  required
                 />
+                <span className={`errorMessage mb-4 mx-2 ${passwordError=== "" ? "hidden": ""}`}>{passwordError}</span>
+
+                
               </div>
               
               <p className="text-sm text-center font-light text-gray-500 dark:text-gray-400">
@@ -98,7 +136,7 @@ export default function SignUp() {
                 type="submit"
                 className="LoginButton text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
               >
-                Log in
+                Sign Up
               </button>
               </div>
             </form>

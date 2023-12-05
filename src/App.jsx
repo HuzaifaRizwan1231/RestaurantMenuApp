@@ -14,7 +14,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
+  Link,
 } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import AboutUs from "./components/AboutUs";
@@ -25,20 +25,24 @@ import OrderHistory from "./components/OrderHistory";
 
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  
+  
 
   return (
     <>
     
       <Router>
-          <Navbar />
+          <Navbar userName = {userName}  userEmail = {userEmail}/>
           <Routes>
             <Route path="/" element={<Body/>}/>           
             <Route path="/cart" element={<Cart/>}/>           
             <Route path="/exploreMenu" element={<Menu/>}/>      
             <Route path="/order" element={<OrderItem/>}/>      
-            <Route path="/login" element={<Login/>}/>      
-            <Route path="/signup" element={<SignUp/>}/>      
+            <Route path="/login" element={<Login userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword}/>}/>      
+            <Route path="/signup" element={<SignUp userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword}/>}/>      
             <Route path="/about" element={<AboutUs/>}/>      
             <Route path="/feedback" element={<Feedback/>}/>      
             <Route path="/contact" element={<ContactUs/>}/>      

@@ -3,23 +3,32 @@ import React, {useState} from "react";
 import { Link ,useNavigate} from "react-router-dom";
 
 
-export default function Login() {
+export default function Login(props) {
 
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-
+  const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
 
   const LoginUser = (event)=>{
     event.preventDefault();
-    axios.post('http://localhost:3002/login', {userName: userName,password: password})
-    .then(
-      // navigate('/')
+    axios.post('http://localhost:3002/login', {userEmail: props.userEmail,password: props.password})
+  
+    .then(res=>{
+      if (res.data == "Incorrect Email or Password"){
+        setLoginError(res.data);
+      }
+      else{
+        setLoginError("");
+      }
+
+      if (res.data != "Incorrect Email or Password"){
+        props.setUserName(res.data.data[0].user_username)
+        navigate('/')
+      }
+    }
+    
     )
     .catch(err=>console.log(err));
   }
-
-
 
   return (
     <>
@@ -35,13 +44,13 @@ export default function Login() {
                   htmlFor="email"
                   className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                 >
-                  Username
+                  Email
                 </label>
                 <input
                   onChange={(e)=>{
-                    setUserName(e.target.value)
+                    props.setUserEmail(e.target.value)
                   }}
-                  type="text"
+                  type="email"
                   name="email"
                   id="email"
                   className="loginFormField  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
@@ -57,14 +66,15 @@ export default function Login() {
                 </label>
                 <input
                   onChange={(e)=>{
-                    setPassword(e.target.value)
+                    props.setPassword(e.target.value)
                   }}
                   type="password"
                   name="password"
                   id="password"
-                  className=" loginFormField text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
-                  required=""
+                  className={`loginFormField text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${loginError=== "" ? "mb-4": "mb-1"}`}
+                  required
                 />
+                <span className={`errorMessage mb-4 mx-2 ${loginError=== "" ? "hidden": ""}`}>{loginError}</span>
               </div>
               
               <p className="text-sm text-center font-light text-gray-500 dark:text-gray-400">

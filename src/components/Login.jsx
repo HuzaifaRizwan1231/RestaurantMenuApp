@@ -1,7 +1,26 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import axios, { Axios } from "axios";
+import React, {useState} from "react";
+import { Link ,useNavigate} from "react-router-dom";
+
 
 export default function Login() {
+
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const LoginUser = (event)=>{
+    event.preventDefault();
+    axios.post('http://localhost:3002/login', {userName: userName,password: password})
+    .then(
+      // navigate('/')
+    )
+    .catch(err=>console.log(err));
+  }
+
+
+
   return (
     <>
       <div className="container mt-16 ">
@@ -10,7 +29,7 @@ export default function Login() {
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight mb-4 text-gray-900 md:text-2xl dark:text-white">
               LOG IN
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" onSubmit={LoginUser} >
               <div>
                 <label
                   htmlFor="email"
@@ -19,11 +38,14 @@ export default function Login() {
                   Username
                 </label>
                 <input
-                  type="email"
+                  onChange={(e)=>{
+                    setUserName(e.target.value)
+                  }}
+                  type="text"
                   name="email"
                   id="email"
                   className="loginFormField  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
-                  required=""
+                  required
                 />
               </div>
               <div>
@@ -34,6 +56,9 @@ export default function Login() {
                   Password
                 </label>
                 <input
+                  onChange={(e)=>{
+                    setPassword(e.target.value)
+                  }}
                   type="password"
                   name="password"
                   id="password"
@@ -53,9 +78,9 @@ export default function Login() {
                 </Link>
               </p>
               <div className="text-center mt-4">
-              <button
-                type="submit"
+              <button                
                 className="LoginButton text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                type="submit"
               >
                 Log in
               </button>

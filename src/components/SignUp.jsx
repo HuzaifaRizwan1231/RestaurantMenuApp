@@ -1,7 +1,25 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import axios from 'axios';
+import React, {useState} from 'react'
+import { Link ,useNavigate} from 'react-router-dom'
+
 
 export default function SignUp() {
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+  const [cpassword, setCpassword] = useState("");
+
+  const navigate = useNavigate();
+
+  const SignUpUser = (event)=>{
+    event.preventDefault();
+    axios.post('http://localhost:3002/signup', {userName: userName,password: password,cpassword:cpassword})
+    .then(
+      // navigate('/')
+    )
+    .catch(err=>console.log(err));
+  }
+
+
   return (
     <>
        <div className="container mt-10 ">
@@ -10,7 +28,7 @@ export default function SignUp() {
             <h1 className="text-xl text-center font-bold leading-tight tracking-tight mb-4 text-gray-900 md:text-2xl dark:text-white">
               SiGN UP
             </h1>
-            <form className="space-y-4 md:space-y-6" action="#">
+            <form className="space-y-4 md:space-y-6" onSubmit={SignUpUser}>
               <div>
                 <label
                   htmlFor="email"
@@ -19,7 +37,10 @@ export default function SignUp() {
                   Username
                 </label>
                 <input
-                  type="email"
+                  onChange={(e)=>{
+                    setUserName(e.target.value)
+                  }}
+                  type="text"
                   name="email"
                   id="email"
                   className="loginFormField  sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 mb-4"
@@ -34,6 +55,9 @@ export default function SignUp() {
                   Password
                 </label>
                 <input
+                 onChange={(e)=>{
+                  setPassword(e.target.value)
+                }}
                   type="password"
                   name="password"
                   id="password"
@@ -49,6 +73,9 @@ export default function SignUp() {
                   Confirm Password
                 </label>
                 <input
+                 onChange={(e)=>{
+                  setCpassword(e.target.value)
+                }}
                   type="password"
                   name="confirmPassword"
                   id="password"

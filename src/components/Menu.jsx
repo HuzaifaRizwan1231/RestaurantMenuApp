@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function Menu() {
   return (
     <>
-      <header className=" MenuBar top-0 inset-x-0 flex  justify-start  d-flex w-full dark:bg-gray-800">
+      <header className=" MenuBar uppercase top-0 inset-x-0 flex  justify-start  d-flex w-full dark:bg-gray-800">
         <nav className="mx-auto  d-flex justify-between" aria-label="Global">
           <div
             id="navbar-collapse-basic"
@@ -13,7 +13,7 @@ export default function Menu() {
             <div
               data-hs-scrollspy="#scrollspy-1"
               data-hs-scrollspy-scrollable-parent="#scrollspy-scrollable-parent-1"
-              className="flex d-flex gap-5 sm:flex-row sm:items-center sm:justify-end "
+              className="flex d-flex gap-4 sm:flex-row sm:items-center sm:justify-end "
             >
               <a
                 className="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400 active"
@@ -21,6 +21,7 @@ export default function Menu() {
               >
                 Fast Food
               </a>
+              
               <a
                 className="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
                 href="#second"

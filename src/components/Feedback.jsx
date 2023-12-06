@@ -1,10 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-export default function Feedback() {
+
+export default function Feedback(props) {
   return (
     
     <>
-      <div className="container ">
+    {props.isLogin ? (<div className="container ">
         <h1 className="text-center display-6 my-3">
           <b>FEEDBACK</b>
         </h1>
@@ -19,7 +21,8 @@ export default function Feedback() {
         <div className="container text-center FeedBackSubmit">
             <button className="button">SUBMIT</button>
         </div>
-      </div>
+      </div>):(<Link className="button" to="/login" >Please Log In to Continue</Link>)}
+      
     </>
   );
 }

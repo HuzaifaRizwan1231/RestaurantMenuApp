@@ -79,7 +79,24 @@ app.post('/login', (req,res)=> {
     })
     
 
+//Give all products
+app.get('/products', (req,res)=> {
 
+    let numOfRows;
+    
+    db.query("SELECT * FROM products", (err,result)=>{
+        numOfRows = result.length;
+        console.log(numOfRows);
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+           return res.json({data : result});
+        }
+    }
+    )    
+    
+    })
 
 
 app.listen(PORT,()=>{

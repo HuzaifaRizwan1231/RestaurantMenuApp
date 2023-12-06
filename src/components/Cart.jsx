@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-export default function Cart() {
-  const [Quantity, setQuantity] = useState(1);
 
+
+
+export default function Cart(props) {
+  const [Quantity, setQuantity] = useState(1);
+ 
+
+ 
   const HandleIncreaseQuantity = () => {
     setQuantity(Quantity + 1);
   };
@@ -13,8 +18,12 @@ export default function Cart() {
     }
   };
   return (
+
+  
+
     <>
-      <div className="container mt-4">
+      {props.islogin ? (
+        <div className="container mt-4">
         <h1 className="text-center display-6 mb-4">
           <b>CART</b>
         </h1>
@@ -129,6 +138,9 @@ export default function Cart() {
               </button>
               </div>
       </div>
+      ) : (<Link className="button" to="/login" >Please Log In to Continue</Link>
+      )}
+      
     </>
   );
 }

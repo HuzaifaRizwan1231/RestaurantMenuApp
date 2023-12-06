@@ -28,6 +28,7 @@ export default function SignUp(props) {
         setPasswordError("");
       }
       if (res.data != "Email is already registered" && res.data !="Passwords do not match"){
+        props.setIsLogin(true)
         navigate('/')
       }
     }

@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function OrderHistory() {
+export default function OrderHistory(props) {
   return (
     <>
-      <div className="container ">
+    {props.isLogin ? ( <div className="container ">
         <h1 className="text-center display-6 mt-3 mb-5">
           <b>ORDER HISTORY</b>
         </h1>
@@ -57,7 +57,8 @@ export default function OrderHistory() {
           </div>
         </div>
         
-      </div>
+      </div>):(<Link className="button" to="/login" >Please Log In to Continue</Link>)}
+     
     </>
   );
 }

@@ -28,7 +28,7 @@ function App() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [userEmail, setUserEmail] = useState("");
-  
+  const [islogin,setIsLogin] = useState(false);
   
 
   return (
@@ -38,15 +38,15 @@ function App() {
           <Navbar userName = {userName}  userEmail = {userEmail}/>
           <Routes>
             <Route path="/" element={<Body/>}/>           
-            <Route path="/cart" element={<Cart/>}/>           
+            <Route path="/cart" element={<Cart islogin = {islogin}/>}/>           
             <Route path="/exploreMenu" element={<Menu/>}/>      
-            <Route path="/order" element={<OrderItem/>}/>      
-            <Route path="/login" element={<Login userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword}/>}/>      
-            <Route path="/signup" element={<SignUp userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword}/>}/>      
+            <Route path="/order" element={<OrderItem islogin = {islogin}/>}/>      
+            <Route path="/login" element={<Login userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword} setIsLogin = {setIsLogin}/>}/>      
+            <Route path="/signup" element={<SignUp userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword} setIsLogin = {setIsLogin}/>}/>      
             <Route path="/about" element={<AboutUs/>}/>      
-            <Route path="/feedback" element={<Feedback/>}/>      
+            <Route path="/feedback" element={<Feedback islogin = {islogin}/>}/>      
             <Route path="/contact" element={<ContactUs/>}/>      
-            <Route path="/history" element={<OrderHistory/>}/>      
+            <Route path="/history" element={<OrderHistory islogin = {islogin}/>}/>      
           </Routes>
       </Router>
       

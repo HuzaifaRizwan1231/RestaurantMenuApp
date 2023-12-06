@@ -1,19 +1,30 @@
-import React, {useState} from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-
 export default function Body() {
-  
+  //sql query to generate products from database
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    //fetching data
+    axios
+      .get("http://localhost:3002/products")
+      .then((response) => setProducts(response.data.data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  console.log(products);
+
   const [scrollToTop, setscrollToTop] = useState();
 
-  const HandleScroll = ()=>{
-    setscrollToTop(window.scrollTo(0, 0))
-  }
+  const HandleScroll = () => {
+    setscrollToTop(window.scrollTo(0, 0));
+  };
 
   return (
     <>
-
-    {/* Carousel */}
+      {/* Carousel */}
       <div
         id="carouselExample"
         className="carousel slide mb-4"
@@ -48,7 +59,10 @@ export default function Body() {
           data-bs-target="#carouselExample"
           data-bs-slide="prev"
         >
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-prev-icon"
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Previous</span>
         </button>
         <button
@@ -57,15 +71,13 @@ export default function Body() {
           data-bs-target="#carouselExample"
           data-bs-slide="next"
         >
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span
+            className="carousel-control-next-icon"
+            aria-hidden="true"
+          ></span>
           <span className="visually-hidden">Next</span>
         </button>
       </div>
-
-
-
-
-
 
       {/* MainSection */}
 
@@ -92,7 +104,11 @@ export default function Body() {
             </h3>
           </div>
           <div className="col-6 rightHeadingLink">
-            <h5><Link onClick={HandleScroll} to="/exploreMenu">View All</Link></h5>
+            <h5>
+              <Link onClick={HandleScroll} to="/exploreMenu">
+                View All
+              </Link>
+            </h5>
           </div>
         </div>
       </div>
@@ -119,7 +135,7 @@ export default function Body() {
             </div>
           </div>
 
-      {/* SecondImage */}
+          {/* SecondImage */}
 
           <div className="col-6 ">
             <div className="row">
@@ -135,7 +151,7 @@ export default function Body() {
                 </div>
               </div>
 
-      {/* ThirdImage */}   
+              {/* ThirdImage */}
 
               <div className="col-12 mt-1">
                 <div className="card exploreMenuImage ">
@@ -171,29 +187,36 @@ export default function Body() {
         </div>
       </div>
 
-      <div className="container mb-4">
-        <div className="card">
-          <div className="card-body">
-            <div className="row">
-              <div className="col-6 text-center ">
-                <img
-                  src="/images/burger.png"
-                  className="card-img-top foodImage"
-                  alt="food"
-                />
-              </div>
-              <div className="col-6 my-3 TopDealsCard">
-                <h1 className="foodName mb-3"><b>HEAVY ZINGER</b></h1>
-               
-                <h1 className="foodPrice mb-3"><b>Rs. 650</b></h1>
-                
-                <Link onClick={HandleScroll} to = "/order"><button className="button m-0">Order Now</button></Link>
+      {products.map((product) => (
+        <div key={product.product_id} className="container mb-4">
+          <div className="card">
+            <div className="card-body">
+              <div className="row">
+                <div className="col-6 text-center ">
+                  <img
+                    src="/images/burger.png"
+                    className="card-img-top foodImage"
+                    alt="food"
+                  />
+                </div>
+                <div className="col-6 my-3 TopDealsCard">
+                  <h1 className="foodName mb-3">
+                    <b>{product.product_name}</b>
+                  </h1>
+
+                  <h1 className="foodPrice mb-3">
+                    <b>{product.product_price}</b>
+                  </h1>
+
+                  <Link onClick={HandleScroll} to="/order">
+                    <button className="button m-0">Order Now</button>
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      ))}
     </>
-   
   );
 }

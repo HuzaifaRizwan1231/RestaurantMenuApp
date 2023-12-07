@@ -40,7 +40,7 @@ function App() {
             <Route path="/" element={<Body setUserName={setUserName} setUserEmail={setUserEmail} setPassword={setPassword} islogin = {islogin}/>}/>           
             <Route path="/cart" element={<Cart islogin = {islogin}/>}/>           
             <Route path="/exploreMenu" element={<Menu/>}/>      
-            <Route path="/order/:product_id" element={<OrderItem islogin = {islogin}/>}/>      
+            <Route path="/order/:product_id" element={<OrderItem islogin = {islogin} userEmail = {userEmail}/>}/>      
             <Route path="/login" element={<Login userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword} setIsLogin = {setIsLogin}/>}/>      
             <Route path="/signup" element={<SignUp userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword} setIsLogin = {setIsLogin}/>}/>      
             <Route path="/about" element={<AboutUs/>}/>      

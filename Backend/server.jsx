@@ -117,6 +117,25 @@ app.get('/products/:product_id', (req,res)=> {
     })
 
 
+app.post('/addToCart', (req,res)=> {
+
+    const product_id = req.body.id;
+    const product_quantity = req.body.Quantity;
+    const userEmail = req.body.userEmail;
+  
+    db.query("INSERT INTO orders(order_user_email,order_product_id,order_quantity,status) VALUES(?,?,?,?)",[userEmail,product_id,product_quantity,"pending"], (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+           return res.json({data : result});
+        }
+    }
+    )    
+    
+    })
+
+
 
 
 app.listen(PORT,()=>{

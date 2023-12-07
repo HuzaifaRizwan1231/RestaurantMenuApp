@@ -33,13 +33,33 @@ export default function OrderItem(props) {
       .catch((err) => console.log(err));
   }, [product_id]);
 
+  const addToCart = (id, Quantity) => {
+    axios
+      .post(
+        `http://localhost:3002/addToCart`,{id:id,  Quantity: Quantity, userEmail: props.userEmail}
+      )
+      .then(alert("Added to Cart"))
+      .catch((err)=>console.log(err));
+  };
+
+  useEffect(() => {
+    //fetching product
+    axios
+      .get(`http://localhost:3002/products/${product_id}`)
+      .then((res) => setProduct(res.data.data))
+      .catch((err) => console.log(err));
+  }, [product_id]);
   return (
     <>
       {props.islogin ? (
         product.map((product) => (
           <div key={product.product_id} className="container-fluid ">
             <div className="container mt-4 mb-2 text-center">
-              <img className=" orderImage mx-auto" src={product.product_image} alt="" />
+              <img
+                className=" orderImage mx-auto"
+                src={product.product_image}
+                alt=""
+              />
             </div>
             <div className="container-fluid mb-2 ItemInfo">
               <br />
@@ -141,10 +161,17 @@ export default function OrderItem(props) {
                 <div className="container">
                   <div className="row text-center my-1">
                     <div className="col-4">
-                      <button className=" btnOrder">{product.product_price}</button>
+                      <button className=" btnOrder">
+                        {product.product_price}
+                      </button>
                     </div>
                     <div className="col-8">
-                      <button className=" btnOrder">Add to Cart</button>
+                      <Link
+                        onClick={()=> addToCart(product.product_id, Quantity)}
+                        className="btnOrder"
+                      >
+                        Add to Cart
+                      </Link>
                     </div>
                   </div>
                 </div>

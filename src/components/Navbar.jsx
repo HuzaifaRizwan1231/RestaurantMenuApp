@@ -1,5 +1,6 @@
+import axios from "axios";
 import React, { useState, useRef, useEffect } from "react";
-import { Link ,useNavigate} from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar(props) {
   const [isProfileBarOpen, setProfilebarOpen] = useState(false);
@@ -7,8 +8,20 @@ export default function Navbar(props) {
   const NavBarRef = useRef(null);
   const ProfileBarRef = useRef(null);
   const navigate = useNavigate();
+  const [cartQuantity, setCartQuantity] = useState(0);
 
   useEffect(() => {
+    //updating number of cart items
+    if (props.islogin) {
+      //fetching cart items
+      axios
+        .post("http://localhost:3002/cartItems", { userEmail: props.userEmail })
+        .then(response => setCartQuantity(response.data.data.length))
+        .catch((error) => console.log(error));
+        
+    }
+
+    //handling outside click
     const handleClickOutside = (event) => {
       if (NavBarRef.current && !NavBarRef.current.contains(event.target)) {
         const exceptionButton = document.querySelector(".exception-button");
@@ -42,6 +55,8 @@ export default function Navbar(props) {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
+
+   
   }, [isNavOpen, NavBarRef, isProfileBarOpen, ProfileBarRef]);
 
   const toggleNav = () => {
@@ -53,16 +68,15 @@ export default function Navbar(props) {
   };
 
 
-  const SignOut =()=>{
+  const SignOut = () => {
     props.setUserName("");
     props.setPassword("");
     props.setUserEmail("");
     props.setIsLogin(false);
     document.getElementById("dropdown-button").click();
-    navigate('/');
-  }
+    navigate("/");
+  };
 
-  
   return (
     <>
       <nav className=" top-0 z-50 w-full">
@@ -106,31 +120,45 @@ export default function Navbar(props) {
             <div className="flex items-center">
               <div className="flex items-center ms-3">
                 <div>
-                {props.islogin ? ( <button
-                    onClick={toggleProfileBar}
-                    type="button"
-                    className=" exception-Profilebutton buttonNav"
-                    aria-expanded="false"
-                    data-dropdown-toggle="dropdown-user"
-                    id="dropdown-button"
-                  ><i className="fa-solid fa-user mr-1.5" style={{color:'#fff'}}></i>
-                  {props.userName}<i className="fa-solid fa-caret-down ml-1.5" style={{color:'#fff'}}></i>
-                  </button>):(
-                    <>     
-                      <Link to="/login" className="uppercase buttonNav"><i className="fa-solid fa-user mr-1.5" style={{color:'#fff'}}></i>Log in</Link>
+                  {props.islogin ? (
+                    <button
+                      onClick={toggleProfileBar}
+                      type="button"
+                      className=" exception-Profilebutton buttonNav"
+                      aria-expanded="false"
+                      data-dropdown-toggle="dropdown-user"
+                      id="dropdown-button"
+                    >
+                      <i
+                        className="fa-solid fa-user mr-1.5"
+                        style={{ color: "#fff" }}
+                      ></i>
+                      {props.userName}
+                      <i
+                        className="fa-solid fa-caret-down ml-1.5"
+                        style={{ color: "#fff" }}
+                      ></i>
+                    </button>
+                  ) : (
+                    <>
+                      <Link to="/login" className="uppercase buttonNav">
+                        <i
+                          className="fa-solid fa-user mr-1.5"
+                          style={{ color: "#fff" }}
+                        ></i>
+                        Log in
+                      </Link>
                     </>
                   )}
-                 
                 </div>
               </div>
             </div>
           </div>
         </div>
       </nav>
-      
+
       <div
         ref={ProfileBarRef}
-       
         className={`z-50 profilebar top-10 right-3 fixed my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600 ${
           isProfileBarOpen ? "" : "hidden"
         }`}
@@ -157,7 +185,6 @@ export default function Navbar(props) {
         </ul>
       </div>
 
-
       {/* SideBar */}
       <aside
         ref={NavBarRef}
@@ -168,13 +195,16 @@ export default function Navbar(props) {
       >
         <div className=" sidebar h-full px-3 pb-4 overflow-y-auto dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
-          <li>
+            <li>
               <Link
                 onClick={toggleNav}
                 to="/"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <i className="fa-solid fa-house" style={{color:'#9ca3af'}}></i>
+                <i
+                  className="fa-solid fa-house"
+                  style={{ color: "#9ca3af" }}
+                ></i>
                 <span className="ms-3">Home</span>
               </Link>
             </li>
@@ -184,8 +214,11 @@ export default function Navbar(props) {
                 to="/login"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <i className="fa-solid fa-user" style={{color:'#9ca3af'}}></i>
-                
+                <i
+                  className="fa-solid fa-user"
+                  style={{ color: "#9ca3af" }}
+                ></i>
+
                 <span className="ms-3">Login</span>
               </Link>
             </li>
@@ -195,8 +228,11 @@ export default function Navbar(props) {
                 to="/signup"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <i className="fa-solid fa-user" style={{color:'#9ca3af'}}></i>
-                
+                <i
+                  className="fa-solid fa-user"
+                  style={{ color: "#9ca3af" }}
+                ></i>
+
                 <span className="ms-3">Sign Up</span>
               </Link>
             </li>
@@ -226,22 +262,30 @@ export default function Navbar(props) {
                 to="/cart"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <i className="fa-solid fa-cart-shopping" style={{color:'#9ca3af'}}></i>
+                <i
+                  className="fa-solid fa-cart-shopping"
+                  style={{ color: "#9ca3af" }}
+                ></i>
                 <span className="flex-1 ms-3 whitespace-nowrap">My Cart</span>
                 <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                  3
+                  {cartQuantity}
                 </span>
               </Link>
             </li>
             <li>
               <Link
-              onClick={toggleNav}
-              to="/history"
+                onClick={toggleNav}
+                to="/history"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <i className="fa-solid fa-list" style={{color:'#9ca3af'}}></i>
-                
-                <span className="flex-1 ms-3 whitespace-nowrap">Order History</span>
+                <i
+                  className="fa-solid fa-list"
+                  style={{ color: "#9ca3af" }}
+                ></i>
+
+                <span className="flex-1 ms-3 whitespace-nowrap">
+                  Order History
+                </span>
               </Link>
             </li>
             <li>
@@ -250,19 +294,27 @@ export default function Navbar(props) {
                 to="/exploreMenu"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <i className="fa-solid fa-pizza-slice" style={{color:'#9ca3af'}}></i>
-                
-                <span className="flex-1 ms-3 whitespace-nowrap">Explore Menu</span>
+                <i
+                  className="fa-solid fa-pizza-slice"
+                  style={{ color: "#9ca3af" }}
+                ></i>
+
+                <span className="flex-1 ms-3 whitespace-nowrap">
+                  Explore Menu
+                </span>
               </Link>
             </li>
             <li>
-              <Link 
+              <Link
                 to="/about"
                 onClick={toggleNav}
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <i className="fa-solid fa-circle-info" style={{color:'#9ca3af'}}></i>
-                
+                <i
+                  className="fa-solid fa-circle-info"
+                  style={{ color: "#9ca3af" }}
+                ></i>
+
                 <span className="flex-1 ms-3 whitespace-nowrap">About Us</span>
               </Link>
             </li>
@@ -272,8 +324,11 @@ export default function Navbar(props) {
                 onClick={toggleNav}
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <i className="fa-solid fa-comment" style={{color:'#9ca3af'}}></i>
-                
+                <i
+                  className="fa-solid fa-comment"
+                  style={{ color: "#9ca3af" }}
+                ></i>
+
                 <span className="flex-1 ms-3 whitespace-nowrap">Feedback</span>
               </Link>
             </li>
@@ -283,9 +338,14 @@ export default function Navbar(props) {
                 to="/contact"
                 className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
               >
-                <i className="fa-solid fa-phone" style={{color:'#9ca3af'}}></i>
-                
-                <span className="flex-1 ms-3 whitespace-nowrap">Contact Us</span>
+                <i
+                  className="fa-solid fa-phone"
+                  style={{ color: "#9ca3af" }}
+                ></i>
+
+                <span className="flex-1 ms-3 whitespace-nowrap">
+                  Contact Us
+                </span>
               </Link>
             </li>
           </ul>

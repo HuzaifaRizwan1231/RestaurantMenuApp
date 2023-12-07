@@ -203,7 +203,7 @@ export default function Body(props) {
               <div className="row">
                 <div className="col-6 text-center ">
                   <img
-                    src="/images/burger.png"
+                    src={product.product_image}
                     className="card-img-top foodImage"
                     alt="food"
                   />
@@ -217,7 +217,7 @@ export default function Body(props) {
                     <b>{product.product_price}</b>
                   </h1>
 
-                  <Link onClick={HandleScroll} to="/order">
+                  <Link onClick={HandleScroll} to={`/order/${product.product_id}`}>
                     <button className="button m-0">Order Now</button>
                   </Link>
                 </div>

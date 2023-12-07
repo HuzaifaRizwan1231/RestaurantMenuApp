@@ -99,6 +99,26 @@ app.get('/products', (req,res)=> {
     })
 
 
+//get one product for order
+app.get('/products/:product_id', (req,res)=> {
+
+    const product_id = req.params.product_id;
+    
+    db.query("SELECT * FROM products WHERE product_id = ?",[product_id], (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+           return res.json({data : result});
+        }
+    }
+    )    
+    
+    })
+
+
+
+
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);
 })

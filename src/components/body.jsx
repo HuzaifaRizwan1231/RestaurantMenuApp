@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-export default function Body() {
+export default function Body(props) {
   //sql query to generate products from database
   const [products, setProducts] = useState([]);
 
@@ -12,6 +12,15 @@ export default function Body() {
       .get("http://localhost:3002/products")
       .then((response) => setProducts(response.data.data))
       .catch((error) => console.log(error));
+  }, []);
+
+  useEffect(() => {
+    console.log(props.islogin);
+    if (!props.islogin) {
+      props.setUserEmail("");
+      props.setPassword("");
+      props.setUserName("");
+    }
   }, []);
 
   console.log(products);

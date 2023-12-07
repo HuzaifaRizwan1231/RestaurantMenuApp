@@ -1,11 +1,11 @@
-import React , { useState } from "react";
+import React , { useState, useEffect } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
 import Navbar from "./components/Navbar";
 import Body from "./components/body";
-import Cart from "./components/Cart";
+import Cart from "./components/cart";
 import Menu from "./components/Menu";
 import OrderItem from "./components/OrderItem";
 import Login from "./components/Login";
@@ -29,15 +29,15 @@ function App() {
   const [password, setPassword] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [islogin,setIsLogin] = useState(false);
-  
 
+  
   return (
     <>
     
       <Router>
           <Navbar userName = {userName}  userEmail = {userEmail}/>
           <Routes>
-            <Route path="/" element={<Body/>}/>           
+            <Route path="/" element={<Body setUserName={setUserName} setUserEmail={setUserEmail} setPassword={setPassword} islogin = {islogin}/>}/>           
             <Route path="/cart" element={<Cart islogin = {islogin}/>}/>           
             <Route path="/exploreMenu" element={<Menu/>}/>      
             <Route path="/order" element={<OrderItem islogin = {islogin}/>}/>      

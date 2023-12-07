@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import Modal from "./Modal";
 
 
 
@@ -17,6 +18,14 @@ export default function Cart(props) {
       setQuantity(Quantity - 1);
     }
   };
+
+  useEffect(() => {
+    if (!props.isLogin){
+      document.getElementById("modalButton").click();
+    }
+   
+  }, [])
+  
   return (
 
   
@@ -138,8 +147,7 @@ export default function Cart(props) {
               </button>
               </div>
       </div>
-      ) : (<Link className="button" to="/login" >Please Log In to Continue</Link>
-      )}
+      ) : (<Modal/>)}
       
     </>
   );

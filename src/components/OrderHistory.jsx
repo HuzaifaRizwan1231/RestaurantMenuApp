@@ -1,8 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
+import Modal from "./Modal";
 
 export default function OrderHistory(props) {
+  useEffect(() => {
+    if (!props.isLogin){
+      document.getElementById("modalButton").click();
+    }
+   
+  }, [])
+  
   return (
+
     <>
     {props.isLogin ? ( <div className="container ">
         <h1 className="text-center display-6 mt-3 mb-5">
@@ -57,7 +66,7 @@ export default function OrderHistory(props) {
           </div>
         </div>
         
-      </div>):(<Link className="button" to="/login" >Please Log In to Continue</Link>)}
+      </div>):(<Modal/>)}
      
     </>
   );

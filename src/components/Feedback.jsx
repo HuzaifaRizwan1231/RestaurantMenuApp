@@ -1,8 +1,16 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { Link } from "react-router-dom";
+import Modal from "./Modal";
 
 
 export default function Feedback(props) {
+  useEffect(() => {
+    if (!props.isLogin){
+      document.getElementById("modalButton").click();
+    }
+   
+  }, [])
+  
   return (
     
     <>
@@ -21,7 +29,7 @@ export default function Feedback(props) {
         <div className="container text-center FeedBackSubmit">
             <button className="button">SUBMIT</button>
         </div>
-      </div>):(<Link className="button" to="/login" >Please Log In to Continue</Link>)}
+      </div>):(<Modal/>)}
       
     </>
   );

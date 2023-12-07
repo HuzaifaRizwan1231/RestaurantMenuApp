@@ -277,3 +277,12 @@ Body {
   color: #ffd100;
   background-color: #000;
 }
+
+/* Modal */
+.ModalClass{
+  background-color: #202020 !important;
+}
+
+#staticBackdrop{
+  background-color: #333533 !important;
+}

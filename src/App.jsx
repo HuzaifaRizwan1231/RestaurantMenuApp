@@ -38,7 +38,7 @@ function App() {
           <Navbar userName = {userName}  userEmail = {userEmail} islogin={islogin} setIsLogin = {setIsLogin} setUserName={setUserName} setUserEmail={setUserEmail} setPassword={setPassword}/>
           <Routes>
             <Route path="/" element={<Body setUserName={setUserName} setUserEmail={setUserEmail} setPassword={setPassword} islogin = {islogin}/>}/>           
-            <Route path="/cart" element={<Cart islogin = {islogin}/>}/>           
+            <Route path="/cart" element={<Cart islogin = {islogin} userEmail={userEmail}/>}/>           
             <Route path="/exploreMenu" element={<Menu/>}/>      
             <Route path="/order/:product_id" element={<OrderItem islogin = {islogin} userEmail = {userEmail}/>}/>      
             <Route path="/login" element={<Login userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword} setIsLogin = {setIsLogin}/>}/>      

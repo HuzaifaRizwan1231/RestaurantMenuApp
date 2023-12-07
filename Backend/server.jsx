@@ -123,7 +123,24 @@ app.post('/addToCart', (req,res)=> {
     const product_quantity = req.body.Quantity;
     const userEmail = req.body.userEmail;
   
-    db.query("INSERT INTO orders(order_user_email,order_product_id,order_quantity,status) VALUES(?,?,?,?)",[userEmail,product_id,product_quantity,"pending"], (err,result)=>{
+    db.query("INSERT INTO orders(order_user_email,order_product_id,order_quantity,status,order_date_time) VALUES(?,?,?,?,CURRENT_TIMESTAMP)",[userEmail,product_id,product_quantity,"cart"], (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+           return res.json({data : result});
+        }
+    }
+    )    
+    
+    })
+
+// Fetching Cart Items
+app.post('/cartItems', (req,res)=> {
+
+    const userEmail = req.body.userEmail;
+  
+    db.query("SELECT `products`.*, `orders`.`order_id` FROM `products`,`orders` WHERE order_user_email = ? AND order_product_id = products.product_id AND orders.status = 'cart'",[userEmail], (err,result)=>{
         if(err) {
             return (res.json("Error")) ;
         } 

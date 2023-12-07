@@ -20,7 +20,7 @@ export default function Cart(props) {
   };
 
   useEffect(() => {
-    if (!props.isLogin){
+    if (!props.islogin){
       document.getElementById("modalButton").click();
     }
    

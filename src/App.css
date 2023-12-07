@@ -20,6 +20,18 @@ Body {
   color: #ffd100 !important;
 }
 
+.buttonNav{
+  font-size: 14px;
+  padding: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border: 1px solid #202020;
+  border-radius: 6px;
+  color: white;
+  background-color: #333533;
+  margin: 5px;
+}
+
 
 /* SideBar */
 

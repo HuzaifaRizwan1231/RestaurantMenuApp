@@ -35,7 +35,7 @@ function App() {
     <>
     
       <Router>
-          <Navbar userName = {userName}  userEmail = {userEmail}/>
+          <Navbar userName = {userName}  userEmail = {userEmail} islogin={islogin} setIsLogin = {setIsLogin} setUserName={setUserName} setUserEmail={setUserEmail} setPassword={setPassword}/>
           <Routes>
             <Route path="/" element={<Body setUserName={setUserName} setUserEmail={setUserEmail} setPassword={setPassword} islogin = {islogin}/>}/>           
             <Route path="/cart" element={<Cart islogin = {islogin}/>}/>           

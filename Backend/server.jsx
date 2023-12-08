@@ -168,6 +168,21 @@ app.post('/removeCartItem', (req,res)=> {
     })
 
 
+app.post('/checkout', (req,res)=> {
+
+    const userEmail = req.body.userEmail;
+
+    db.query("UPDATE orders SET status = 'paid' WHERE order_user_email = ? AND status = 'cart'",[userEmail], (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+    }
+    )
+     
+    
+    })
+
+
 
 
 app.listen(PORT,()=>{

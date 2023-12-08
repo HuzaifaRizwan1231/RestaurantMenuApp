@@ -46,6 +46,17 @@ export default function Cart(props) {
       .catch((error) => console.log(error));
   }
 
+
+  const Checkout = ()=>{
+    axios
+      .post("http://localhost:3002/checkout", {userEmail: props.userEmail})
+      .then(
+      alert("Checked out"),
+      FetchData()
+      )
+      .catch((error) => console.log(error));
+  }
+
   return (
     <>
       {props.islogin ? (
@@ -115,7 +126,7 @@ export default function Cart(props) {
 
           <div className="container text-center mt-5">
             <button
-              type="submit"
+              onClick={Checkout}
               className="LoginButton w-75 text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Checkout

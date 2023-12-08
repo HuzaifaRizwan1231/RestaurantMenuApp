@@ -125,12 +125,15 @@ export default function Cart(props) {
           ))}
 
           <div className="container text-center mt-5">
-            <button
+          {products.length == 0 ? (
+            <h6 className="mt-16">Your Cart is Empty</h6>
+          ): (<button
               onClick={Checkout}
               className="LoginButton w-75 text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Checkout
-            </button>
+            </button>)}
+            
           </div>
         </div>
       ) : (

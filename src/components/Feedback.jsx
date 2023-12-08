@@ -1,29 +1,53 @@
-import React, {useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import Modal from "./Modal";
+import axios from "axios";
+import Alert from "./Alert";
+
+
 
 
 export default function Feedback(props) {
+
+  const [feedback,setFeedback] = useState("")
+
   useEffect(() => {
     if (!props.islogin){
       document.getElementById("modalButton").click();
     }
-   
+    Cleartext();
   }, [])
 
+  const Cleartext=()=>{
+    setFeedback("")
+  }
   const submitFeedback=()=>{
-    
+    if (feedback!=""){
+      axios
+    .post("http://localhost:3002/submitFeedback", { userEmail: props.userEmail, feedback:feedback })
+    .then((res)=>Cleartext(),ClickOnSubmitAlert())
+    .catch((error) => console.log(error));
+    }
   }
   
+  const ClickOnSubmitAlert = ()=>{
+    document.getElementById("liveAlertBtn").click();
+  }
   return (
     
     <>
+     <div id="liveAlertPlaceholder"></div>
+    <Alert message = "Submitted Feedback Successfully"/>
     {props.islogin ? (<div className="container ">
         <h1 className="text-center display-6 my-3">
           <b>FEEDBACK</b>
         </h1>
         <div className="container mb-3">
           <textarea
+          value={feedback}
+          onChange={(e)=>{
+            setFeedback(e.target.value)
+          }}
             className="mx-auto form-control FeedBackField"
             placeholder="Enter Text Here"
             id="exampleFormControlTextarea1"
@@ -31,7 +55,7 @@ export default function Feedback(props) {
           ></textarea>
         </div>
         <div className="container text-center FeedBackSubmit">
-            <button onClick={()=>{submitFeedback}} className="button">SUBMIT</button>
+            <button onClick={submitFeedback} className="button">SUBMIT</button>
         </div>
       </div>):(<Modal/>)}
       

@@ -49,7 +49,7 @@ function App() {
             <Route path="/login" element={<Login setIsAdminLogin={setIsAdminLogin} userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword} setIsLogin = {setIsLogin}/>}/>      
             <Route path="/signup" element={<SignUp userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword} setIsLogin = {setIsLogin}/>}/>      
             <Route path="/about" element={<AboutUs/>}/>      
-            <Route path="/feedback" element={<Feedback islogin = {islogin}/>}/>      
+            <Route path="/feedback" element={<Feedback islogin = {islogin} userEmail = {userEmail}/>}/>      
             <Route path="/contact" element={<ContactUs/>}/>      
             <Route path="/history" element={<OrderHistory islogin = {islogin}  userEmail = {userEmail}/>}/> 
 

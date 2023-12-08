@@ -234,8 +234,38 @@ app.post('/completedOrders', (req,res)=> {
     )    
     
     })
-    
 
+
+app.post('/submitFeedback', (req,res)=> {
+
+    const userEmail = req.body.userEmail;
+    const feedback = req.body.feedback;
+
+    db.query("INSERT INTO feedbacks(feedback_user_email,feedback_desc) VALUES(?,?)",[userEmail,feedback], (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+            return res.json("");
+        }
+    }
+    )    
+    
+    })
+    
+    app.get('/feedbacks', (req,res)=> {
+
+        db.query("SELECT * FROM feedbacks", (err,result)=>{
+            if(err) {
+                return (res.json("Error")) ;
+            } 
+            else {
+                return res.json({data:result});
+            }
+        }
+        )    
+        
+        })
 
 app.post('/completeOrder', (req,res)=> {
 

@@ -167,7 +167,7 @@ app.post('/removeCartItem', (req,res)=> {
     
     })
 
-
+//checking out
 app.post('/checkout', (req,res)=> {
 
     const userEmail = req.body.userEmail;
@@ -182,7 +182,23 @@ app.post('/checkout', (req,res)=> {
     
     })
 
+//order history
+app.post('/orderHistory', (req,res)=> {
 
+    const userEmail = req.body.userEmail;
+    
+    db.query("SELECT `products`.*, `orders`.* FROM `products`,`orders` WHERE order_user_email = ? AND order_product_id = products.product_id AND orders.status != 'cart'",[userEmail], (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+            return res.json({data : result});
+        }
+    }
+    )    
+    
+    })
+    
 
 
 app.listen(PORT,()=>{

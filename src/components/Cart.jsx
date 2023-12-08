@@ -1,64 +1,83 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,  } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import axios from "axios";
+import Alert from "./Alert";
+import RemoveFromCartAlert from "./RemoveFromCartAlert";
+
+
+
 
 
 export default function Cart(props) {
-  const navigate = useNavigate();
-  const [Quantity, setQuantity] = useState(1);
 
-  const HandleIncreaseQuantity = () => {
-    setQuantity(Quantity + 1);
-  };
 
-  const HandleDecreaseQuantity = () => {
-    if (Quantity > 1) {
-      setQuantity(Quantity - 1);
-    }
-  };
+  // const [Quantity, setQuantity] = useState(1);
 
+  // const HandleIncreaseQuantity = () => {
+  //   setQuantity(Quantity + 1);
+  // };
+
+  // const HandleDecreaseQuantity = () => {
+  //   if (Quantity > 1) {
+  //     setQuantity(Quantity - 1);
+  //   }
+  // };
+
+ 
   const [products, setProducts] = useState([]);
+
   const FetchData =()=>{
 
     if (!props.islogin) {
       document.getElementById("modalButton").click();
     }
-
-    //fetching cart items
-    axios
+    else{
+      //fetching cart items
+      axios
       .post("http://localhost:3002/cartItems", { userEmail: props.userEmail })
       .then((response) => setProducts(response.data.data))
       .catch((error) => console.log(error));
+    }
+
   }
+
+ 
   useEffect(() => {
     FetchData();
   }, []);
 
-
-  const removeFromCart=(product_id)=>{
+  
+  const removeFromCart=(order_id)=>{
+    console.log(order_id)
     axios
-      .post("http://localhost:3002/removeCartItem", { userEmail: props.userEmail, product_id: product_id })
-      .then(
-        alert("Removed from cart"),
-      FetchData()
-      )
-      .catch((error) => console.log(error));
+    .post("http://localhost:3002/removeCartItem", { userEmail: props.userEmail, order_id: order_id })
+    .then((res)=>FetchData(),ClickOnRemoveAlert())
+    .catch((error) => console.log(error));
   }
-
 
   const Checkout = ()=>{
     axios
-      .post("http://localhost:3002/checkout", {userEmail: props.userEmail})
-      .then(
-      alert("Checked out"),
-      FetchData()
-      )
-      .catch((error) => console.log(error));
+        .post("http://localhost:3002/checkout", {userEmail: props.userEmail})
+        .then(
+          (res)=>FetchData(),ClickOnAlert()
+        )
+        .catch((error) => console.log(error));
   }
 
+  const ClickOnAlert = ()=>{
+    document.getElementById("liveAlertBtn").click();
+  }
+
+  const ClickOnRemoveAlert = ()=>{
+    document.getElementById("liveRemoveAlertBtn").click();
+  }
+ 
   return (
     <>
+      <div id="liveAlertPlaceholder"></div>
+      <Alert message = "Checked out Successfully"/>
+      <RemoveFromCartAlert />
       {props.islogin ? (
         <div className="container mt-4">
           <h1 className="text-center display-6 mb-4">
@@ -112,7 +131,7 @@ export default function Cart(props) {
                         </div>
                       </div> */}
                       <div className="row">
-                        <button onClick={()=>{removeFromCart(product.product_id)}} className="RemoveButton mx-auto"><i
+                        <button onClick={()=>{removeFromCart(product.order_id)}} className="RemoveButton mx-auto"><i
                         className="fa-solid fa-trash mr-1.5"
                         style={{ color: "#fff" }}
                       ></i>Remove</button>

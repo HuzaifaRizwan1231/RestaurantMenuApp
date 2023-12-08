@@ -139,7 +139,7 @@ app.post('/addToCart', (req,res)=> {
 app.post('/cartItems', (req,res)=> {
 
     const userEmail = req.body.userEmail;
-  
+    console.log("cart")
     db.query("SELECT `products`.*, `orders`.`order_id` FROM `products`,`orders` WHERE order_user_email = ? AND order_product_id = products.product_id AND orders.status = 'cart'",[userEmail], (err,result)=>{
         if(err) {
             return (res.json("Error")) ;
@@ -156,12 +156,15 @@ app.post('/cartItems', (req,res)=> {
 app.post('/removeCartItem', (req,res)=> {
 
     const userEmail = req.body.userEmail;
-    const product_id = req.body.product_id;
+    const order_id = req.body.order_id;
   
-    db.query("DELETE FROM orders WHERE order_user_email = ? AND order_product_id = ? AND status = 'cart'",[userEmail,product_id], (err,result)=>{
+    db.query("DELETE FROM orders WHERE order_user_email = ? AND order_id = ? AND status = 'cart'",[userEmail,order_id], (err,result)=>{
         if(err) {
             return (res.json("Error")) ;
         } 
+        else{
+            return res.json({data : result});
+        }
     }
     )    
     
@@ -176,6 +179,9 @@ app.post('/checkout', (req,res)=> {
         if(err) {
             return (res.json("Error")) ;
         } 
+        else{
+            return res.json({data : result});
+        }
     }
     )
      

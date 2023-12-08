@@ -308,3 +308,18 @@ Body {
 #staticBackdrop{
   background-color: #333533 !important;
 }
+
+/* Alert */
+.customAlert{
+background-color: green;
+animation: fadeIn 0.5s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
+

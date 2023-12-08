@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import Modal from "./Modal";
 import axios from "axios";
+import Alert from "./Alert";
 
 export default function OrderItem(props) {
   const [Quantity, setQuantity] = useState(1);
@@ -31,26 +32,22 @@ export default function OrderItem(props) {
       .get(`http://localhost:3002/products/${product_id}`)
       .then((res) => setProduct(res.data.data))
       .catch((err) => console.log(err));
-  }, [product_id]);
+  }, []);
 
-  const addToCart = (id, Quantity) => {
+  const addToCart = (id, Quantity) => {    
     axios
       .post(
         `http://localhost:3002/addToCart`,{id:id,  Quantity: Quantity, userEmail: props.userEmail}
       )
-      .then(alert("Added to Cart"))
+      .then(document.getElementById("liveAlertBtn").click())
       .catch((err)=>console.log(err));
   };
 
-  useEffect(() => {
-    //fetching product
-    axios
-      .get(`http://localhost:3002/products/${product_id}`)
-      .then((res) => setProduct(res.data.data))
-      .catch((err) => console.log(err));
-  }, [product_id]);
+ 
   return (
     <>
+      <div id="liveAlertPlaceholder"></div>
+      <Alert message = "Added to Cart!"/>
       {props.islogin ? (
         product.map((product) => (
           <div key={product.product_id} className="container-fluid ">

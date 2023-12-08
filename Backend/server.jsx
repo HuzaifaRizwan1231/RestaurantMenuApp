@@ -206,6 +206,82 @@ app.post('/orderHistory', (req,res)=> {
     })
     
 
+//Give fastFood
+app.get('/fastFood', (req,res)=> {
+
+    let numOfRows;
+    
+    db.query("SELECT * FROM products WHERE product_category = 'fast_food'", (err,result)=>{
+        numOfRows = result.length;
+        console.log(numOfRows);
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+           return res.json({data : result});
+        }
+    }
+    )    
+    
+    })
+
+    //Give Desi
+app.get('/desi', (req,res)=> {
+
+    let numOfRows;
+    
+    db.query("SELECT * FROM products WHERE product_category = 'desi'", (err,result)=>{
+        numOfRows = result.length;
+        console.log(numOfRows);
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+           return res.json({data : result});
+        }
+    }
+    )    
+    
+    })
+
+//     //Give fastFood
+// app.get('/fastFood', (req,res)=> {
+
+//     let numOfRows;
+    
+//     db.query("SELECT * FROM products WHERE product_category = 'fast_food'", (err,result)=>{
+//         numOfRows = result.length;
+//         console.log(numOfRows);
+//         if(err) {
+//             return (res.json("Error")) ;
+//         } 
+//         else {
+//            return res.json({data : result});
+//         }
+//     }
+//     )    
+    
+//     })
+
+//     //Give fastFood
+// app.get('/fastFood', (req,res)=> {
+
+//     let numOfRows;
+    
+//     db.query("SELECT * FROM products WHERE product_category = 'fast_food'", (err,result)=>{
+//         numOfRows = result.length;
+//         console.log(numOfRows);
+//         if(err) {
+//             return (res.json("Error")) ;
+//         } 
+//         else {
+//            return res.json({data : result});
+//         }
+//     }
+//     )    
+    
+//     })
+
 
 app.listen(PORT,()=>{
     console.log(`Server is running on port ${PORT}`);

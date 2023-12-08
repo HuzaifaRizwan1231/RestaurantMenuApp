@@ -5,7 +5,7 @@ import Modal from "./Modal";
 
 export default function Feedback(props) {
   useEffect(() => {
-    if (!props.isLogin){
+    if (!props.islogin){
       document.getElementById("modalButton").click();
     }
    
@@ -14,7 +14,7 @@ export default function Feedback(props) {
   return (
     
     <>
-    {props.isLogin ? (<div className="container ">
+    {props.islogin ? (<div className="container ">
         <h1 className="text-center display-6 my-3">
           <b>FEEDBACK</b>
         </h1>

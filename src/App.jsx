@@ -30,19 +30,20 @@ function App() {
   const [password, setPassword] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [islogin,setIsLogin] = useState(false);
+  const [isAdminlogin,setIsAdminLogin] = useState(false);
 
   
   return (
     <>
     
       <Router>
-          <Navbar userName = {userName}  userEmail = {userEmail} islogin={islogin} setIsLogin = {setIsLogin} setUserName={setUserName} setUserEmail={setUserEmail} setPassword={setPassword}/>
+          <Navbar setIsAdminLogin={setIsAdminLogin} isAdminlogin={isAdminlogin} userName = {userName}  userEmail = {userEmail} islogin={islogin} setIsLogin = {setIsLogin} setUserName={setUserName} setUserEmail={setUserEmail} setPassword={setPassword}/>
           <Routes>
-            <Route path="/" element={<Body setUserName={setUserName} setUserEmail={setUserEmail} setPassword={setPassword} islogin = {islogin}/>}/>           
+            <Route path="/" element={<Body isAdminlogin={isAdminlogin} setUserName={setUserName} setUserEmail={setUserEmail} setPassword={setPassword} islogin = {islogin}/>}/>           
             <Route path="/cart" element={<Cart islogin = {islogin} userEmail={userEmail}/>}/>           
             <Route path="/exploreMenu" element={<Menu/>}/>      
             <Route path="/order/:product_id" element={<OrderItem islogin = {islogin} userEmail = {userEmail}/>}/>      
-            <Route path="/login" element={<Login userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword} setIsLogin = {setIsLogin}/>}/>      
+            <Route path="/login" element={<Login setIsAdminLogin={setIsAdminLogin} userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword} setIsLogin = {setIsLogin}/>}/>      
             <Route path="/signup" element={<SignUp userName = {userName} setUserName={setUserName} userEmail = {userEmail} setUserEmail={setUserEmail} password = {password} setPassword={setPassword} setIsLogin = {setIsLogin}/>}/>      
             <Route path="/about" element={<AboutUs/>}/>      
             <Route path="/feedback" element={<Feedback islogin = {islogin}/>}/>      

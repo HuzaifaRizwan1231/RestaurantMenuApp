@@ -16,9 +16,8 @@ export default function Navbar(props) {
       //fetching cart items
       axios
         .post("http://localhost:3002/cartItems", { userEmail: props.userEmail })
-        .then(response => setCartQuantity(response.data.data.length))
+        .then((response) => setCartQuantity(response.data.data.length))
         .catch((error) => console.log(error));
-        
     }
 
     //handling outside click
@@ -55,8 +54,6 @@ export default function Navbar(props) {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
-
-   
   }, [isNavOpen, NavBarRef, isProfileBarOpen, ProfileBarRef]);
 
   const toggleNav = () => {
@@ -67,12 +64,12 @@ export default function Navbar(props) {
     setProfilebarOpen(!isProfileBarOpen);
   };
 
-
   const SignOut = () => {
     props.setUserName("");
     props.setPassword("");
     props.setUserEmail("");
     props.setIsLogin(false);
+    props.setIsAdminLogin(false);
     document.getElementById("dropdown-button").click();
     navigate("/");
   };
@@ -120,7 +117,7 @@ export default function Navbar(props) {
             <div className="flex items-center">
               <div className="flex items-center ms-3">
                 <div>
-                  {props.islogin ? (
+                  {props.islogin || props.isAdminlogin ? (
                     <button
                       onClick={toggleProfileBar}
                       type="button"
@@ -195,159 +192,178 @@ export default function Navbar(props) {
       >
         <div className=" sidebar h-full px-3 pb-4 overflow-y-auto dark:bg-gray-800">
           <ul className="space-y-2 font-medium">
-            <li>
-              <Link
-                onClick={toggleNav}
-                to="/"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <i
-                  className="fa-solid fa-house"
-                  style={{ color: "#9ca3af" }}
-                ></i>
-                <span className="ms-3">Home</span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                onClick={toggleNav}
-                to="/login"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <i
-                  className="fa-solid fa-user"
-                  style={{ color: "#9ca3af" }}
-                ></i>
+            {props.isAdminlogin ? (
+              <>
+              <li>
+                  <Link
+                    onClick={toggleNav}
+                    to="/currentOrders"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-list"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
+                    <span className="ms-3">Current Orders</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={toggleNav}
+                    to="/adminFeedbacks"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-comment"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
+                    <span className="ms-3">Feedbacks</span>
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                <li>
+                  <Link
+                    onClick={toggleNav}
+                    to="/"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-house"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
+                    <span className="ms-3">Home</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={toggleNav}
+                    to="/login"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-user"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
 
-                <span className="ms-3">Login</span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                onClick={toggleNav}
-                to="/signup"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <i
-                  className="fa-solid fa-user"
-                  style={{ color: "#9ca3af" }}
-                ></i>
+                    <span className="ms-3">Login</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={toggleNav}
+                    to="/signup"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-user"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
 
-                <span className="ms-3">Sign Up</span>
-              </Link>
-            </li>
-            {/* <li>
-              <a
-                href="#"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <svg
-                  className="flex-shrink-0 w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 18 18"
-                >
-                  <path d="M6.143 0H1.857A1.857 1.857 0 0 0 0 1.857v4.286C0 7.169.831 8 1.857 8h4.286A1.857 1.857 0 0 0 8 6.143V1.857A1.857 1.857 0 0 0 6.143 0Zm10 0h-4.286A1.857 1.857 0 0 0 10 1.857v4.286C10 7.169 10.831 8 11.857 8h4.286A1.857 1.857 0 0 0 18 6.143V1.857A1.857 1.857 0 0 0 16.143 0Zm-10 10H1.857A1.857 1.857 0 0 0 0 11.857v4.286C0 17.169.831 18 1.857 18h4.286A1.857 1.857 0 0 0 8 16.143v-4.286A1.857 1.857 0 0 0 6.143 10Zm10 0h-4.286A1.857 1.857 0 0 0 10 11.857v4.286c0 1.026.831 1.857 1.857 1.857h4.286A1.857 1.857 0 0 0 18 16.143v-4.286A1.857 1.857 0 0 0 16.143 10Z" />
-                </svg>
-                <span className="flex-1 ms-3 whitespace-nowrap">Kanban</span>
-                <span className="inline-flex items-center justify-center px-2 ms-3 text-sm font-medium text-gray-800 bg-gray-100 rounded-full dark:bg-gray-700 dark:text-gray-300">
-                  Pro
-                </span>
-              </a>
-            </li> */}
-            <li>
-              <Link
-                onClick={toggleNav}
-                to="/cart"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <i
-                  className="fa-solid fa-cart-shopping"
-                  style={{ color: "#9ca3af" }}
-                ></i>
-                <span className="flex-1 ms-3 whitespace-nowrap">My Cart</span>
-                <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
-                  {cartQuantity}
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                onClick={toggleNav}
-                to="/history"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <i
-                  className="fa-solid fa-list"
-                  style={{ color: "#9ca3af" }}
-                ></i>
+                    <span className="ms-3">Sign Up</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={toggleNav}
+                    to="/cart"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-cart-shopping"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      My Cart
+                    </span>
+                    <span className="inline-flex items-center justify-center w-3 h-3 p-3 ms-3 text-sm font-medium text-blue-800 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-blue-300">
+                      {cartQuantity}
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={toggleNav}
+                    to="/history"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-list"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
 
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Order History
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                onClick={toggleNav}
-                to="/exploreMenu"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <i
-                  className="fa-solid fa-pizza-slice"
-                  style={{ color: "#9ca3af" }}
-                ></i>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Order History
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={toggleNav}
+                    to="/exploreMenu"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-pizza-slice"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
 
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Explore Menu
-                </span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/about"
-                onClick={toggleNav}
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <i
-                  className="fa-solid fa-circle-info"
-                  style={{ color: "#9ca3af" }}
-                ></i>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Explore Menu
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/about"
+                    onClick={toggleNav}
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-circle-info"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
 
-                <span className="flex-1 ms-3 whitespace-nowrap">About Us</span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                to="/feedback"
-                onClick={toggleNav}
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <i
-                  className="fa-solid fa-comment"
-                  style={{ color: "#9ca3af" }}
-                ></i>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      About Us
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/feedback"
+                    onClick={toggleNav}
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-comment"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
 
-                <span className="flex-1 ms-3 whitespace-nowrap">Feedback</span>
-              </Link>
-            </li>
-            <li>
-              <Link
-                onClick={toggleNav}
-                to="/contact"
-                className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
-              >
-                <i
-                  className="fa-solid fa-phone"
-                  style={{ color: "#9ca3af" }}
-                ></i>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Feedback
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={toggleNav}
+                    to="/contact"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-phone"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
 
-                <span className="flex-1 ms-3 whitespace-nowrap">
-                  Contact Us
-                </span>
-              </Link>
-            </li>
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Contact Us
+                    </span>
+                  </Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
       </aside>

@@ -10,25 +10,38 @@ export default function Login(props) {
 
   const LoginUser = (event)=>{
     event.preventDefault();
-    axios.post('http://localhost:3002/login', {userEmail: props.userEmail,password: props.password})
-  
-    .then(res=>{
-      if (res.data == "Incorrect Email or Password"){
-        setLoginError(res.data);
-      }
-      else{
-        setLoginError("");
-      }
 
-      if (res.data != "Incorrect Email or Password"){
-        props.setUserName(res.data.data[0].user_username)
-        props.setIsLogin(true)
-        navigate('/')
-      }
+    if (props.userEmail == 'admin@gmail.com' && props.password == 'admin'){
+      props.setUserName("Admin")
+      props.setIsAdminLogin(true);
+      console.log(props.userName)
+      console.log("Logged In") 
+      navigate('/');
     }
-    
-    )
-    .catch(err=>console.log(err));
+    else{
+      console.log("User Logged In")
+      axios.post('http://localhost:3002/login', {userEmail: props.userEmail,password: props.password})
+      
+      .then(res=>{
+        if (res.data == "Incorrect Email or Password"){
+          setLoginError(res.data);
+        }
+        else{
+          setLoginError("");
+        }
+  
+        if (res.data != "Incorrect Email or Password"){
+          props.setUserName(res.data.data[0].user_username)
+          props.setIsLogin(true)
+          navigate('/')
+        }
+      }
+      
+      )
+      .catch(err=>console.log(err));
+    }
+
+
   }
 
   return (

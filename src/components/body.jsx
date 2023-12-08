@@ -16,7 +16,7 @@ export default function Body(props) {
 
   useEffect(() => {
     console.log(props.islogin);
-    if (!props.islogin) {
+    if (!props.islogin && !props.isAdminlogin) {
       props.setUserEmail("");
       props.setPassword("");
       props.setUserName("");

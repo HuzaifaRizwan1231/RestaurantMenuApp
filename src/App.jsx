@@ -21,6 +21,9 @@ import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Feedback from "./components/Feedback";
 import OrderHistory from "./components/OrderHistory";
+import CurrentOrders from "./components/order manager/CurrentOrders";
+import AdminFeedbacks from "./components/order manager/AdminFeedbacks";
+import CompletedOrders from "./components/order manager/completedOrders";
 
 
 
@@ -48,7 +51,16 @@ function App() {
             <Route path="/about" element={<AboutUs/>}/>      
             <Route path="/feedback" element={<Feedback islogin = {islogin}/>}/>      
             <Route path="/contact" element={<ContactUs/>}/>      
-            <Route path="/history" element={<OrderHistory islogin = {islogin}  userEmail = {userEmail}/>}/>      
+            <Route path="/history" element={<OrderHistory islogin = {islogin}  userEmail = {userEmail}/>}/> 
+
+
+            {/* Order Manager */}
+            <Route path="/currentOrders" element={<CurrentOrders/>}/>      
+            <Route path="/completedOrders" element={<CompletedOrders/>}/>      
+            <Route path="/adminFeedBacks" element={<AdminFeedbacks/>}/>      
+
+
+            
           </Routes>
       </Router>
       

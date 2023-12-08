@@ -12,11 +12,9 @@ export default function Login(props) {
     event.preventDefault();
 
     if (props.userEmail == 'admin@gmail.com' && props.password == 'admin'){
-      props.setUserName("Admin")
+      props.setUserName("Order Manager")
       props.setIsAdminLogin(true);
-      console.log(props.userName)
-      console.log("Logged In") 
-      navigate('/');
+      navigate('/currentOrders');
     }
     else{
       console.log("User Logged In")

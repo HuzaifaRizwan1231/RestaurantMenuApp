@@ -10,6 +10,10 @@ export default function Feedback(props) {
     }
    
   }, [])
+
+  const submitFeedback=()=>{
+    
+  }
   
   return (
     
@@ -27,7 +31,7 @@ export default function Feedback(props) {
           ></textarea>
         </div>
         <div className="container text-center FeedBackSubmit">
-            <button className="button">SUBMIT</button>
+            <button onClick={()=>{submitFeedback}} className="button">SUBMIT</button>
         </div>
       </div>):(<Modal/>)}
       

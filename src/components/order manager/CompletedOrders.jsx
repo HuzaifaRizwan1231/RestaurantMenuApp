@@ -1,16 +1,17 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import Alert from "../Alert";
 
-export default function CurrentOrders(props) {
-  const [currentOrders, setCurrentOrders] = useState([]);
 
-  const FetchCurrentOrders = () => {
-    //fetching order history
+
+export default function CompletedOrders() {
+
+  const [completedOrders, setCompletedOrders] = useState([]);
+
+  const FetchCompletedOrders = () => {
+    //fetching completed orders
     axios
-      .post("http://localhost:3002/currentOrders")
-      .then((response) => setCurrentOrders(response.data.data))
+      .post("http://localhost:3002/completedOrders")
+      .then((response) => setCompletedOrders(response.data.data))
       .catch((error) => console.log(error));
   };
 
@@ -21,29 +22,17 @@ export default function CurrentOrders(props) {
   };
 
   useEffect(() => {
-    FetchCurrentOrders();
+    FetchCompletedOrders();
   }, []);
 
-  const completeOrder = (order_id) => {
-    axios
-      .post("http://localhost:3002/completeOrder", { order_id: order_id })
-      .then((response) => FetchCurrentOrders(), ClickOnAlert())
-      .catch((error) => console.log(error));
-  };
-
-  const ClickOnAlert = () => {
-    document.getElementById("liveAlertBtn").click();
-  };
 
   return (
     <>
-      <div id="liveAlertPlaceholder"></div>
-      <Alert message="Completed Order Successfully" />
-      <div className="container ">
+    <div className="container ">
         <h1 className="text-center display-6 mt-3 mb-5">
-          <b>MANAGE ORDERS</b>
+          <b>COMPLETED ORDERS</b>
         </h1>
-        {currentOrders.map((product) => (
+        {completedOrders.map((product) => (
           <div key={product.order_id} className="container mb-4">
             <div className="card HistoryPage">
               <div className="card-body">
@@ -77,14 +66,7 @@ export default function CurrentOrders(props) {
                       <b className="uppercase">{product.status}</b>
                     </h6>
 
-                    <button
-                      onClick={() => {
-                        completeOrder(product.order_id);
-                      }}
-                      className="ReorderButton"
-                    >
-                      Complete Order
-                    </button>
+                    
                   </div>
                 </div>
               </div>
@@ -94,8 +76,8 @@ export default function CurrentOrders(props) {
       </div>
 
       <div className="container text-center mt-5">
-        {currentOrders.length == 0 ? (
-          <h6 className="mt-16">No Current Orders</h6>
+        {completedOrders.length == 0 ? (
+          <h6 className="mt-16">No Completed Orders</h6>
         ) : (
           <></>
         )}

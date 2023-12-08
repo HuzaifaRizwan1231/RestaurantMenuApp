@@ -205,6 +205,54 @@ app.post('/orderHistory', (req,res)=> {
     
     })
     
+app.post('/currentOrders', (req,res)=> {
+
+    db.query("SELECT `products`.*, `orders`.* FROM `products`,`orders` WHERE orders.status = 'paid' AND orders.order_product_id = products.product_id", (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+            return res.json({data : result});
+        }
+    }
+    )    
+    
+    })
+    
+
+    
+app.post('/completedOrders', (req,res)=> {
+
+    db.query("SELECT `products`.*, `orders`.* FROM `products`,`orders` WHERE orders.status = 'completed' AND orders.order_product_id = products.product_id", (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+            return res.json({data : result});
+        }
+    }
+    )    
+    
+    })
+    
+
+
+app.post('/completeOrder', (req,res)=> {
+
+    const order_id = req.body.order_id;
+
+    db.query("UPDATE orders SET status = 'completed' WHERE order_id = ?",[order_id], (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+            return res.json("");
+        }
+    }
+    )    
+    
+    })
+    
 
 //Give fastFood
 app.get('/fastFood', (req,res)=> {

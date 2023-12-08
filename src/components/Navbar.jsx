@@ -103,7 +103,11 @@ export default function Navbar(props) {
                   ></path>
                 </svg>
               </button>
-              <Link to="/" id="logo" className="flex ms-2 md:me-24">
+              <Link
+                to={props.isAdminlogin ? "/currentOrders" : "/"}
+                id="logo"
+                className="flex ms-2 md:me-24"
+              >
                 {/* <img
                   src="https://flowbite.com/docs/images/logo.svg"
                   className="h-8 me-3"
@@ -194,7 +198,7 @@ export default function Navbar(props) {
           <ul className="space-y-2 font-medium">
             {props.isAdminlogin ? (
               <>
-              <li>
+                <li>
                   <Link
                     onClick={toggleNav}
                     to="/currentOrders"
@@ -205,6 +209,19 @@ export default function Navbar(props) {
                       style={{ color: "#9ca3af" }}
                     ></i>
                     <span className="ms-3">Current Orders</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    onClick={toggleNav}
+                    to="/completedOrders"
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-check"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
+                    <span className="ms-3">Completed Orders</span>
                   </Link>
                 </li>
                 <li>

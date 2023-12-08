@@ -152,6 +152,21 @@ app.post('/cartItems', (req,res)=> {
     
     })
 
+//Removing Cart Item
+app.post('/removeCartItem', (req,res)=> {
+
+    const userEmail = req.body.userEmail;
+    const product_id = req.body.product_id;
+  
+    db.query("DELETE FROM orders WHERE order_user_email = ? AND order_product_id = ? AND status = 'cart'",[userEmail,product_id], (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+    }
+    )    
+    
+    })
+
 
 
 

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
 import axios from "axios";
 
+
 export default function Cart(props) {
+  const navigate = useNavigate();
   const [Quantity, setQuantity] = useState(1);
 
   const HandleIncreaseQuantity = () => {
@@ -17,7 +19,8 @@ export default function Cart(props) {
   };
 
   const [products, setProducts] = useState([]);
-  useEffect(() => {
+  const FetchData =()=>{
+
     if (!props.islogin) {
       document.getElementById("modalButton").click();
     }
@@ -27,7 +30,21 @@ export default function Cart(props) {
       .post("http://localhost:3002/cartItems", { userEmail: props.userEmail })
       .then((response) => setProducts(response.data.data))
       .catch((error) => console.log(error));
+  }
+  useEffect(() => {
+    FetchData();
   }, []);
+
+
+  const removeFromCart=(product_id)=>{
+    axios
+      .post("http://localhost:3002/removeCartItem", { userEmail: props.userEmail, product_id: product_id })
+      .then(
+        alert("Removed from cart"),
+      FetchData()
+      )
+      .catch((error) => console.log(error));
+  }
 
   return (
     <>
@@ -83,6 +100,12 @@ export default function Cart(props) {
                           </b>
                         </div>
                       </div> */}
+                      <div className="row">
+                        <button onClick={()=>{removeFromCart(product.product_id)}} className="RemoveButton mx-auto"><i
+                        className="fa-solid fa-trash mr-1.5"
+                        style={{ color: "#fff" }}
+                      ></i>Remove</button>
+                      </div>
                     </div>
                   </div>
                 </div>

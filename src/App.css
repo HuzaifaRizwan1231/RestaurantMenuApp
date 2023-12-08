@@ -290,6 +290,16 @@ Body {
   background-color: #000;
 }
 
+.RemoveButton{
+  font-size: 14px;
+  width: 90%;
+  padding: 7px;
+  border-radius: 6px;
+  color: #fff;
+  background-color: maroon;
+  margin: 5px;
+}
+
 /* Modal */
 .ModalClass{
   background-color: #202020 !important;

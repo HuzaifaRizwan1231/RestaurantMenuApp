@@ -39,10 +39,16 @@ export default function OrderItem(props) {
       .post(
         `http://localhost:3002/addToCart`,{id:id,  Quantity: Quantity, userEmail: props.userEmail}
       )
-      .then(document.getElementById("liveAlertBtn").click())
+      .then((res)=>showAlert())
       .catch((err)=>console.log(err));
   };
-
+  
+  const showAlert=()=>{
+    document.getElementById("liveAlertBtn").click();
+    setTimeout(() => {
+    document.getElementById("close-alert-button").click();
+    }, 1500);
+  }
  
   return (
     <>

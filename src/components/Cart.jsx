@@ -67,10 +67,16 @@ export default function Cart(props) {
 
   const ClickOnAlert = ()=>{
     document.getElementById("liveAlertBtn").click();
+    setTimeout(() => {
+      document.getElementById("close-alert-button").click();
+    }, 1500);
   }
 
   const ClickOnRemoveAlert = ()=>{
     document.getElementById("liveRemoveAlertBtn").click();
+    setTimeout(() => {
+      document.getElementById("close-remove-alert-button").click();
+    }, 1500);
   }
  
   return (

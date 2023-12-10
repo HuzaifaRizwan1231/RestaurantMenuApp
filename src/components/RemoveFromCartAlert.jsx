@@ -5,9 +5,9 @@ export default function RemoveFromCartAlert() {
   const appendAlert = () => {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = [
-      `<div class="container alert customAlert top-0 fixed z-50 fade mx-auto show w-full alert-dismissible mb-0" role="alert">`,
+      `<div class="container d-flex alert customAlert top-0 fixed z-50 fade mx-auto show w-full alert-dismissible mb-0" role="alert">`,
       `   <div><i class="fa-solid fa-check mr-1.5" ></i>Removed From Cart</div>`,
-      '<button type="button" class="btn-close text-white " data-bs-dismiss="alert" aria-label="Close"><b>X</b></button>',
+      '<button data-bs-dismiss="alert" id="close-remove-alert-button" aria-label="Close"></button>',
       "</div>",
     ].join("");
 

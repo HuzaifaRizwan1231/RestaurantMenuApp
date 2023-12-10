@@ -5,9 +5,9 @@ export default function Alert(props) {
   const appendAlert = () => {
     const wrapper = document.createElement("div");
     wrapper.innerHTML = [
-      `<div class="container auto-close alert customAlert fixed top-0 z-50 fade mx-auto show w-full alert-dismissible mb-0" role="alert">`,
+      `<div class="container auto-close d-flex alert customAlert fixed top-0 z-50 fade mx-auto show w-full alert-dismissible mb-0" role="alert">`,
       `   <div><i class="fa-solid fa-check mr-1.5" ></i>${props.message}</div>`,
-      '<button type="button" class="btn-close text-white " data-bs-dismiss="alert" aria-label="Close"><b>X</b></button>',
+      '<button id="close-alert-button" data-bs-dismiss="alert" aria-label="Close"></button>',
       "</div>",
     ].join("");
 

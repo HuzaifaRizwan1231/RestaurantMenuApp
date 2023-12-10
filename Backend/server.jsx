@@ -322,43 +322,25 @@ app.get('/desi', (req,res)=> {
     
     })
 
-//     //Give fastFood
-// app.get('/fastFood', (req,res)=> {
+//     //Give drinks
+app.get('/drinks', (req,res)=> {
 
-//     let numOfRows;
+    let numOfRows;
     
-//     db.query("SELECT * FROM products WHERE product_category = 'fast_food'", (err,result)=>{
-//         numOfRows = result.length;
-//         console.log(numOfRows);
-//         if(err) {
-//             return (res.json("Error")) ;
-//         } 
-//         else {
-//            return res.json({data : result});
-//         }
-//     }
-//     )    
+    db.query("SELECT * FROM products WHERE product_category = 'drink'", (err,result)=>{
+        numOfRows = result.length;
+        console.log(numOfRows);
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+           return res.json({data : result});
+        }
+    }
+    )    
     
-//     })
+    })
 
-//     //Give fastFood
-// app.get('/fastFood', (req,res)=> {
-
-//     let numOfRows;
-    
-//     db.query("SELECT * FROM products WHERE product_category = 'fast_food'", (err,result)=>{
-//         numOfRows = result.length;
-//         console.log(numOfRows);
-//         if(err) {
-//             return (res.json("Error")) ;
-//         } 
-//         else {
-//            return res.json({data : result});
-//         }
-//     }
-//     )    
-    
-//     })
 
 
 app.listen(PORT,()=>{

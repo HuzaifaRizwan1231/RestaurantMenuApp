@@ -5,52 +5,36 @@ import { Link } from "react-router-dom";
 export default function Menu(props) {
   const [fastFoodProducts, setFastFoodProducts] = useState([]);
   const [desiProducts, setDesiProducts] = useState([]);
-  // const [fastFoodProducts, setFastFoodProducts] = useState([]);
-  // const [fastFoodProducts, setFastFoodProducts] = useState([]);
+  const [drinkProducts, setDrinkProducts] = useState([]);
+ 
 
-  // FastFood
   useEffect(() => {
-    props.setProgress(30)
+    props.setProgress(30);
     //fetching data
+
+    // FastFood
     axios
       .get("http://localhost:3002/fastFood")
       .then((response) => setFastFoodProducts(response.data.data))
       .catch((error) => console.log(error));
 
+    // Desi
     axios
       .get("http://localhost:3002/desi")
       .then((response) => setDesiProducts(response.data.data))
       .catch((error) => console.log(error));
 
+      axios
+      .get("http://localhost:3002/drinks")
+      .then((response) => setDrinkProducts(response.data.data))
+      .catch((error) => console.log(error));
+
     setTimeout(() => {
-       props.setProgress(100);
+      props.setProgress(100);
     }, 300);
   }, []);
 
-  // Desi
-  useEffect(() => {
-    //fetching data
-
-    
-  }, []);
-
-  // // FastFood
-  // useEffect(() => {
-  //   //fetching data
-  //   axios
-  //     .get("http://localhost:3002/fastFood")
-  //     .then((response) => setFastFoodProducts(response.data.data))
-  //     .catch((error) => console.log(error));
-  // }, []);
-
-  // // FastFood
-  // useEffect(() => {
-  //   //fetching data
-  //   axios
-  //     .get("http://localhost:3002/fastFood")
-  //     .then((response) => setFastFoodProducts(response.data.data))
-  //     .catch((error) => console.log(error));
-  // }, []);
+  
 
   return (
     <>
@@ -81,12 +65,6 @@ export default function Menu(props) {
               <a
                 className="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
                 href="#third"
-              >
-                Broast
-              </a>
-              <a
-                className="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
-                href="#fourth"
               >
                 Drinks
               </a>
@@ -198,55 +176,6 @@ export default function Menu(props) {
             <div className="row">
               <div className="col-6">
                 <h3 className="Heading">
-                  <b>Broast</b>
-                </h3>
-              </div>
-            </div>
-          </div>
-
-          <div className="container  mb-4 ">
-            <div className="row ">
-              <div className="col-6 underLine"></div>
-            </div>
-          </div>
-
-          {/* {desiProducts.map((desiProduct) => (
-            <div key={desiProduct.product_id} className="container  mb-4">
-              <div className="card cardContainer">
-                <div className="card-body">
-                  <div className="row">
-                    <div className="col-6 text-center ">
-                      <img
-                        src={desiProduct.product_image}
-                        className="card-img-top foodImage"
-                        alt="food"
-                      />
-                    </div>
-                    <div className="col-6 my-3 TopDealsCard">
-                      <h1 className="foodName mb-3">
-                        <b>{desiProduct.product_name}</b>
-                      </h1>
-
-                      <h1 className="foodPrice mb-3">
-                        <b>{desiProduct.product_price}</b>
-                      </h1>
-
-                      <Link to={`/order/${desiProduct.product_id}`}>
-                        <button className="button m-0">Order Now</button>
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))} */}
-        </div>
-
-        <div id="fourth">
-          <div className="container-fluid menuSection mb-1">
-            <div className="row">
-              <div className="col-6">
-                <h3 className="Heading">
                   <b>Drinks</b>
                 </h3>
               </div>
@@ -259,28 +188,28 @@ export default function Menu(props) {
             </div>
           </div>
 
-          {/* {desiProducts.map((desiProduct) => (
-            <div key={desiProduct.product_id} className="container  mb-4">
+          {drinkProducts.map((drinkProduct) => (
+            <div key={drinkProduct.product_id} className="container  mb-4">
               <div className="card cardContainer">
                 <div className="card-body">
                   <div className="row">
                     <div className="col-6 text-center ">
                       <img
-                        src={desiProduct.product_image}
+                        src={drinkProduct.product_image}
                         className="card-img-top foodImage"
                         alt="food"
                       />
                     </div>
                     <div className="col-6 my-3 TopDealsCard">
                       <h1 className="foodName mb-3">
-                        <b>{desiProduct.product_name}</b>
+                        <b>{drinkProduct.product_name}</b>
                       </h1>
 
                       <h1 className="foodPrice mb-3">
-                        <b>{desiProduct.product_price}</b>
+                        <b>{drinkProduct.product_price}</b>
                       </h1>
 
-                      <Link to={`/order/${desiProduct.product_id}`}>
+                      <Link to={`/order/${drinkProduct.product_id}`}>
                         <button className="button m-0">Order Now</button>
                       </Link>
                     </div>
@@ -288,8 +217,10 @@ export default function Menu(props) {
                 </div>
               </div>
             </div>
-          ))} */}
+          ))}
         </div>
+
+        
       </div>
     </>
   );

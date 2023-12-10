@@ -50,6 +50,17 @@ Body {
 }
 
 
+/* Carousel */
+.carouselImage{
+  max-height: 75vh;
+  @media (min-width: 768px) {
+    object-fit: cover;
+    aspect-ratio: 16/9;
+  }
+}
+
+
+
 /* TopButtons */
 .button {
   font-size: 14px;
@@ -60,11 +71,18 @@ Body {
   color: #ffd100;
   background-color: #000;
   margin: 5px;
+  @media (min-width: 768px) {
+    font-size: 20px;
+    min-width: 75%;
+  }
 }
 
 /* Menu */
 .Heading {
   font-size: 23px;
+  @media (min-width: 768px) {
+    font-size: 30px;
+  }
 }
 
 .rightHeadingLink {
@@ -77,32 +95,51 @@ Body {
   margin-left: 12.5px;
   background-color: #ffd100;
   padding: 1px;
+  @media (min-width: 768px) {
+    width: 10%;
+  }
 }
 
 /* ExploreMenu */
 .exploreMenuImage {
+  border-radius: 25px;
+  background-color: #202020 !important;
   display: grid;
   align-items: center;
   max-width: 100%;
   height: 100%;
+ 
 }
 
 .cardImage {
+  object-fit: contain;
   margin: auto;
   max-width: 25vw;
+  height: 110px;
+
+  @media (min-width: 768px) {
+    height: 175px;
+  }
 }
 
 
 /* Top Deals */
 
 .card {
-  background-color: #333533;
+  border-radius: 25px;
+  background-color: #202020;
   color: white;
+  min-height: 205px;
+  @media (min-width: 768px) {
+    min-height: 215px;
+  }
 }
 
 .foodImage {
   margin: auto;
   max-width: 35vw;
+  max-height: 171px;
+  min-height: 171px;
   height: 100%;
   object-fit: contain;
 }
@@ -117,8 +154,17 @@ Body {
   font-size: 20px;
 }
 
+.TopDealsCard{
+  @media (min-width: 768px) {
+    text-align: center;
+  }
+}
 .TopDealsCard .button{
   min-width: 100%;
+  @media (min-width: 768px) {
+    font-size: 20px;
+    min-width: 75%;
+  }
 }
 
 
@@ -126,7 +172,13 @@ Body {
 
 .MenuBar{
   background-color: #202020 !important;
-
+  font-size: 14px;
+  padding: 4px;
+  @media (min-width: 768px) {
+    padding: 10px;
+    font-size: 18px;
+    
+  }
 }
 
 .cardContainer{
@@ -207,6 +259,14 @@ Body {
   padding-right: 8px;
   border-radius: 6px;
   color: #ffd100;
+  @media (min-width: 768px) {
+    border-radius: 15px;
+    padding: 10px;
+    width: 50%;
+    font-size: 18px;
+    max-width: 80%;
+    
+  }
   
 }
 
@@ -218,9 +278,15 @@ Body {
 
 .AboutUs{
   background-color: #202020 !important;
-  min-height: 50vh;
+  padding: 1.5rem;
   max-width: 60vh;
-  border-radius: 20px;
+  border-radius: 25px;
+  @media (min-width: 768px) {
+    padding: 2.5rem;
+    font-size: 20px;
+    max-width: 80%;
+    line-height: 35px;
+  }
 }
 
 /* Contact Us */
@@ -228,6 +294,12 @@ Body {
   background-color: #202020 !important;
   max-width: 60vh;
   border-radius: 20px;
+  @media (min-width: 768px) {
+    font-size: 23px;
+    display: grid;
+    max-width: 80%;
+    min-height: 60vh;
+  }
 }
 
 .ContactUs p {
@@ -246,11 +318,28 @@ Body {
   min-height: 50vh;
   max-width: 60vh;
   border-radius: 20px;
+  @media (min-width: 768px) {
+    padding: 1rem;
+    font-size: 20px;
+    max-width: 80%;
+    line-height: 35px;
+  }
 }
 
 .FeedBackSubmit .button{
   width: 50%;
   font-size: 18px;
+  @media (min-width: 768px) {
+    border-radius: 18px;
+    font-size: 23px;
+   }
+}
+
+.FeedBackSubmit{
+
+  @media (min-width: 768px) {
+    width: 40%;
+  }
 }
 
 /* History */
@@ -298,11 +387,34 @@ Body {
   color: #fff;
   background-color: maroon;
   margin: 5px;
+  @media (min-width: 768px) {
+    font-size: 16px;
+    border-radius: 12px;
+    width: 50%;
+  }
 }
 
 /* Modal */
 .ModalClass{
   background-color: #202020 !important;
+}
+
+.ModalButton{
+  font-size: 14px;
+  padding: 7px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 6px;
+  color: #ffd100;
+  background-color: #000;
+  margin: 5px;
+  @media (min-width: 768px) {
+    border-radius: 12px;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    min-width: 25%;
+  }
 }
 
 #staticBackdrop{
@@ -319,7 +431,6 @@ animation: fadeIn 0.5s;
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
-
 
 
 

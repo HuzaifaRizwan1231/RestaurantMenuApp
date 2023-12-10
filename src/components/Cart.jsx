@@ -84,6 +84,8 @@ export default function Cart(props) {
           <h1 className="text-center display-6 mb-4">
             <b>CART</b>
           </h1>
+          <div className="row md:mt-10">
+            <div className="col-12 col-md-6 md:mx-auto">
 
           {products.map((product) => (
             <div key={product.order_id} className="container mb-4">
@@ -143,13 +145,15 @@ export default function Cart(props) {
               </div>
             </div>
           ))}
+            </div>
+          </div>
 
           <div className="container text-center mt-5">
           {products.length == 0 ? (
             <h6 className="mt-16">Your Cart is Empty</h6>
           ): (<button
               onClick={Checkout}
-              className="LoginButton w-75 text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              className="LoginButton text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Checkout
             </button>)}

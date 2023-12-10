@@ -51,7 +51,7 @@ export default function Feedback(props) {
         <h1 className="text-center display-6 my-3">
           <b>FEEDBACK</b>
         </h1>
-        <div className="container mb-3">
+        <div className="container mb-3 md:mt-12">
           <textarea
           value={feedback}
           onChange={(e)=>{

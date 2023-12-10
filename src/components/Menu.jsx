@@ -6,7 +6,6 @@ export default function Menu(props) {
   const [fastFoodProducts, setFastFoodProducts] = useState([]);
   const [desiProducts, setDesiProducts] = useState([]);
   const [drinkProducts, setDrinkProducts] = useState([]);
- 
 
   useEffect(() => {
     props.setProgress(30);
@@ -24,7 +23,7 @@ export default function Menu(props) {
       .then((response) => setDesiProducts(response.data.data))
       .catch((error) => console.log(error));
 
-      axios
+    axios
       .get("http://localhost:3002/drinks")
       .then((response) => setDrinkProducts(response.data.data))
       .catch((error) => console.log(error));
@@ -32,13 +31,25 @@ export default function Menu(props) {
     setTimeout(() => {
       props.setProgress(100);
     }, 300);
-  }, []);
 
-  
+    if (props.exploreFast) {
+      setTimeout(() => {
+        document.getElementById("firstNav").click();
+      }, 301);
+    } else if (props.exploreDesi) {
+      setTimeout(() => {
+        document.getElementById("secondNav").click();
+      }, 301);
+    } else if (props.exploreDrinks) {
+      setTimeout(() => {
+        document.getElementById("thirdNav").click();
+      }, 301);
+    }
+  }, []);
 
   return (
     <>
-      <header className=" MenuBar uppercase top-0 inset-x-0 flex  justify-start  d-flex w-full dark:bg-gray-800">
+      <header className="MenuBar uppercase top-0 inset-x-0 flex  justify-start  d-flex w-full dark:bg-gray-800">
         <nav className="mx-auto  d-flex justify-between" aria-label="Global">
           <div
             id="navbar-collapse-basic"
@@ -50,20 +61,23 @@ export default function Menu(props) {
               className="flex d-flex gap-4 sm:flex-row sm:items-center sm:justify-end "
             >
               <a
-                className="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400 active"
+                id="firstNav"
+                className=" text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400 active"
                 href="#first"
               >
                 Fast Food
               </a>
 
               <a
-                className="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
+                id="secondNav"
+                className=" text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
                 href="#second"
               >
                 Desi
               </a>
               <a
-                className="text-sm text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
+                id="thirdNav"
+                className=" text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
                 href="#third"
               >
                 Drinks
@@ -75,7 +89,7 @@ export default function Menu(props) {
 
       <div id="scrollspy-1" className="mt-3  space-y-4 ">
         <div id="first">
-          <div className="container-fluid menuSection mb-1">
+          <div className="container menuSection mb-1">
             <div className="row">
               <div className="col-6">
                 <h3 className="Heading">
@@ -85,45 +99,54 @@ export default function Menu(props) {
             </div>
           </div>
 
-          <div className="container  mb-4 ">
+          <div className="container mb-4 ">
             <div className="row ">
               <div className="col-6 underLine"></div>
             </div>
           </div>
-          {fastFoodProducts.map((fastFoodProduct) => (
-            <div key={fastFoodProduct.product_id} className="container  mb-4">
-              <div className="card cardContainer">
-                <div className="card-body">
-                  <div className="row">
-                    <div className="col-6 text-center ">
-                      <img
-                        src={fastFoodProduct.product_image}
-                        className="card-img-top foodImage"
-                        alt="food"
-                      />
-                    </div>
-                    <div className="col-6 my-3 TopDealsCard">
-                      <h1 className="foodName mb-3">
-                        <b>{fastFoodProduct.product_name}</b>
-                      </h1>
 
-                      <h1 className="foodPrice mb-3">
-                        <b>{fastFoodProduct.product_price}</b>
-                      </h1>
+          <div className="container">
+            <div className="row">
+              {fastFoodProducts.map((fastFoodProduct) => (
+                <div
+                  key={fastFoodProduct.product_id}
+                  className="col-12 col-md-4 mb-4"
+                >
+                  <div className="card cardContainer">
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-6 text-center ">
+                          <img
+                            src={fastFoodProduct.product_image}
+                            className="card-img-top foodImage"
+                            alt="food"
+                          />
+                        </div>
+                        <div className="col-6 my-3 TopDealsCard">
+                          <h1 className="foodName mb-3">
+                            <b>{fastFoodProduct.product_name}</b>
+                          </h1>
 
-                      <Link to={`/order/${fastFoodProduct.product_id}`}>
-                        <button className="button m-0">Order Now</button>
-                      </Link>
+                          <h1 className="foodPrice mb-3">
+                            <b>{fastFoodProduct.product_price}</b>
+                          </h1>
+
+                          <Link to={`/order/${fastFoodProduct.product_id}`}>
+                            <button className="button m-0">Order Now</button>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
+             
             </div>
-          ))}
+          </div>
         </div>
 
         <div id="second">
-          <div className="container-fluid menuSection mb-1">
+          <div className="container menuSection mb-1">
             <div className="row">
               <div className="col-6">
                 <h3 className="Heading">
@@ -139,40 +162,47 @@ export default function Menu(props) {
             </div>
           </div>
 
-          {desiProducts.map((desiProduct) => (
-            <div key={desiProduct.product_id} className="container  mb-4">
-              <div className="card cardContainer">
-                <div className="card-body">
-                  <div className="row">
-                    <div className="col-6 text-center ">
-                      <img
-                        src={desiProduct.product_image}
-                        className="card-img-top foodImage"
-                        alt="food"
-                      />
-                    </div>
-                    <div className="col-6 my-3 TopDealsCard">
-                      <h1 className="foodName mb-3">
-                        <b>{desiProduct.product_name}</b>
-                      </h1>
+          <div className="container">
+            <div className="row">
+              {desiProducts.map((desiProduct) => (
+                <div
+                  key={desiProduct.product_id}
+                  className="col-12 col-md-4 mb-4"
+                >
+                  <div className="card cardContainer">
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-6 text-center ">
+                          <img
+                            src={desiProduct.product_image}
+                            className="card-img-top foodImage"
+                            alt="food"
+                          />
+                        </div>
+                        <div className="col-6 my-3 TopDealsCard">
+                          <h1 className="foodName mb-3">
+                            <b>{desiProduct.product_name}</b>
+                          </h1>
 
-                      <h1 className="foodPrice mb-3">
-                        <b>{desiProduct.product_price}</b>
-                      </h1>
+                          <h1 className="foodPrice mb-3">
+                            <b>{desiProduct.product_price}</b>
+                          </h1>
 
-                      <Link to={`/order/${desiProduct.product_id}`}>
-                        <button className="button m-0">Order Now</button>
-                      </Link>
+                          <Link to={`/order/${desiProduct.product_id}`}>
+                            <button className="button m-0">Order Now</button>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
 
         <div id="third">
-          <div className="container-fluid menuSection mb-1">
+          <div className="container menuSection mb-1">
             <div className="row">
               <div className="col-6">
                 <h3 className="Heading">
@@ -188,39 +218,44 @@ export default function Menu(props) {
             </div>
           </div>
 
-          {drinkProducts.map((drinkProduct) => (
-            <div key={drinkProduct.product_id} className="container  mb-4">
-              <div className="card cardContainer">
-                <div className="card-body">
-                  <div className="row">
-                    <div className="col-6 text-center ">
-                      <img
-                        src={drinkProduct.product_image}
-                        className="card-img-top foodImage"
-                        alt="food"
-                      />
-                    </div>
-                    <div className="col-6 my-3 TopDealsCard">
-                      <h1 className="foodName mb-3">
-                        <b>{drinkProduct.product_name}</b>
-                      </h1>
+          <div className="container">
+            <div className="row">
+              {drinkProducts.map((drinkProduct) => (
+                <div
+                  key={drinkProduct.product_id}
+                  className="col-12 col-md-4 mb-4"
+                >
+                  <div className="card cardContainer">
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-6 text-center ">
+                          <img
+                            src={drinkProduct.product_image}
+                            className="card-img-top foodImage"
+                            alt="food"
+                          />
+                        </div>
+                        <div className="col-6 my-3 TopDealsCard">
+                          <h1 className="foodName mb-3">
+                            <b>{drinkProduct.product_name}</b>
+                          </h1>
 
-                      <h1 className="foodPrice mb-3">
-                        <b>{drinkProduct.product_price}</b>
-                      </h1>
+                          <h1 className="foodPrice mb-3">
+                            <b>{drinkProduct.product_price}</b>
+                          </h1>
 
-                      <Link to={`/order/${drinkProduct.product_id}`}>
-                        <button className="button m-0">Order Now</button>
-                      </Link>
+                          <Link to={`/order/${drinkProduct.product_id}`}>
+                            <button className="button m-0">Order Now</button>
+                          </Link>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
+              ))}
             </div>
-          ))}
+          </div>
         </div>
-
-        
       </div>
     </>
   );

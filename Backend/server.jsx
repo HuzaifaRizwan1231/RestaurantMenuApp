@@ -84,7 +84,7 @@ app.get('/products', (req,res)=> {
 
     let numOfRows;
     
-    db.query("SELECT * FROM products", (err,result)=>{
+    db.query("SELECT * FROM products ORDER BY RAND() LIMIT 3", (err,result)=>{
         numOfRows = result.length;
         console.log(numOfRows);
         if(err) {

@@ -43,11 +43,11 @@ export default function Modal() {
               ></button>
             </div>
             <div className="modal-body ">Looks like you are not logged in</div>
-            <div className="modal-footer ">
+            <div className="modal-footer">
               <Link
                 onClick={goBack}
                 type="button"
-                className="button text-light"
+                className="ModalButton  text-light"
                 data-bs-dismiss="modal"
               >
                 Cancel
@@ -55,7 +55,7 @@ export default function Modal() {
               <Link
                 onClick={goToLogin}
                 type="button"
-                className="button text-light"
+                className=" ModalButton text-light"
                 data-bs-dismiss="modal"
               >
                 Log In

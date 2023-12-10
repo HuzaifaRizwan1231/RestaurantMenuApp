@@ -29,6 +29,10 @@ function App() {
   const [isAdminlogin, setIsAdminLogin] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  const [exploreFast, setExploreFast] = useState(false);
+  const [exploreDesi, setExploreDesi] = useState(false);
+  const [exploreDrinks, setExploreDrinks] = useState(false);
+
   return (
     <>
       <Router>
@@ -54,6 +58,9 @@ function App() {
             path="/"
             element={
               <Body
+                setExploreFast={setExploreFast}
+                setExploreDesi={setExploreDesi}
+                setExploreDrinks={setExploreDrinks}
                 setProgress={setProgress}
                 isAdminlogin={isAdminlogin}
                 setUserName={setUserName}
@@ -75,7 +82,17 @@ function App() {
           />
           <Route
             path="/exploreMenu"
-            element={<Menu setProgress={setProgress} />}
+            element={
+              <Menu
+                exploreFast={exploreFast}
+                exploreDesi={exploreDesi}
+                exploreDrinks={exploreDrinks}
+                setExploreFast={setExploreFast}
+                setExploreDesi={setExploreDesi}
+                setExploreDrinks={setExploreDrinks}
+                setProgress={setProgress}
+              />
+            }
           />
           <Route
             path="/order/:product_id"
@@ -148,9 +165,18 @@ function App() {
           />
 
           {/* Order Manager */}
-          <Route path="/currentOrders" element={<CurrentOrders setProgress={setProgress} />} />
-          <Route path="/completedOrders" element={<CompletedOrders setProgress={setProgress} />} />
-          <Route path="/adminFeedBacks" element={<AdminFeedbacks setProgress={setProgress} />} />
+          <Route
+            path="/currentOrders"
+            element={<CurrentOrders setProgress={setProgress} />}
+          />
+          <Route
+            path="/completedOrders"
+            element={<CompletedOrders setProgress={setProgress} />}
+          />
+          <Route
+            path="/adminFeedBacks"
+            element={<AdminFeedbacks setProgress={setProgress} />}
+          />
         </Routes>
       </Router>
     </>

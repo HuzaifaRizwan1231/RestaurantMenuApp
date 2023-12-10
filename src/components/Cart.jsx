@@ -10,20 +10,6 @@ import RemoveFromCartAlert from "./RemoveFromCartAlert";
 
 
 export default function Cart(props) {
-
-
-  // const [Quantity, setQuantity] = useState(1);
-
-  // const HandleIncreaseQuantity = () => {
-  //   setQuantity(Quantity + 1);
-  // };
-
-  // const HandleDecreaseQuantity = () => {
-  //   if (Quantity > 1) {
-  //     setQuantity(Quantity - 1);
-  //   }
-  // };
-
  
   const [products, setProducts] = useState([]);
 
@@ -33,10 +19,13 @@ export default function Cart(props) {
       document.getElementById("modalButton").click();
     }
     else{
+      props.setProgress(30)
       //fetching cart items
       axios
       .post("http://localhost:3002/cartItems", { userEmail: props.userEmail })
-      .then((response) => setProducts(response.data.data))
+      .then((response) => setProducts(response.data.data),setTimeout(() => {
+        props.setProgress(100)
+      }, 300))
       .catch((error) => console.log(error));
     }
 
@@ -49,18 +38,24 @@ export default function Cart(props) {
 
   
   const removeFromCart=(order_id)=>{
+    props.setProgress(30)
     console.log(order_id)
     axios
     .post("http://localhost:3002/removeCartItem", { userEmail: props.userEmail, order_id: order_id })
-    .then((res)=>FetchData(),ClickOnRemoveAlert())
+    .then((res)=>FetchData(),ClickOnRemoveAlert(),setTimeout(() => {
+      props.setProgress(100)
+    }, 300))
     .catch((error) => console.log(error));
   }
 
   const Checkout = ()=>{
+    props.setProgress(30)
     axios
         .post("http://localhost:3002/checkout", {userEmail: props.userEmail})
         .then(
-          (res)=>FetchData(),ClickOnAlert()
+          (res)=>FetchData(),ClickOnAlert(),setTimeout(() => {
+            props.setProgress(100)
+          }, 300)
         )
         .catch((error) => console.log(error));
   }

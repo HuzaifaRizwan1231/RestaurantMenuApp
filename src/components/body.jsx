@@ -7,10 +7,13 @@ export default function Body(props) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
+    props.setProgress(30)
     //fetching data
     axios
       .get("http://localhost:3002/products")
-      .then((response) => setProducts(response.data.data))
+      .then((response) => setProducts(response.data.data),setTimeout(() => {
+        props.setProgress(100)
+      }, 300))
       .catch((error) => console.log(error));
   }, []);
 

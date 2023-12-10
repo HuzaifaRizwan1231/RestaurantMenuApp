@@ -1,18 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function AdminFeedbacks() {
+export default function AdminFeedbacks(props) {
   const [feedbacks, setFeedbacks] = useState([]);
 
   const FetchFeedbacks = () => {
     //fetching feedbacks
     axios
       .get("http://localhost:3002/feedbacks")
-      .then((response) => setFeedbacks(response.data.data))
+      .then((response) => setFeedbacks(response.data.data),setTimeout(() => {
+        props.setProgress(100)
+      }, 300))
       .catch((error) => console.log(error));
   };
 
   useEffect(() => {
+    props.setProgress(30)
     FetchFeedbacks();
   }, []);
 

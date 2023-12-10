@@ -8,13 +8,16 @@ import Alert from "./Alert";
 
 
 export default function Feedback(props) {
-
   const [feedback,setFeedback] = useState("")
 
   useEffect(() => {
     if (!props.islogin){
       document.getElementById("modalButton").click();
     }
+    props.setProgress(30)
+    setTimeout(() => {
+      props.setProgress(100)
+    }, 300)
     Cleartext();
   }, [])
 
@@ -23,15 +26,21 @@ export default function Feedback(props) {
   }
   const submitFeedback=()=>{
     if (feedback!=""){
+      props.setProgress(30)
       axios
     .post("http://localhost:3002/submitFeedback", { userEmail: props.userEmail, feedback:feedback })
-    .then((res)=>Cleartext(),ClickOnSubmitAlert())
+    .then((res)=>Cleartext(),ClickOnSubmitAlert(),setTimeout(() => {
+      props.setProgress(100)
+    }, 300))
     .catch((error) => console.log(error));
     }
   }
   
   const ClickOnSubmitAlert = ()=>{
     document.getElementById("liveAlertBtn").click();
+    setTimeout(() => {
+      document.getElementById("close-alert-button").click();
+    }, 1500);
   }
   return (
     

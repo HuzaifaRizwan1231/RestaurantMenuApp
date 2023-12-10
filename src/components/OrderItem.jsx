@@ -27,19 +27,26 @@ export default function OrderItem(props) {
   const { product_id } = useParams();
 
   useEffect(() => {
+    props.setProgress(30)
     //fetching product
     axios
       .get(`http://localhost:3002/products/${product_id}`)
-      .then((res) => setProduct(res.data.data))
+      .then((res) => setProduct(res.data.data), setTimeout(() => {
+        props.setProgress(100)
+      }, 300))
       .catch((err) => console.log(err));
+     
   }, []);
 
   const addToCart = (id, Quantity) => {    
+    props.setProgress(30)
     axios
       .post(
         `http://localhost:3002/addToCart`,{id:id,  Quantity: Quantity, userEmail: props.userEmail}
       )
-      .then((res)=>showAlert())
+      .then((res)=>showAlert(), setTimeout(() => {
+        props.setProgress(100);
+      }, 300))
       .catch((err)=>console.log(err));
   };
   

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import { Link ,useNavigate} from 'react-router-dom'
 
 
@@ -12,6 +12,7 @@ export default function SignUp(props) {
 
   const SignUpUser = (event)=>{
     event.preventDefault();
+    props.setProgress(30)
     axios.post('http://localhost:3002/signup', {userName: props.userName,password: props.password,cpassword:cpassword, userEmail: props.userEmail})
     .then(res=>{
       
@@ -31,11 +32,21 @@ export default function SignUp(props) {
         props.setIsLogin(true)
         navigate('/')
       }
-    }
+    }, setTimeout(() => {
+      props.setProgress(100);
+    }, 300)
     )
     .catch(err=>console.log(err));
   }
 
+  useEffect(() => {
+    props.setProgress(30)
+    setTimeout(() => {
+      props.setProgress(100)
+    }, 300)
+  
+  }, [])
+  
 
   return (
     <>

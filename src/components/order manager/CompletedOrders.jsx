@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 
 
 
-export default function CompletedOrders() {
+export default function CompletedOrders(props) {
 
   const [completedOrders, setCompletedOrders] = useState([]);
 
@@ -11,7 +11,9 @@ export default function CompletedOrders() {
     //fetching completed orders
     axios
       .post("http://localhost:3002/completedOrders")
-      .then((response) => setCompletedOrders(response.data.data))
+      .then((response) => setCompletedOrders(response.data.data),setTimeout(() => {
+        props.setProgress(100)
+      }, 300))
       .catch((error) => console.log(error));
   };
 
@@ -22,6 +24,7 @@ export default function CompletedOrders() {
   };
 
   useEffect(() => {
+    props.setProgress(30)
     FetchCompletedOrders();
   }, []);
 

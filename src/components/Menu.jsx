@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Menu() {
+export default function Menu(props) {
   const [fastFoodProducts, setFastFoodProducts] = useState([]);
   const [desiProducts, setDesiProducts] = useState([]);
   // const [fastFoodProducts, setFastFoodProducts] = useState([]);
@@ -10,20 +10,28 @@ export default function Menu() {
 
   // FastFood
   useEffect(() => {
+    props.setProgress(30)
     //fetching data
     axios
       .get("http://localhost:3002/fastFood")
       .then((response) => setFastFoodProducts(response.data.data))
       .catch((error) => console.log(error));
+
+    axios
+      .get("http://localhost:3002/desi")
+      .then((response) => setDesiProducts(response.data.data))
+      .catch((error) => console.log(error));
+
+    setTimeout(() => {
+       props.setProgress(100);
+    }, 300);
   }, []);
 
   // Desi
   useEffect(() => {
     //fetching data
-    axios
-      .get("http://localhost:3002/desi")
-      .then((response) => setDesiProducts(response.data.data))
-      .catch((error) => console.log(error));
+
+    
   }, []);
 
   // // FastFood
@@ -281,7 +289,6 @@ export default function Menu() {
               </div>
             </div>
           ))} */}
-          
         </div>
       </div>
     </>

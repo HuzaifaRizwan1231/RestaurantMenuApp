@@ -15,7 +15,9 @@ export default function OrderHistory(props) {
       .post("http://localhost:3002/orderHistory", {
         userEmail: props.userEmail,
       })
-      .then((response) => setHistoryProducts(response.data.data))
+      .then((response) => setHistoryProducts(response.data.data), setTimeout(() => {
+        props.setProgress(100);
+      }, 300))
       .catch((error) => console.log(error));
   };
 
@@ -29,6 +31,7 @@ export default function OrderHistory(props) {
     if (!props.islogin) {
       document.getElementById("modalButton").click();
     }
+    props.setProgress(30);
     FetchOrderHistory();
   }, []);
 

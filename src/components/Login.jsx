@@ -1,20 +1,30 @@
 import axios, { Axios } from "axios";
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import { Link ,useNavigate} from "react-router-dom";
 
 
 export default function Login(props) {
-
+  useEffect(() => {
+    props.setProgress(30)
+    setTimeout(() => {
+      props.setProgress(100)
+    }, 300);
+  }, [])
+  
   const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
 
   const LoginUser = (event)=>{
     event.preventDefault();
+    props.setProgress(30)
 
     if (props.userEmail == 'admin@gmail.com' && props.password == 'admin'){
       props.setUserName("Order Manager")
       props.setIsAdminLogin(true);
       navigate('/currentOrders');
+      setTimeout(() => {
+        props.setProgress(100)
+      }, 300)
     }
     else{
       console.log("User Logged In")
@@ -33,7 +43,9 @@ export default function Login(props) {
           props.setIsLogin(true)
           navigate('/')
         }
-      }
+      },setTimeout(() => {
+        props.setProgress(100)
+      }, 300)
       
       )
       .catch(err=>console.log(err));

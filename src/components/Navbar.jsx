@@ -65,12 +65,16 @@ export default function Navbar(props) {
   };
 
   const SignOut = () => {
+    props.setProgress(30);
     props.setUserName("");
     props.setPassword("");
     props.setUserEmail("");
     props.setIsLogin(false);
     props.setIsAdminLogin(false);
     document.getElementById("dropdown-button").click();
+    setTimeout(() => {
+    props.setProgress(100);  
+    }, 300);
     navigate("/");
   };
 

@@ -1,6 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
-export default function ContactUs() {
+
+export default function ContactUs(props) {
+
+  useEffect(() => {
+    props.setProgress(30)
+    setTimeout(() => {
+      props.setProgress(100)
+    }, 300)
+  }, [])
+  
+  
   return (
     <>
         <div className="container">

@@ -10,7 +10,9 @@ export default function CurrentOrders(props) {
     //fetching order history
     axios
       .post("http://localhost:3002/currentOrders")
-      .then((response) => setCurrentOrders(response.data.data))
+      .then((response) => setCurrentOrders(response.data.data),setTimeout(() => {
+        props.setProgress(100)
+      }, 300))
       .catch((error) => console.log(error));
   };
 
@@ -21,18 +23,25 @@ export default function CurrentOrders(props) {
   };
 
   useEffect(() => {
+    props.setProgress(30)
     FetchCurrentOrders();
   }, []);
 
   const completeOrder = (order_id) => {
+    props.setProgress(30)
     axios
       .post("http://localhost:3002/completeOrder", { order_id: order_id })
-      .then((response) => FetchCurrentOrders(), ClickOnAlert())
+      .then((response) => FetchCurrentOrders(), ClickOnAlert(),setTimeout(() => {
+        props.setProgress(100)
+      }, 300))
       .catch((error) => console.log(error));
   };
 
   const ClickOnAlert = () => {
     document.getElementById("liveAlertBtn").click();
+    setTimeout(() => {
+      document.getElementById("close-alert-button").click();
+    }, 1500);
   };
 
   return (

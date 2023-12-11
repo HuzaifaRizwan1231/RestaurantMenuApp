@@ -40,6 +40,7 @@ export default function Login(props) {
   
         if (res.data != "Incorrect Email or Password"){
           props.setUserName(res.data.data[0].user_username)
+          props.setUserAddress(res.data.data[0].user_address)
           props.setIsLogin(true)
           navigate('/')
         }

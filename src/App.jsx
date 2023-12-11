@@ -26,6 +26,9 @@ function App() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [userEmail, setUserEmail] = useState("");
+  const [userAddress, setUserAddress] = useState("");
+
+
   const [islogin, setIsLogin] = useState(false);
   const [isAdminlogin, setIsAdminLogin] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -34,8 +37,8 @@ function App() {
   const [exploreFast, setExploreFast] = useState(false);
   const [exploreDesi, setExploreDesi] = useState(false);
   const [exploreDrinks, setExploreDrinks] = useState(false);
-  // const ip = '182.185.144.69';
-  const ip = 'localhost';
+  const ip = '182.185.144.69';
+  // const ip = 'localhost';
 
   return (
     <>
@@ -57,6 +60,8 @@ function App() {
           setUserName={setUserName}
           setUserEmail={setUserEmail}
           setPassword={setPassword}
+          userAddress = {userAddress}
+          setUserAddress={setUserAddress}
         />
         <Routes>
           <Route
@@ -85,6 +90,8 @@ function App() {
                 setProgress={setProgress}
                 islogin={islogin}
                 userEmail={userEmail}
+                userAddress = {userAddress}
+                setUserAddress={setUserAddress}
               />
             }
           />
@@ -129,6 +136,8 @@ function App() {
                 setUserEmail={setUserEmail}
                 password={password}
                 setPassword={setPassword}
+                userAddress = {userAddress}
+                setUserAddress={setUserAddress}
                 setIsLogin={setIsLogin}
               />
             }
@@ -145,6 +154,8 @@ function App() {
                 setUserEmail={setUserEmail}
                 password={password}
                 setPassword={setPassword}
+                userAddress = {userAddress}
+                setUserAddress={setUserAddress}
                 setIsLogin={setIsLogin}
               />
             }

@@ -8,6 +8,12 @@ export default function Menu(props) {
   const [drinkProducts, setDrinkProducts] = useState([]);
   const [dealProducts, setDealProducts] = useState([]);
 
+  const [scrollToTop, setscrollToTop] = useState();
+
+  const HandleScroll = () => {
+    setscrollToTop(window.scrollTo(0, 0));
+  };
+
   useEffect(() => {
     props.setProgress(30);
     //fetching data
@@ -156,7 +162,7 @@ export default function Menu(props) {
                             <b>Rs. {dealProduct.product_price}</b>
                           </h1>
 
-                          <Link to={`/order/${dealProduct.product_id}`}>
+                          <Link onClick={HandleScroll} to={`/order/${dealProduct.product_id}`}>
                             <button className="button m-0">Order Now</button>
                           </Link>
                         </div>
@@ -213,7 +219,7 @@ export default function Menu(props) {
                             <b>Rs. {fastFoodProduct.product_price}</b>
                           </h1>
 
-                          <Link to={`/order/${fastFoodProduct.product_id}`}>
+                          <Link onClick={HandleScroll} to={`/order/${fastFoodProduct.product_id}`}>
                             <button className="button m-0">Order Now</button>
                           </Link>
                         </div>
@@ -270,7 +276,7 @@ export default function Menu(props) {
                             <b>Rs. {desiProduct.product_price}</b>
                           </h1>
 
-                          <Link to={`/order/${desiProduct.product_id}`}>
+                          <Link onClick={HandleScroll} to={`/order/${desiProduct.product_id}`}>
                             <button className="button m-0">Order Now</button>
                           </Link>
                         </div>
@@ -326,7 +332,7 @@ export default function Menu(props) {
                             <b>Rs. {drinkProduct.product_price}</b>
                           </h1>
 
-                          <Link to={`/order/${drinkProduct.product_id}`}>
+                          <Link onClick={HandleScroll} to={`/order/${drinkProduct.product_id}`}>
                             <button className="button m-0">Order Now</button>
                           </Link>
                         </div>

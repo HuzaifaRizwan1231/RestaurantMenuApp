@@ -19,6 +19,7 @@ app.post('/signup', (req,res)=> {
     const userEmail = req.body.userEmail;
     const password = req.body.password;
     const cPassword = req.body.cpassword;
+    const userAddress = req.body.userAddress;
     let numOfRows;
     
     console.log(userName,password,cPassword,userEmail);
@@ -36,7 +37,7 @@ app.post('/signup', (req,res)=> {
             return res.json("Passwords do not match");
         }
         else{
-            db.query("INSERT INTO users (user_username, user_password, user_email) VALUES (?,?,?)",[userName,password,userEmail], (err,result)=>{
+            db.query("INSERT INTO users (user_username, user_password, user_email, user_address) VALUES (?,?,?,?)",[userName,password,userEmail,userAddress], (err,result)=>{
                 if(err) {
                     return res.json("Error");
                 } 

@@ -69,6 +69,7 @@ export default function Navbar(props) {
     props.setUserName("");
     props.setPassword("");
     props.setUserEmail("");
+    props.setUserAddress("");
     props.setIsLogin(false);
     props.setIsAdminLogin(false);
     document.getElementById("dropdown-button").click();

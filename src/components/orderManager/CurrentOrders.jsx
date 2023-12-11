@@ -9,7 +9,7 @@ export default function CurrentOrders(props) {
   const FetchCurrentOrders = () => {
     //fetching order history
     axios
-      .post("http://localhost:3002/currentOrders")
+      .post(`http://${props.ip}:3002/currentOrders`)
       .then((response) => setCurrentOrders(response.data.data),setTimeout(() => {
         props.setProgress(100)
       }, 300))

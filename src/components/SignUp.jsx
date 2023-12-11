@@ -37,7 +37,7 @@ export default function SignUp(props) {
             res.data != "Passwords do not match"
           ) {
             props.setIsLogin(true);
-            navigate("/");
+            navigate(`/${props.navigateTo}`);
           }
         },
         setTimeout(() => {

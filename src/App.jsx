@@ -37,6 +37,10 @@ function App() {
   const [exploreFast, setExploreFast] = useState(false);
   const [exploreDesi, setExploreDesi] = useState(false);
   const [exploreDrinks, setExploreDrinks] = useState(false);
+  const [navigateTo, setNavigateTo] = useState("");
+
+  
+
   const ip = '182.185.144.69';
   // const ip = 'localhost';
 
@@ -68,6 +72,7 @@ function App() {
             path="/"
             element={
               <Body
+              setNavigateTo={setNavigateTo}
               ip={ip}
               setExploreDeal={setExploreDeal}
                 setExploreFast={setExploreFast}
@@ -86,6 +91,7 @@ function App() {
             path="/cart"
             element={
               <Cart
+              setNavigateTo={setNavigateTo}
               ip={ip}
                 setProgress={setProgress}
                 islogin={islogin}
@@ -99,6 +105,7 @@ function App() {
             path="/exploreMenu"
             element={
               <Menu
+              setNavigateTo={setNavigateTo}
               ip={ip}
               exploreDeal={exploreDeal}
                 exploreFast={exploreFast}
@@ -116,6 +123,7 @@ function App() {
             path="/order/:product_id"
             element={
               <OrderItem
+              setNavigateTo={setNavigateTo}
               ip={ip}
                 islogin={islogin}
                 setProgress={setProgress}
@@ -127,6 +135,7 @@ function App() {
             path="/login"
             element={
               <Login
+              navigateTo={navigateTo}
               ip={ip}
                 setProgress={setProgress}
                 setIsAdminLogin={setIsAdminLogin}
@@ -146,6 +155,7 @@ function App() {
             path="/signup"
             element={
               <SignUp
+              navigateTo={navigateTo}
               ip={ip}
                 setProgress={setProgress}
                 userName={userName}
@@ -162,12 +172,13 @@ function App() {
           />
           <Route
             path="/about"
-            element={<AboutUs ip={ip} setProgress={setProgress} />}
+            element={<AboutUs  setNavigateTo={setNavigateTo} ip={ip} setProgress={setProgress} />}
           />
           <Route
             path="/feedback"
             element={
               <Feedback
+              setNavigateTo={setNavigateTo}
               ip={ip}
                 islogin={islogin}
                 setProgress={setProgress}
@@ -177,12 +188,13 @@ function App() {
           />
           <Route
             path="/contact"
-            element={<ContactUs  ip={ip} setProgress={setProgress} />}
+            element={<ContactUs  setNavigateTo={setNavigateTo} ip={ip} setProgress={setProgress} />}
           />
           <Route
             path="/history"
             element={
               <OrderHistory
+              setNavigateTo={setNavigateTo}
               ip={ip}
                 islogin={islogin}
                 setProgress={setProgress}

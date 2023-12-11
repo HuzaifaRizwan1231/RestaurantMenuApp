@@ -8,6 +8,7 @@ export default function ContactUs(props) {
     setTimeout(() => {
       props.setProgress(100)
     }, 300)
+    props.setNavigateTo("contact")
   }, [])
   
   

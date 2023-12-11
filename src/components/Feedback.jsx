@@ -19,6 +19,7 @@ export default function Feedback(props) {
       props.setProgress(100)
     }, 300)
     Cleartext();
+    props.setNavigateTo("feedback")
   }, [])
 
   const Cleartext=()=>{

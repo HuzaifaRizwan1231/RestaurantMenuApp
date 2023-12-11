@@ -21,6 +21,7 @@ export default function OrderItem(props) {
     if (!props.islogin) {
       document.getElementById("modalButton").click();
     }
+    props.setNavigateTo("order/:product_id")
   }, []);
 
   const [product, setProduct] = useState([]);

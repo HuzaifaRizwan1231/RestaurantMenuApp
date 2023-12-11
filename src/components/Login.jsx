@@ -42,7 +42,7 @@ export default function Login(props) {
           props.setUserName(res.data.data[0].user_username)
           props.setUserAddress(res.data.data[0].user_address)
           props.setIsLogin(true)
-          navigate('/')
+          navigate(`/${props.navigateTo}`)
         }
       },setTimeout(() => {
         props.setProgress(100)

@@ -33,6 +33,7 @@ export default function OrderHistory(props) {
     }
     props.setProgress(30);
     FetchOrderHistory();
+    props.setNavigateTo("history")
   }, []);
 
   return (

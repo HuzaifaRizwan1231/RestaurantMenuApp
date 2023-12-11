@@ -68,6 +68,7 @@ export default function Menu(props) {
         document.getElementById("fourthNav").click();
       }, 301);
     }
+    props.setNavigateTo("exploreMenu")
   }, []);
 
   return (

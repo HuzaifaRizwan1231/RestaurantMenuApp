@@ -18,21 +18,21 @@ export default function Body(props) {
         }, 300)
       )
       .catch((error) => console.log(error));
+
+      if (!props.islogin && !props.isAdminlogin) {
+        props.setUserEmail("");
+        props.setPassword("");
+        props.setUserName("");
+      }
+  
+      props.setExploreDeal(false);
+      props.setExploreFast(false);
+      props.setExploreDesi(false);
+      props.setExploreDrinks(false);
+      props.setNavigateTo("")
   }, []);
 
-  useEffect(() => {
-    console.log(props.islogin);
-    if (!props.islogin && !props.isAdminlogin) {
-      props.setUserEmail("");
-      props.setPassword("");
-      props.setUserName("");
-    }
 
-    props.setExploreDeal(false);
-    props.setExploreFast(false);
-    props.setExploreDesi(false);
-    props.setExploreDrinks(false);
-  }, []);
 
   console.log(products);
 

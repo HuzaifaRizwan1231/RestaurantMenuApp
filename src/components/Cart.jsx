@@ -31,6 +31,7 @@ export default function Cart(props) {
   useEffect(() => {
     FetchData();
     setAddress(props.userAddress);
+    props.setNavigateTo("cart")
   }, []);
 
   const removeFromCart = (order_id) => {

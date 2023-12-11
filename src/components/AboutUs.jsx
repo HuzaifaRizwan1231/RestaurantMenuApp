@@ -6,6 +6,8 @@ export default function AboutUs(props) {
     setTimeout(() => {
       props.setProgress(100);
     }, 300);
+
+    props.setNavigateTo("about")
   }, []);
 
   return (

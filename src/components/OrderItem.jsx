@@ -27,162 +27,187 @@ export default function OrderItem(props) {
   const { product_id } = useParams();
 
   useEffect(() => {
-    props.setProgress(30)
+    props.setProgress(30);
     //fetching product
     axios
-      .get(`http://localhost:3002/products/${product_id}`)
-      .then((res) => setProduct(res.data.data), setTimeout(() => {
-        props.setProgress(100)
-      }, 300))
+      .get(`http://${props.ip}:3002/products/${product_id}`)
+      .then(
+        (res) => setProduct(res.data.data),
+        setTimeout(() => {
+          props.setProgress(100);
+        }, 300)
+      )
       .catch((err) => console.log(err));
-     
   }, []);
 
-  const addToCart = (id, Quantity) => {    
-    props.setProgress(30)
+  const addToCart = (id, Quantity) => {
+    props.setProgress(30);
     axios
-      .post(
-        `http://localhost:3002/addToCart`,{id:id,  Quantity: Quantity, userEmail: props.userEmail}
+      .post(`http://${props.ip}:3002/addToCart`, {
+        id: id,
+        Quantity: Quantity,
+        userEmail: props.userEmail,
+      })
+      .then(
+        (res) => showAlert(),
+        setTimeout(() => {
+          props.setProgress(100);
+        }, 300)
       )
-      .then((res)=>showAlert(), setTimeout(() => {
-        props.setProgress(100);
-      }, 300))
-      .catch((err)=>console.log(err));
+      .catch((err) => console.log(err));
   };
-  
-  const showAlert=()=>{
+
+  const showAlert = () => {
     document.getElementById("liveAlertBtn").click();
     setTimeout(() => {
-    document.getElementById("close-alert-button").click();
+      document.getElementById("close-alert-button").click();
     }, 1500);
-  }
- 
+  };
+
   return (
     <>
       <div id="liveAlertPlaceholder"></div>
-      <Alert message = "Added to Cart!"/>
+      <Alert message="Added to Cart!" />
       {props.islogin ? (
         product.map((product) => (
-          <div key={product.product_id} className="container-fluid ">
-            <div className="container mt-4 mb-2 text-center">
-              <img
-                className=" orderImage mx-auto"
-                src={product.product_image}
-                alt=""
-              />
-            </div>
-            <div className="container-fluid mb-2 ItemInfo">
-              <br />
-              <h1 className="itemHeading text-center">
-                <b>{product.product_name}</b>
-              </h1>
-              <div className="container-fluid menuSection mb-1 mt-4">
-                <div className="row">
-                  <div className="col-6">
-                    <h3 className="OrderHeading">
-                      <b>Quantity</b>
-                    </h3>
-                  </div>
+          <div key={product.product_id} className="container ">
+            <div className="row ">
+              <div className="col-12 col-md-9 md:mx-auto">
+                <div className="container mt-4 mb-2 text-center">
+                  <img
+                    className=" orderImage mx-auto"
+                    src={product.product_image}
+                    alt=""
+                  />
                 </div>
-              </div>
+                <div className="container mb-2 ItemInfo ">
+                  <br />
+                  <h1 className="itemHeading text-center">
+                    <b>{product.product_name}</b>
+                  </h1>
+                  <div className="row md:mt-4">
+                    <div className="col-12 col-md-6">
+                      {/* Quantity */}
+                      <div className="container menuSection mb-1 mt-4">
+                        <div className="row">
+                          <div className="col-6">
+                            <h3 className="OrderHeading uppercase">
+                              <b>Quantity</b>
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
 
-              <div className="container  mb-4 ">
-                <div className="row ">
-                  <div className="col-6 underLine"></div>
-                </div>
-              </div>
+                      <div className="container  mb-4 ">
+                        <div className="row ">
+                          <div className="col-6 underLine"></div>
+                        </div>
+                      </div>
 
-              <div className="container text-center">
-                <div className="row mx-auto">
-                  <div className="col-5">
-                    <b>
-                      <button
-                        onClick={HandleIncreaseQuantity}
-                        className="btn btnQuantity"
-                      >
-                        +
-                      </button>
-                    </b>
-                  </div>
-                  <div className="col-2 mt-2">
-                    <b>{Quantity}</b>
-                  </div>
-                  <div className="col-5">
-                    <button
-                      onClick={HandleDecreaseQuantity}
-                      className="btn btnQuantity"
-                    >
-                      -
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="container-fluid menuSection mb-1 mt-4">
-                <div className="row">
-                  <div className="col-6">
-                    <h3 className="OrderHeading">
-                      <b>Drinks</b>
-                    </h3>
-                  </div>
-                </div>
-              </div>
-
-              <div className="container  mb-4 ">
-                <div className="row ">
-                  <div className="col-6 underLine"></div>
-                </div>
-              </div>
-
-              <div className="container">
-                <div className="row DrinksMenu text-center mx-auto p-4">
-                  <div className="col-6 p-1 ">Pepsi</div>
-                  <div className="col-6 p-1">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault1"
-                    />
-                  </div>
-
-                  <div className="col-6 p-1">Coke</div>
-                  <div className="col-6 p-1">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault2"
-                    />
-                  </div>
-
-                  <div className="col-6 p-1">7UP</div>
-                  <div className="col-6 p-1">
-                    <input
-                      className="form-check-input"
-                      type="radio"
-                      name="flexRadioDefault"
-                      id="flexRadioDefault3"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="fixed z-49 bottom-0 left-0 rounded-lg container-fluid bg-black p-2 ">
-                <div className="container">
-                  <div className="row text-center my-1">
-                    <div className="col-4">
-                      <button className=" btnOrder">
-                        {product.product_price}
-                      </button>
+                      <div className="container text-center">
+                        <div className="row DrinksMenu mx-auto p-4 ">
+                          <div className="row"></div>
+                          <div className="col-5">
+                            <b>
+                              <button
+                                onClick={HandleIncreaseQuantity}
+                                className="btn btnQuantity"
+                              >
+                                +
+                              </button>
+                            </b>
+                          </div>
+                          <div className="col-2 mt-2">
+                            <b>{Quantity}</b>
+                          </div>
+                          <div className="col-5">
+                            <button
+                              onClick={HandleDecreaseQuantity}
+                              className="btn btnQuantity"
+                            >
+                              -
+                            </button>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-8">
-                      <Link
-                        onClick={()=> addToCart(product.product_id, Quantity)}
-                        className="btnOrder"
-                      >
-                        Add to Cart
-                      </Link>
+                    <div className="col-12 col-md-6">
+                      {/* Drinks */}
+                      <div className="container menuSection mb-1 mt-4">
+                        <div className="row">
+                          <div className="col-6">
+                            <h3 className="OrderHeading uppercase">
+                              <b>Drinks</b>
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="container  mb-4 ">
+                        <div className="row ">
+                          <div className="col-6 underLine"></div>
+                        </div>
+                      </div>
+
+                      <div className="container">
+                        <div className="row DrinksMenu text-center mx-auto p-4">
+                          <div className="col-6 p-1 ">Pepsi</div>
+                          <div className="col-6 p-1">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                            />
+                          </div>
+
+                          <div className="col-6 p-1">Coke</div>
+                          <div className="col-6 p-1">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault2"
+                            />
+                          </div>
+
+                          <div className="col-6 p-1">7UP</div>
+                          <div className="col-6 p-1">
+                            <input
+                              className="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault3"
+                            />
+                          </div>
+                        </div>
+                      </div>
                     </div>
+                    
+                      <div className="row py-3 z-49 bottom-0 left-3 fixed rounded-lg text-center p-2 pt-1.5 bg-black">
+                        <div className="col-12 d-flex">
+                          
+                            <div className="col-6">
+                              <h1 className="PriceLabel">
+                                <b>
+                                  <i>{product.product_price}</i>
+                                </b>
+                              </h1>
+                            </div>
+                            <div className="col-6 p-0">
+                              <Link
+                                onClick={() =>
+                                  addToCart(product.product_id, Quantity)
+                                }
+                                className="btnOrder"
+                              >
+                                Add to Cart
+                              </Link>
+                            </div>
+                        
+                        </div>
+                      </div>
+                  
                   </div>
                 </div>
               </div>

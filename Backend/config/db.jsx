@@ -7,4 +7,5 @@ const db = mysql.createConnection({
     database:"rfc-project" 
 })
 
+
 module.exports = db;

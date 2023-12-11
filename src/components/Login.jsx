@@ -28,7 +28,7 @@ export default function Login(props) {
     }
     else{
       console.log("User Logged In")
-      axios.post('http://localhost:3002/login', {userEmail: props.userEmail,password: props.password})
+      axios.post(`http://${props.ip}:3002/login`, {userEmail: props.userEmail,password: props.password})
       
       .then(res=>{
         if (res.data == "Incorrect Email or Password"){

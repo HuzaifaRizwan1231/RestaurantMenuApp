@@ -12,6 +12,7 @@ import RemoveFromCartAlert from "./RemoveFromCartAlert";
 export default function Cart(props) {
  
   const [products, setProducts] = useState([]);
+  const [totalCost, setTotalCost] = useState(0)
 
   const FetchData =()=>{
 
@@ -22,9 +23,12 @@ export default function Cart(props) {
       props.setProgress(30)
       //fetching cart items
       axios
-      .post("http://localhost:3002/cartItems", { userEmail: props.userEmail })
+      .post(`http://${props.ip}:3002/cartItems`, { userEmail: props.userEmail })
       .then((response) => setProducts(response.data.data),setTimeout(() => {
         props.setProgress(100)
+        products.map(product=>{
+          {updateTotal(product.product_price*product.order_quantity)}
+        })
       }, 300))
       .catch((error) => console.log(error));
     }
@@ -41,7 +45,7 @@ export default function Cart(props) {
     props.setProgress(30)
     console.log(order_id)
     axios
-    .post("http://localhost:3002/removeCartItem", { userEmail: props.userEmail, order_id: order_id })
+    .post(`http://${props.ip}:3002/removeCartItem`, { userEmail: props.userEmail, order_id: order_id })
     .then((res)=>FetchData(),ClickOnRemoveAlert(),setTimeout(() => {
       props.setProgress(100)
     }, 300))
@@ -51,7 +55,7 @@ export default function Cart(props) {
   const Checkout = ()=>{
     props.setProgress(30)
     axios
-        .post("http://localhost:3002/checkout", {userEmail: props.userEmail})
+        .post(`http://${props.ip}:3002/checkout`, {userEmail: props.userEmail})
         .then(
           (res)=>FetchData(),ClickOnAlert(),setTimeout(() => {
             props.setProgress(100)
@@ -73,6 +77,11 @@ export default function Cart(props) {
       document.getElementById("close-remove-alert-button").click();
     }, 1500);
   }
+
+  const updateTotal=(price)=>{
+    console.log(price)
+    setTotalCost(totalCost+price)
+  }
  
   return (
     <>
@@ -88,7 +97,9 @@ export default function Cart(props) {
             <div className="col-12 col-md-6 md:mx-auto">
 
           {products.map((product) => (
+            
             <div key={product.order_id} className="container mb-4">
+              
               <div className="card cardContainer">
                 <div className="card-body">
                   <div className="row">
@@ -105,34 +116,12 @@ export default function Cart(props) {
                       </h1>
 
                       <h1 className="foodPrice mb-3">
-                        <b>{product.product_price}</b>
+                        <b>Quantity: {" "}{product.order_quantity}</b>
                       </h1>
-
-                      {/* <div className="row mx-auto text-center">
-                        <div className="col-5 btnQuantityCart">
-                          <b>
-                            <button
-                              onClick={HandleIncreaseQuantity}
-                              className=" "
-                            >
-                              +
-                            </button>
-                          </b>
-                        </div>
-                        <div className="col-2 m-auto p-0">
-                          <b>{Quantity}</b>
-                        </div>
-                        <div className="col-5 btnQuantityCart">
-                          <b>
-                            <button
-                              onClick={HandleDecreaseQuantity}
-                              className=" "
-                            >
-                              -
-                            </button>
-                          </b>
-                        </div>
-                      </div> */}
+                      <h1 className="foodPrice mb-3">
+                        <b>Total: {" Rs. "}{product.product_price*product.order_quantity}</b>
+                      </h1>
+                     
                       <div className="row">
                         <button onClick={()=>{removeFromCart(product.order_id)}} className="RemoveButton mx-auto"><i
                         className="fa-solid fa-trash mr-1.5"
@@ -151,12 +140,17 @@ export default function Cart(props) {
           <div className="container text-center mt-5">
           {products.length == 0 ? (
             <h6 className="mt-16">Your Cart is Empty</h6>
-          ): (<button
+          ): (
+            <><h1 className="text-center display-6 mb-4">
+              Total: {totalCost}
+          </h1>
+          <button
               onClick={Checkout}
               className="LoginButton text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Checkout
-            </button>)}
+            </button></>
+            )}
             
           </div>
         </div>

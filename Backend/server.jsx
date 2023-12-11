@@ -72,7 +72,7 @@ app.post('/login', (req,res)=> {
         }
         else {
            return res.json("Incorrect Email or Password")
-        }console.log(numOfRows);
+        }
     }
     )    
     
@@ -82,13 +82,11 @@ app.post('/login', (req,res)=> {
 //Give all products
 app.get('/products', (req,res)=> {
 
-    let numOfRows;
     
     db.query("SELECT * FROM products ORDER BY RAND() LIMIT 3", (err,result)=>{
-        numOfRows = result.length;
-        console.log(numOfRows);
+
         if(err) {
-            return (res.json("Error")) ;
+           return (res.json(err)) ;
         } 
         else {
            return res.json({data : result});
@@ -140,7 +138,7 @@ app.post('/cartItems', (req,res)=> {
 
     const userEmail = req.body.userEmail;
     console.log("cart")
-    db.query("SELECT `products`.*, `orders`.`order_id` FROM `products`,`orders` WHERE order_user_email = ? AND order_product_id = products.product_id AND orders.status = 'cart'",[userEmail], (err,result)=>{
+    db.query("SELECT `products`.*, `orders`.`order_id`,`orders`.`order_quantity` FROM `products`,`orders` WHERE order_user_email = ? AND order_product_id = products.product_id AND orders.status = 'cart'",[userEmail], (err,result)=>{
         if(err) {
             return (res.json("Error")) ;
         } 
@@ -287,11 +285,8 @@ app.post('/completeOrder', (req,res)=> {
 //Give fastFood
 app.get('/fastFood', (req,res)=> {
 
-    let numOfRows;
     
     db.query("SELECT * FROM products WHERE product_category = 'fast_food'", (err,result)=>{
-        numOfRows = result.length;
-        console.log(numOfRows);
         if(err) {
             return (res.json("Error")) ;
         } 

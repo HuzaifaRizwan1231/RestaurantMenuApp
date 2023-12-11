@@ -13,7 +13,7 @@ export default function SignUp(props) {
   const SignUpUser = (event)=>{
     event.preventDefault();
     props.setProgress(30)
-    axios.post('http://localhost:3002/signup', {userName: props.userName,password: props.password,cpassword:cpassword, userEmail: props.userEmail})
+    axios.post(`http://${props.ip}:3002/signup`, {userName: props.userName,password: props.password,cpassword:cpassword, userEmail: props.userEmail})
     .then(res=>{
       
       if (res.data == "Email is already registered"){

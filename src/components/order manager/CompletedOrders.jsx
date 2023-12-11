@@ -10,7 +10,7 @@ export default function CompletedOrders(props) {
   const FetchCompletedOrders = () => {
     //fetching completed orders
     axios
-      .post("http://localhost:3002/completedOrders")
+      .post(`http://${props.ip}:3002/completedOrders`)
       .then((response) => setCompletedOrders(response.data.data),setTimeout(() => {
         props.setProgress(100)
       }, 300))

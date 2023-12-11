@@ -12,7 +12,7 @@ export default function OrderHistory(props) {
 
     //fetching order history
     axios
-      .post("http://localhost:3002/orderHistory", {
+      .post(`http://${props.ip}:3002/orderHistory`, {
         userEmail: props.userEmail,
       })
       .then((response) => setHistoryProducts(response.data.data), setTimeout(() => {
@@ -44,13 +44,16 @@ export default function OrderHistory(props) {
           </h1>
           {historyProducts.map((product) => (
             <div key={product.order_id} className="container mb-4">
+              <div className="row">
+                <div className="col-12 col-md-6 md:mx-auto">
+
               <div className="card HistoryPage">
                 <div className="card-body">
                   <div className="row">
-                    <div className="col-4 text-center foodImage">
+                    <div className="col-4 text-center ">
                       <img
                         src={product.product_image}
-                        className="card-img-top "
+                        className="card-img-top foodImageHistory"
                         alt="food"
                       />
                       <p className="foodPriceHistory mb-3">
@@ -63,7 +66,10 @@ export default function OrderHistory(props) {
                       </h6>
 
                       <h6 className="foodPriceHistory mb-3">
-                        Total Cost: <b>{product.product_price}</b>
+                        Total Cost: <b>Rs. {product.product_price*product.order_quantity}</b>
+                      </h6>
+                      <h6 className="foodPriceHistory mb-3">
+                        Quantity: <b className="uppercase">{product.order_quantity}</b>
                       </h6>
                       <h6 className="foodPriceHistory mb-3">
                         Order Status: <b className="uppercase">{product.status}</b>
@@ -74,6 +80,8 @@ export default function OrderHistory(props) {
                       </Link>
                     </div>
                   </div>
+                </div>
+              </div>
                 </div>
               </div>
             </div>

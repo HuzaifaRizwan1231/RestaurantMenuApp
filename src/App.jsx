@@ -32,6 +32,7 @@ function App() {
   const [exploreFast, setExploreFast] = useState(false);
   const [exploreDesi, setExploreDesi] = useState(false);
   const [exploreDrinks, setExploreDrinks] = useState(false);
+  const ip = '182.185.144.69';
 
   return (
     <>
@@ -42,6 +43,7 @@ function App() {
           onLoaderFinished={() => setProgress(0)}
         />
         <Navbar
+          ip={ip}
           setProgress={setProgress}
           setIsAdminLogin={setIsAdminLogin}
           isAdminlogin={isAdminlogin}
@@ -58,6 +60,7 @@ function App() {
             path="/"
             element={
               <Body
+              ip={ip}
                 setExploreFast={setExploreFast}
                 setExploreDesi={setExploreDesi}
                 setExploreDrinks={setExploreDrinks}
@@ -74,6 +77,7 @@ function App() {
             path="/cart"
             element={
               <Cart
+              ip={ip}
                 setProgress={setProgress}
                 islogin={islogin}
                 userEmail={userEmail}
@@ -84,6 +88,7 @@ function App() {
             path="/exploreMenu"
             element={
               <Menu
+              ip={ip}
                 exploreFast={exploreFast}
                 exploreDesi={exploreDesi}
                 exploreDrinks={exploreDrinks}
@@ -98,6 +103,7 @@ function App() {
             path="/order/:product_id"
             element={
               <OrderItem
+              ip={ip}
                 islogin={islogin}
                 setProgress={setProgress}
                 userEmail={userEmail}
@@ -108,6 +114,7 @@ function App() {
             path="/login"
             element={
               <Login
+              ip={ip}
                 setProgress={setProgress}
                 setIsAdminLogin={setIsAdminLogin}
                 userName={userName}
@@ -124,6 +131,7 @@ function App() {
             path="/signup"
             element={
               <SignUp
+              ip={ip}
                 setProgress={setProgress}
                 userName={userName}
                 setUserName={setUserName}
@@ -137,12 +145,13 @@ function App() {
           />
           <Route
             path="/about"
-            element={<AboutUs setProgress={setProgress} />}
+            element={<AboutUs ip={ip} setProgress={setProgress} />}
           />
           <Route
             path="/feedback"
             element={
               <Feedback
+              ip={ip}
                 islogin={islogin}
                 setProgress={setProgress}
                 userEmail={userEmail}
@@ -151,12 +160,13 @@ function App() {
           />
           <Route
             path="/contact"
-            element={<ContactUs setProgress={setProgress} />}
+            element={<ContactUs  ip={ip} setProgress={setProgress} />}
           />
           <Route
             path="/history"
             element={
               <OrderHistory
+              ip={ip}
                 islogin={islogin}
                 setProgress={setProgress}
                 userEmail={userEmail}
@@ -167,15 +177,15 @@ function App() {
           {/* Order Manager */}
           <Route
             path="/currentOrders"
-            element={<CurrentOrders setProgress={setProgress} />}
+            element={<CurrentOrders ip={ip} setProgress={setProgress} />}
           />
           <Route
             path="/completedOrders"
-            element={<CompletedOrders setProgress={setProgress} />}
+            element={<CompletedOrders ip={ip} setProgress={setProgress} />}
           />
           <Route
             path="/adminFeedBacks"
-            element={<AdminFeedbacks setProgress={setProgress} />}
+            element={<AdminFeedbacks ip={ip} setProgress={setProgress} />}
           />
         </Routes>
       </Router>

@@ -10,7 +10,7 @@ export default function Body(props) {
     props.setProgress(30);
     //fetching data
     axios
-      .get("http://localhost:3002/products")
+      .get(`http://${props.ip}:3002/products`)
       .then(
         (response) => setProducts(response.data.data),
         setTimeout(() => {
@@ -250,7 +250,7 @@ export default function Body(props) {
                       </h1>
 
                       <h1 className="foodPrice mb-3">
-                        <b>{product.product_price}</b>
+                        <b>{"Rs. "}{product.product_price}</b>
                       </h1>
 
                       <Link

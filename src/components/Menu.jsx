@@ -13,18 +13,18 @@ export default function Menu(props) {
 
     // FastFood
     axios
-      .get("http://localhost:3002/fastFood")
+      .get(`http://${props.ip}:3002/fastFood`)
       .then((response) => setFastFoodProducts(response.data.data))
       .catch((error) => console.log(error));
 
     // Desi
     axios
-      .get("http://localhost:3002/desi")
+      .get(`http://${props.ip}:3002/desi`)
       .then((response) => setDesiProducts(response.data.data))
       .catch((error) => console.log(error));
 
     axios
-      .get("http://localhost:3002/drinks")
+      .get(`http://${props.ip}:3002/drinks`)
       .then((response) => setDrinkProducts(response.data.data))
       .catch((error) => console.log(error));
 
@@ -128,7 +128,7 @@ export default function Menu(props) {
                           </h1>
 
                           <h1 className="foodPrice mb-3">
-                            <b>{fastFoodProduct.product_price}</b>
+                            <b>Rs. {fastFoodProduct.product_price}</b>
                           </h1>
 
                           <Link to={`/order/${fastFoodProduct.product_id}`}>
@@ -185,7 +185,7 @@ export default function Menu(props) {
                           </h1>
 
                           <h1 className="foodPrice mb-3">
-                            <b>{desiProduct.product_price}</b>
+                            <b>Rs. {desiProduct.product_price}</b>
                           </h1>
 
                           <Link to={`/order/${desiProduct.product_id}`}>
@@ -241,7 +241,7 @@ export default function Menu(props) {
                           </h1>
 
                           <h1 className="foodPrice mb-3">
-                            <b>{drinkProduct.product_price}</b>
+                            <b>Rs. {drinkProduct.product_price}</b>
                           </h1>
 
                           <Link to={`/order/${drinkProduct.product_id}`}>

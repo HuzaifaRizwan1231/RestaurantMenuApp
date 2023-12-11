@@ -190,13 +190,16 @@ Body {
 /* OrderPage */
 
 .orderImage{
-  width: 50%;
-  size: 50%;  
+  width: 100%;
+  max-height: 171px;
+  min-height: 171px;
+  object-fit: contain;
+  height: 100%; 
 }
 
 .ItemInfo{
   background-color: #202020;
-  height: 100vh;
+  height: 100%;
   color: white;
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
@@ -204,10 +207,17 @@ Body {
 
 .itemHeading{
   font-size: 25px;
+  @media (min-width: 768px) {
+    font-size: 30px;
+  }
+
 }
 
 .OrderHeading{
   font-size: 18px;
+  @media (min-width: 768px) {
+    font-size: 25px;
+  }
 }
 
 .btnQuantity{
@@ -222,17 +232,24 @@ Body {
   border: #ffd100 2px solid;
   border-radius: 40px;
   width: 95%;
+  @media (min-width: 768px) {
+    margin: auto;
+    min-height: 150px;
+  }
 
 }
 
 .btnOrder{
   background-color: #333533;
-  width: 100%;
+  min-width: 100%;
   font-size: 18px;
   padding: 7px;
-  padding-left: 8px;
-  padding-right: 8px;
   border-radius: 12px;
+  color: #ffd100;
+}
+
+.PriceLabel{
+  font-size: 18px;
   color: #ffd100;
 }
 
@@ -350,6 +367,16 @@ Body {
 
 .foodPriceHistory {
   font-size: 15px;
+}
+
+.foodImageHistory{
+  margin: auto;
+  max-width: 35vw;
+  max-height: 160px;
+  min-height: 160px;
+  height: 100%;
+  object-fit: contain;
+
 }
 
 .ReorderButton{

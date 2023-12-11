@@ -28,7 +28,7 @@ export default function Feedback(props) {
     if (feedback!=""){
       props.setProgress(30)
       axios
-    .post("http://localhost:3002/submitFeedback", { userEmail: props.userEmail, feedback:feedback })
+    .post(`http://${props.ip}:3002/submitFeedback`, { userEmail: props.userEmail, feedback:feedback })
     .then((res)=>Cleartext(),ClickOnSubmitAlert(),setTimeout(() => {
       props.setProgress(100)
     }, 300))

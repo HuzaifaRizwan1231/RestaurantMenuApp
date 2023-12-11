@@ -256,7 +256,7 @@ app.post('/submitFeedback', (req,res)=> {
     
     app.get('/feedbacks', (req,res)=> {
 
-        db.query("SELECT * FROM feedbacks", (err,result)=>{
+        db.query("SELECT * FROM feedbacks ORDER BY feedback_date_time DESC", (err,result)=>{
             if(err) {
                 return (res.json("Error")) ;
             } 

@@ -118,7 +118,7 @@ export default function Body(props) {
           </div>
           <div className="col-6 rightHeadingLink m-auto">
             <h5>
-              <Link onClick={HandleScroll} to="/exploreMenu" className="button">
+              <Link onClick={HandleScroll} to="/exploreMenu" className="buttonBody">
                 View All
               </Link>
             </h5>

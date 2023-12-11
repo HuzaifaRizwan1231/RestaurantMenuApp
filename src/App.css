@@ -30,8 +30,18 @@ Body {
   color: white;
   background-color: #333533;
   margin: 5px;
+  transition: transform .2s;
 }
 
+.buttonNav:active{
+  transform: scale(1.05);
+  color: #ffd100;
+}
+
+.buttonNav:hover{
+  transform: scale(1.05);
+  color: #ffd100;
+}
 
 /* SideBar */
 
@@ -67,15 +77,48 @@ Body {
   padding: 7px;
   padding-left: 8px;
   padding-right: 8px;
-  border-radius: 6px;
+  border-radius: 25px;
   color: #ffd100;
   background-color: #000;
   margin: 5px;
+  transition: transform .2s;
   @media (min-width: 768px) {
     font-size: 20px;
     min-width: 75%;
   }
 }
+.button:hover{
+  transform: scale(1.05);
+  color: #E6BC00;
+}
+
+.buttonBody:active{
+  transform: scale(1.05);
+  color: #E6BC00;
+}
+
+.buttonBody {
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 6px;
+  color: #ffd100;
+  background-color: #000;
+  margin: 5px;
+  transition: transform .2s;
+  @media (min-width: 768px) {
+    font-size: 20px;
+    min-width: 100%;
+  }
+}
+
+.buttonBody:hover{
+  transform: scale(1.05);
+  color: #E6BC00;
+}
+.buttonBody:active{
+  color: #E6BC00;
+}
+
 
 /* Menu */
 .Heading {
@@ -108,7 +151,15 @@ Body {
   align-items: center;
   max-width: 100%;
   height: 100%;
- 
+  transition: transform .2s;
+}
+.exploreMenuImage:hover{
+
+  transform: scale(1.05);
+}
+.exploreMenuImage:active{
+
+  transform: scale(1.05);
 }
 
 .cardImage {
@@ -219,10 +270,23 @@ Body {
 }
 
 .btnQuantity{
+  padding: 10px;
+  border-radius: 25px;
   background: #000;
   color: white;
   width: 100%;
   font-size: 18px;
+  transition: transform .2s;
+  @media (min-width: 768px) {
+    width: 65%;
+  }
+}
+.btnQuantity:hover{
+  transform: scale(1.05);
+  color: #ffd100;
+}
+.btnQuantity:active{
+  color: #ffd100;
 }
 
 .DrinksMenu{
@@ -245,6 +309,16 @@ Body {
   padding: 7px;
   border-radius: 12px;
   color: #ffd100;
+  transition: transform .2s;
+}
+
+.btnOrder:hover{
+  transform: scale(1.05);
+  color: #E6BC00;
+}
+.btnOrder:active{
+  transform: scale(1.05);
+  color: #E6BC00;
 }
 
 .PriceLabel{
@@ -273,17 +347,28 @@ Body {
   padding: 7px;
   padding-left: 8px;
   padding-right: 8px;
-  border-radius: 6px;
+  border-radius: 25px;
   color: #ffd100;
+  transition: transform .2s;
+
   @media (min-width: 768px) {
-    border-radius: 15px;
+    width: 25%;
     padding: 10px;
-    width: 50%;
+    width: 25%;
     font-size: 18px;
     max-width: 80%;
     
   }
   
+}
+
+.LoginButton:hover{
+  transform: scale(1.05);
+  color: #E6BC00;
+}
+.LoginButton:active{
+  transform: scale(1.05);
+  color: #E6BC00;
 }
 
 .errorMessage{
@@ -345,8 +430,8 @@ Body {
 .FeedBackSubmit .button{
   width: 50%;
   font-size: 18px;
+  border-radius: 25px;
   @media (min-width: 768px) {
-    border-radius: 18px;
     font-size: 23px;
    }
 }
@@ -379,14 +464,25 @@ Body {
 }
 
 .ReorderButton{
+
   font-size: 14px;
   padding: 7px;
   padding-left: 16px;
   padding-right: 16px;
-  border-radius: 6px;
+  border-radius: 25px;
   color: #ffd100;
   background-color: #000;
   margin: 5px;
+  transition: transform .2s;
+}
+
+.ReorderButton:hover{
+  transform: scale(1.05);
+  color: #E6BC00;
+}
+.ReorderButton:active{
+  transform: scale(1.05);
+  color: #E6BC00;
 }
 
 .HistoryPage{
@@ -396,36 +492,41 @@ Body {
 
 
 /* Cart */
-.btnQuantityCart{
-  width: 40%;
-  font-size: 14px;
-  padding: 7px;
-  border-radius: 6px;
-  color: #ffd100;
-  background-color: #000;
-}
-
 .RemoveButton{
   font-size: 14px;
   width: 90%;
   padding: 7px;
-  border-radius: 6px;
+  border-radius: 25px;
   color: #fff;
   background-color: maroon;
   margin: 5px;
+  transition: transform .2s;
+
   @media (min-width: 768px) {
     font-size: 16px;
-    border-radius: 12px;
+    border-radius: 25px;
     width: 50%;
   }
 }
-
+.RemoveButton:hover{
+  transform: scale(1.05);
+  color: #ffd100;
+}
+.RemoveButton:active{
+  transform: scale(1.05);
+  color: #ffd100;
+}
 .checkoutBar{
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
   height: 48vh;
   border: #ffd100 0.5px solid;
   border-bottom: none;
+  @media (min-width: 768px) {
+    left: 24.5%;
+    width: 50%;
+    height: 65vh;
+  }
 }
 
 .CheckoutField{
@@ -443,12 +544,13 @@ Body {
   padding: 7px;
   padding-left: 8px;
   padding-right: 8px;
-  border-radius: 6px;
+  border-radius: 25px;
   color: #ffd100;
   background-color: #000;
   margin: 5px;
+  transition: transform .2s;
   @media (min-width: 768px) {
-    border-radius: 12px;
+
     padding: 10px;
     text-align: center;
     font-size: 20px;
@@ -456,6 +558,14 @@ Body {
   }
 }
 
+.ModalButton:hover{
+  transform: scale(1.05);
+  color: #ffd100;
+}
+.ModalButton:active{
+  transform: scale(1.05);
+  color: #ffd100;
+}
 #staticBackdrop{
   background-color: #333533 !important;
 }

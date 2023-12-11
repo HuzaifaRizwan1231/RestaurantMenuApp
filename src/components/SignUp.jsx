@@ -91,7 +91,6 @@ export default function SignUp(props) {
                   Address
                 </label>
                 <textarea
-                  value={props.userAddress}
                   onChange={(e) => {
                     props.setUserAddress(e.target.value);
                   }}

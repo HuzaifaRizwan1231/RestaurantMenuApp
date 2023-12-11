@@ -13,7 +13,10 @@ export default function AdminFeedbacks(props) {
       }, 300))
       .catch((error) => console.log(error));
   };
-
+  const getProductTime = (time) => {
+    const newTime = new Date(time).toLocaleString();
+    return newTime;
+  };
   useEffect(() => {
     props.setProgress(30)
     FetchFeedbacks();
@@ -57,6 +60,10 @@ export default function AdminFeedbacks(props) {
                         </sup>
                       </i>
                     </h6>
+                   
+                    <p className="foodPriceHistory mb-3 ">
+                    {getProductTime(feedback.feedback_date_time)}
+                    </p>
                   </div>
                 </div>
               </div>

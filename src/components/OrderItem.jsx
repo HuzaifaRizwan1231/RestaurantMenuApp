@@ -146,7 +146,7 @@ export default function OrderItem(props) {
                             <b>
                               <button
                                 onClick={HandleIncreaseQuantity}
-                                className="btn btnQuantity"
+                                className=" btnQuantity"
                               >
                                 +
                               </button>
@@ -158,7 +158,7 @@ export default function OrderItem(props) {
                           <div className="col-5">
                             <button
                               onClick={HandleDecreaseQuantity}
-                              className="btn btnQuantity"
+                              className="btnQuantity"
                             >
                               -
                             </button>
@@ -175,7 +175,7 @@ export default function OrderItem(props) {
                         <div className="col-6">
                           <h1 className="PriceLabel">
                             <b>
-                              <i>Rs. {product.product_price}</i>
+                              <i>Rs. {product.product_price*Quantity}</i>
                             </b>
                           </h1>
                         </div>

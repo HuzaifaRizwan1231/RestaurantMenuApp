@@ -186,7 +186,7 @@ export default function Cart(props) {
                 </h1>
                 <button
                   onClick={toggleCheckout}
-                  className="LoginButton exception-buttonCheck text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="LoginButton exception-buttonCheck text-sm  py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Checkout
                 </button>
@@ -251,7 +251,7 @@ export default function Cart(props) {
             <button
               type="submit"
              
-              className="LoginButton w-75 text-sm px-5 py-3 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+              className="LoginButton  text-sm py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
             >
               Place Order
             </button>

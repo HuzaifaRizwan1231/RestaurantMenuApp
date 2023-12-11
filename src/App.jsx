@@ -235,7 +235,7 @@ function App() {
           />
           <Route
             path="/adminFeedBacks"
-            element={<AdminFeedbacks ip={ip} setProgress={setProgress} />}
+            element={<AdminFeedbacks ip={ip} islogin={islogin} setProgress={setProgress} />}
           />
         </Routes>
         <Footer />

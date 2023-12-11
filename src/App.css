@@ -464,6 +464,9 @@ Body {
 .customAlert{
 background-color: green;
 animation: fadeIn 0.5s;
+@media (min-width: 768px) {
+  min-width: 100vw;
+}
 }
 
 @keyframes fadeIn {

@@ -243,6 +243,7 @@ export default function Navbar(props) {
                     <span className="ms-3">Feedbacks</span>
                   </Link>
                 </li>
+                
               </>
             ) : (
               <>
@@ -366,6 +367,22 @@ export default function Navbar(props) {
 
                     <span className="flex-1 ms-3 whitespace-nowrap">
                       Feedback
+                    </span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/adminFeedBacks"
+                    onClick={toggleNav}
+                    className="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group"
+                  >
+                    <i
+                      className="fa-solid fa-star"
+                      style={{ color: "#9ca3af" }}
+                    ></i>
+
+                    <span className="flex-1 ms-3 whitespace-nowrap">
+                      Reviews
                     </span>
                   </Link>
                 </li>

@@ -131,7 +131,7 @@ export default function Cart(props) {
                   <div className="card cardContainer">
                     <div className="card-body">
                       <div className="row">
-                        <div className="col-5 text-center ">
+                        <div className="col-5 text-center m-auto">
                           <img
                             src={product.product_image}
                             className="card-img-top foodImage"

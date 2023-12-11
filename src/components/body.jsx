@@ -51,7 +51,7 @@ export default function Body(props) {
       {/* Carousel */}
       <div
         id="carouselExample"
-        className="carousel slide mb-4"
+        className="carousel slide mb-6"
         data-bs-ride="carousel"
       >
         <div className="carousel-inner">
@@ -105,18 +105,7 @@ export default function Body(props) {
 
       {/* MainSection */}
 
-      {/* TopButtons */}
-
-      <div className="container-fluid mb-4">
-        <div className="text-center">
-          <a href="" className="button">
-            Delivery
-          </a>
-          <a href="" className="button">
-            Pick Up
-          </a>
-        </div>
-      </div>
+      
 
       {/* Explore Menu Section */}
 
@@ -127,9 +116,9 @@ export default function Body(props) {
               <b>Explore Menu</b>
             </h3>
           </div>
-          <div className="col-6 rightHeadingLink">
+          <div className="col-6 rightHeadingLink m-auto">
             <h5>
-              <Link onClick={HandleScroll} to="/exploreMenu">
+              <Link onClick={HandleScroll} to="/exploreMenu" className="button">
                 View All
               </Link>
             </h5>
@@ -162,6 +151,9 @@ export default function Body(props) {
                         className="cardImage card-img-top"
                         alt="..."
                       />
+                      <p className="foodPriceHistory text-center mb-3">
+                        <b>DEALS</b>
+                      </p>
                     </div>
                   </div>
                 </Link>
@@ -182,6 +174,9 @@ export default function Body(props) {
                         className=" cardImage card-img-top"
                         alt="..."
                       />
+                      <p className="foodPriceHistory text-center mb-3">
+                        <b>FAST FOOD</b>
+                      </p>
                     </div>
                   </div>
                 </Link>
@@ -206,6 +201,9 @@ export default function Body(props) {
                         className=" cardImage card-img-top "
                         alt="..."
                       />
+                      <p className="foodPriceHistory text-center mb-3">
+                        <b>DESI</b>
+                      </p>
                     </div>
                   </div>
                 </Link>
@@ -226,6 +224,9 @@ export default function Body(props) {
                         className="cardImage card-img-top "
                         alt="..."
                       />
+                       <p className="foodPriceHistory text-center mb-3">
+                        <b>DRINKS</b>
+                      </p>
                     </div>
                   </div>
                 </Link>

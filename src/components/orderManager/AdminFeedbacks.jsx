@@ -23,7 +23,7 @@ export default function AdminFeedbacks(props) {
     <>
       <div className="container ">
         <h1 className="text-center display-6 mt-3 mb-5">
-          <b>FEEDBACKS</b>
+          <b>{props.islogin ? ('Reviews'):('Feedbacks')}</b>
         </h1>
         {feedbacks.map((feedback) => (
           <div key={feedback.feedback_id} className="container mb-4">

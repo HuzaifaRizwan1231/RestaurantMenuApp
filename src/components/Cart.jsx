@@ -8,7 +8,8 @@ export default function Cart(props) {
   const [products, setProducts] = useState([]);
   const [totalCost, setTotalCost] = useState(0);
 
-  const FetchData = () => {
+  const FetchData = async () => {
+    await props.KeepLoggedIn();
     if (!props.islogin) {
       document.getElementById("modalButton").click();
     } else {
@@ -56,7 +57,7 @@ export default function Cart(props) {
     event.preventDefault();
     props.setProgress(30);
     axios
-      .post(`http://${props.ip}:3002/checkout`, { userEmail: props.userEmail })
+      .post(`http://${props.ip}:3002/checkout`, { userEmail: props.userEmail ,contact:contact,address:address})
       .then(
         (res) => FetchData(),
         ClickOnAlert(),
@@ -110,6 +111,7 @@ export default function Cart(props) {
     return () => {
       document.removeEventListener("click", handleClickOutside);
     };
+    
   }, [isCheckoutOpen, CheckoutRef]);
 
   return (

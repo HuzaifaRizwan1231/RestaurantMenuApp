@@ -27,6 +27,7 @@ function App() {
   const [password, setPassword] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userAddress, setUserAddress] = useState("");
+ 
 
 
   const [islogin, setIsLogin] = useState(false);
@@ -39,6 +40,20 @@ function App() {
   const [exploreDrinks, setExploreDrinks] = useState(false);
   const [navigateTo, setNavigateTo] = useState("");
 
+  const KeepLoggedIn = ()=>{
+    const loggedInUser = localStorage.getItem('user')
+    if (loggedInUser){
+      setIsLogin(true)
+      const foundUser = JSON.parse(loggedInUser);
+      setUserEmail(foundUser[0].user_email);
+      setPassword(foundUser[0].user_password);
+      setUserName(foundUser[0].user_username);
+      setUserAddress(foundUser[0].user_address);
+      
+    }
+  }
+  
+  
   
 
   const ip = '182.185.144.69';
@@ -72,6 +87,7 @@ function App() {
             path="/"
             element={
               <Body
+              KeepLoggedIn={KeepLoggedIn}
               setNavigateTo={setNavigateTo}
               ip={ip}
               setExploreDeal={setExploreDeal}
@@ -82,8 +98,10 @@ function App() {
                 isAdminlogin={isAdminlogin}
                 setUserName={setUserName}
                 setUserEmail={setUserEmail}
+                setUserAddress={setUserAddress}
                 setPassword={setPassword}
                 islogin={islogin}
+                setIsLogin={setIsLogin}
               />
             }
           />
@@ -91,6 +109,7 @@ function App() {
             path="/cart"
             element={
               <Cart
+              KeepLoggedIn={KeepLoggedIn}
               setNavigateTo={setNavigateTo}
               ip={ip}
                 setProgress={setProgress}
@@ -104,7 +123,8 @@ function App() {
           <Route
             path="/exploreMenu"
             element={
-              <Menu
+              <Menu KeepLoggedIn={KeepLoggedIn}
+
               setNavigateTo={setNavigateTo}
               ip={ip}
               exploreDeal={exploreDeal}
@@ -122,7 +142,7 @@ function App() {
           <Route
             path="/order/:product_id"
             element={
-              <OrderItem
+              <OrderItem KeepLoggedIn={KeepLoggedIn}
               setNavigateTo={setNavigateTo}
               ip={ip}
                 islogin={islogin}
@@ -134,7 +154,8 @@ function App() {
           <Route
             path="/login"
             element={
-              <Login
+              <Login KeepLoggedIn={KeepLoggedIn}
+   
               navigateTo={navigateTo}
               ip={ip}
                 setProgress={setProgress}
@@ -154,7 +175,7 @@ function App() {
           <Route
             path="/signup"
             element={
-              <SignUp
+              <SignUp KeepLoggedIn={KeepLoggedIn}
               navigateTo={navigateTo}
               ip={ip}
                 setProgress={setProgress}
@@ -172,12 +193,12 @@ function App() {
           />
           <Route
             path="/about"
-            element={<AboutUs  setNavigateTo={setNavigateTo} ip={ip} setProgress={setProgress} />}
+            element={<AboutUs KeepLoggedIn={KeepLoggedIn}  setNavigateTo={setNavigateTo} ip={ip} setProgress={setProgress} />}
           />
           <Route
             path="/feedback"
             element={
-              <Feedback
+              <Feedback KeepLoggedIn={KeepLoggedIn}
               setNavigateTo={setNavigateTo}
               ip={ip}
                 islogin={islogin}
@@ -188,12 +209,12 @@ function App() {
           />
           <Route
             path="/contact"
-            element={<ContactUs  setNavigateTo={setNavigateTo} ip={ip} setProgress={setProgress} />}
+            element={<ContactUs KeepLoggedIn={KeepLoggedIn}  setNavigateTo={setNavigateTo} ip={ip} setProgress={setProgress} />}
           />
           <Route
             path="/history"
             element={
-              <OrderHistory
+              <OrderHistory KeepLoggedIn={KeepLoggedIn}
               setNavigateTo={setNavigateTo}
               ip={ip}
                 islogin={islogin}

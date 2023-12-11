@@ -72,6 +72,7 @@ export default function Navbar(props) {
     props.setUserAddress("");
     props.setIsLogin(false);
     props.setIsAdminLogin(false);
+    localStorage.clear();
     document.getElementById("dropdown-button").click();
     setTimeout(() => {
     props.setProgress(100);  

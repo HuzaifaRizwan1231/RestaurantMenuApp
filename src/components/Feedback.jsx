@@ -20,6 +20,7 @@ export default function Feedback(props) {
     }, 300)
     Cleartext();
     props.setNavigateTo("feedback")
+    props.KeepLoggedIn();
   }, [])
 
   const Cleartext=()=>{

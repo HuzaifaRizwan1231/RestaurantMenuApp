@@ -173,8 +173,10 @@ app.post('/removeCartItem', (req,res)=> {
 app.post('/checkout', (req,res)=> {
 
     const userEmail = req.body.userEmail;
+    const contact = req.body.contact;
+    const address = req.body.address;
 
-    db.query("UPDATE orders SET status = 'paid' WHERE order_user_email = ? AND status = 'cart'",[userEmail], (err,result)=>{
+    db.query("UPDATE orders SET status = 'paid', order_address = ?, order_contact = ? WHERE order_user_email = ? AND status = 'cart'",[address,contact,userEmail], (err,result)=>{
         if(err) {
             return (res.json("Error")) ;
         } 

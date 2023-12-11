@@ -17,15 +17,20 @@ export default function OrderItem(props) {
     }
   };
 
-  useEffect(() => {
+  const [product, setProduct] = useState([]);
+  const { product_id } = useParams();
+  
+  const checkForLogin = async ()=>{
+    await props.KeepLoggedIn();
     if (!props.islogin) {
       document.getElementById("modalButton").click();
     }
-    props.setNavigateTo("order/:product_id")
+  }
+  useEffect(() => {
+    checkForLogin()
+    props.setNavigateTo(`order/${product_id}`)
   }, []);
 
-  const [product, setProduct] = useState([]);
-  const { product_id } = useParams();
 
   useEffect(() => {
     props.setProgress(30);

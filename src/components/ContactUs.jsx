@@ -9,6 +9,7 @@ export default function ContactUs(props) {
       props.setProgress(100)
     }, 300)
     props.setNavigateTo("contact")
+    props.KeepLoggedIn();
   }, [])
   
   

@@ -9,12 +9,13 @@ export default function Login(props) {
     setTimeout(() => {
       props.setProgress(100)
     }, 300);
+    props.KeepLoggedIn();
   }, [])
   
   const [loginError, setLoginError] = useState("");
   const navigate = useNavigate();
 
-  const LoginUser = (event)=>{
+  const LoginUser = async (event)=>{
     event.preventDefault();
     props.setProgress(30)
 
@@ -28,7 +29,7 @@ export default function Login(props) {
     }
     else{
       console.log("User Logged In")
-      axios.post(`http://${props.ip}:3002/login`, {userEmail: props.userEmail,password: props.password})
+      await axios.post(`http://${props.ip}:3002/login`, {userEmail: props.userEmail,password: props.password})
       
       .then(res=>{
         if (res.data == "Incorrect Email or Password"){
@@ -42,6 +43,9 @@ export default function Login(props) {
           props.setUserName(res.data.data[0].user_username)
           props.setUserAddress(res.data.data[0].user_address)
           props.setIsLogin(true)
+
+          localStorage.setItem('user', JSON.stringify(res.data.data))
+          console.log(JSON.stringify(res.data.data))
           navigate(`/${props.navigateTo}`)
         }
       },setTimeout(() => {

@@ -5,20 +5,27 @@ import axios from "axios";
 
 export default function OrderHistory(props) {
   const [historyProducts, setHistoryProducts] = useState([]);
-  const FetchOrderHistory = () => {
-    if (!props.islogin) {
-      document.getElementById("modalButton").click();
-    }
 
-    //fetching order history
-    axios
-      .post(`http://${props.ip}:3002/orderHistory`, {
-        userEmail: props.userEmail,
-      })
-      .then((response) => setHistoryProducts(response.data.data), setTimeout(() => {
-        props.setProgress(100);
-      }, 300))
-      .catch((error) => console.log(error));
+  const FetchOrderHistory = async () => {
+    await props.KeepLoggedIn();
+   console.log(props.userEmail)
+
+      console.log("ok")
+      props.setProgress(30);
+      //fetching order history
+       axios
+        .post(`http://${props.ip}:3002/orderHistory`, {
+          userEmail: props.userEmail,
+        })
+        .then((response) => setHistoryProducts(response.data.data), setTimeout(() => {
+          props.setProgress(100);
+        }, 300))
+        .catch((error) => console.log(error));
+        if (!props.islogin) {
+          console.log("nok")
+          document.getElementById("modalButton").click();
+        }
+
   };
 
   const getProductTime=(time)=>{
@@ -28,11 +35,8 @@ export default function OrderHistory(props) {
   }
 
   useEffect(() => {
-    if (!props.islogin) {
-      document.getElementById("modalButton").click();
-    }
-    props.setProgress(30);
     FetchOrderHistory();
+    
     props.setNavigateTo("history")
   }, []);
 

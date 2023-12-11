@@ -37,6 +37,7 @@ export default function SignUp(props) {
             res.data != "Passwords do not match"
           ) {
             props.setIsLogin(true);
+            localStorage.setItem('user', JSON.stringify(res.data.data))
             navigate(`/${props.navigateTo}`);
           }
         },
@@ -52,6 +53,7 @@ export default function SignUp(props) {
     setTimeout(() => {
       props.setProgress(100);
     }, 300);
+    props.KeepLoggedIn();
   }, []);
 
   return (

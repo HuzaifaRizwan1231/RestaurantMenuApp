@@ -23,8 +23,12 @@ export default function Body(props) {
         props.setUserEmail("");
         props.setPassword("");
         props.setUserName("");
+        props.setUserAddress("");
       }
-  
+      
+
+
+      props.KeepLoggedIn();
       props.setExploreDeal(false);
       props.setExploreFast(false);
       props.setExploreDesi(false);

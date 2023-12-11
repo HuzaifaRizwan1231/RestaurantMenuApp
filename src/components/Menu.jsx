@@ -69,6 +69,7 @@ export default function Menu(props) {
       }, 301);
     }
     props.setNavigateTo("exploreMenu")
+    props.KeepLoggedIn();
   }, []);
 
   return (

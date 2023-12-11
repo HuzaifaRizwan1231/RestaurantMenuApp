@@ -16,9 +16,9 @@ import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Feedback from "./components/Feedback";
 import OrderHistory from "./components/OrderHistory";
-import CurrentOrders from "./components/order manager/CurrentOrders";
-import AdminFeedbacks from "./components/order manager/AdminFeedbacks";
-import CompletedOrders from "./components/order manager/completedOrders";
+import CurrentOrders from "./components/orderManager/CurrentOrders";
+import AdminFeedbacks from "./components/orderManager/AdminFeedbacks";
+import CompletedOrders from "./components/orderManager/completedOrders";
 import LoadingBar from "react-top-loading-bar";
 
 function App() {

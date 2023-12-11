@@ -29,10 +29,18 @@ export default function Cart(props) {
     }
   };
 
-  useEffect(() => {
-    FetchData();
-    setAddress(props.userAddress);
-    props.setNavigateTo("cart")
+const FetchQuantity=()=>{
+    setTotalCost(0);
+    products.map((product)=>(
+      setTotalCost(prev=>prev+product.product_price*product.order_quantity)
+    ))
+}
+
+
+ useEffect(() => {  
+      FetchData();
+      setAddress(props.userAddress);
+      props.setNavigateTo("cart")
   }, []);
 
   const removeFromCart = (order_id) => {
@@ -86,7 +94,9 @@ export default function Cart(props) {
   const [address, setAddress] = useState("");
   const CheckoutRef = useRef(null);
   const [isCheckoutOpen, setCheckoutOpen] = useState(false);
+
   const toggleCheckout = () => {
+    FetchQuantity();
     setCheckoutOpen(!isCheckoutOpen);
   };
 
@@ -117,7 +127,7 @@ export default function Cart(props) {
   return (
     <>
       <div id="liveAlertPlaceholder"></div>
-      <Alert message="Checked out Successfully" />
+      <Alert message={`Checked out Successfully! Order will arrive shortly.`} />
       <RemoveFromCartAlert />
       {props.islogin ? (
         <div className="container mt-4">
@@ -181,12 +191,10 @@ export default function Cart(props) {
               <h6 className="mt-16">Your Cart is Empty</h6>
             ) : (
               <>
-                <h1 className="text-center display-6 mb-4">
-                  Total: {totalCost}
-                </h1>
+                
                 <button
                   onClick={toggleCheckout}
-                  className="LoginButton exception-buttonCheck text-sm  py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="LoginButton w-25 exception-buttonCheck text-sm  py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Checkout
                 </button>
@@ -246,6 +254,9 @@ export default function Cart(props) {
               rows="2"
               required
             ></textarea>
+            <h1 className="text-xl text-center mb-3">
+                  Total: Rs. {totalCost}
+            </h1>
           </div>
           <div className="text-center">
             <button

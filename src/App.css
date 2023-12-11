@@ -352,9 +352,8 @@ Body {
   transition: transform .2s;
 
   @media (min-width: 768px) {
-    width: 25%;
+    width: 40%;
     padding: 10px;
-    width: 25%;
     font-size: 18px;
     max-width: 80%;
     

@@ -118,7 +118,7 @@ export default function Login(props) {
               </p>
               <div className="text-center mt-4">
               <button                
-                className="LoginButton text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                className="LoginButton text-sm  py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 type="submit"
               >
                 Log in

@@ -96,9 +96,9 @@ export default function CurrentOrders(props) {
                         {product.order_contact}
                       </p>
                     </h6>
-                    <h6 className="foodPriceHistory mb-3">
+                    <h6 className="foodPriceHistory mb-3"  >
                       Order Status:{" "}
-                      <b className="uppercase">{product.status}</b>
+                      <b className="uppercase" style={{ color: "#ffd100" }}>{product.status}</b>
                     </h6>
 
                     <button

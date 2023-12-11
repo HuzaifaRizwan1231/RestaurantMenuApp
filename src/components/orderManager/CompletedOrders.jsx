@@ -81,7 +81,7 @@ export default function CompletedOrders(props) {
                     </h6>
                     <h6 className="foodPriceHistory mb-3">
                       Order Status:{" "}
-                      <b className="uppercase">{product.status}</b>
+                      <b className="uppercase" style={{ color: "green" }}>{product.status}</b>
                     </h6>
 
                     

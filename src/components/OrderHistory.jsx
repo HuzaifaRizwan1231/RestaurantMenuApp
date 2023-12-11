@@ -77,7 +77,7 @@ export default function OrderHistory(props) {
                         Quantity: <b className="uppercase">{product.order_quantity}</b>
                       </h6>
                       <h6 className="foodPriceHistory mb-3">
-                        Order Status: <b className="uppercase">{product.status}</b>
+                        Order Status: <b className="uppercase" style={product.status == 'paid'?{ color: "#ffd100" }:{ color: "green" }}>{product.status}</b>
                       </h6>
 
                       <Link to={`/order/${product.product_id}`}>

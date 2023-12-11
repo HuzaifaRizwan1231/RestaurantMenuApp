@@ -185,7 +185,7 @@ export default function SignUp(props) {
               <div className="text-center mt-4">
                 <button
                   type="submit"
-                  className="LoginButton text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                  className="LoginButton text-sm py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
                 >
                   Sign Up
                 </button>

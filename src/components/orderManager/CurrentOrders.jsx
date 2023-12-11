@@ -17,7 +17,6 @@ export default function CurrentOrders(props) {
   };
 
   const getProductTime = (time) => {
-    console.log(time);
     const newTime = new Date(time).toLocaleString();
     return newTime;
   };

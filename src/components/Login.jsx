@@ -28,7 +28,6 @@ export default function Login(props) {
       }, 300)
     }
     else{
-      console.log("User Logged In")
       await axios.post(`http://${props.ip}:3002/login`, {userEmail: props.userEmail,password: props.password})
       
       .then(res=>{
@@ -45,7 +44,6 @@ export default function Login(props) {
           props.setIsLogin(true)
 
           localStorage.setItem('user', JSON.stringify(res.data.data))
-          console.log(JSON.stringify(res.data.data))
           navigate(`/${props.navigateTo}`)
         }
       },setTimeout(() => {

@@ -22,7 +22,6 @@ app.post('/signup', (req,res)=> {
     const userAddress = req.body.userAddress;
     let numOfRows;
     
-    console.log(userName,password,cPassword,userEmail);
     
 
     db.query("SELECT * FROM users WHERE user_email = ?", [userEmail], (err,result)=>{
@@ -41,12 +40,10 @@ app.post('/signup', (req,res)=> {
                 if(err) {
                     return res.json("Error");
                 } 
-                console.log("Registered Successfully");
                 return res.json(result);
              }
              );   
         }
-        console.log(numOfRows);
     }
     )    
     
@@ -59,7 +56,7 @@ app.post('/login', (req,res)=> {
     const password = req.body.password;
     let numOfRows;
     
-    console.log(userEmail,password);
+
     
 
     db.query("SELECT * FROM users WHERE user_email = ? AND user_password = ?", [userEmail,password], (err,result)=>{
@@ -68,7 +65,7 @@ app.post('/login', (req,res)=> {
             return (res.json("Error")) ;
         } 
         else if(numOfRows==1){
-            console.log("Logged In");
+
             res.json({data : result});
         }
         else {
@@ -138,7 +135,7 @@ app.post('/addToCart', (req,res)=> {
 app.post('/cartItems', (req,res)=> {
 
     const userEmail = req.body.userEmail;
-    console.log("cart")
+
     db.query("SELECT `products`.*, `orders`.`order_id`,`orders`.`order_quantity` FROM `products`,`orders` WHERE order_user_email = ? AND order_product_id = products.product_id AND orders.status = 'cart'",[userEmail], (err,result)=>{
         if(err) {
             return (res.json("Error")) ;
@@ -324,7 +321,7 @@ app.get('/desi', (req,res)=> {
     
     db.query("SELECT * FROM products WHERE product_category = 'desi'", (err,result)=>{
         numOfRows = result.length;
-        console.log(numOfRows);
+
         if(err) {
             return (res.json("Error")) ;
         } 
@@ -343,7 +340,7 @@ app.get('/drinks', (req,res)=> {
     
     db.query("SELECT * FROM products WHERE product_category = 'drink'", (err,result)=>{
         numOfRows = result.length;
-        console.log(numOfRows);
+
         if(err) {
             return (res.json("Error")) ;
         } 

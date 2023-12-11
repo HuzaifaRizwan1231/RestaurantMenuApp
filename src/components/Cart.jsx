@@ -45,7 +45,6 @@ const FetchQuantity=()=>{
 
   const removeFromCart = (order_id) => {
     props.setProgress(30);
-    console.log(order_id);
     axios
       .post(`http://${props.ip}:3002/removeCartItem`, {
         userEmail: props.userEmail,

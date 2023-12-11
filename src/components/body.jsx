@@ -38,7 +38,6 @@ export default function Body(props) {
 
 
 
-  console.log(products);
 
   const [scrollToTop, setscrollToTop] = useState();
 

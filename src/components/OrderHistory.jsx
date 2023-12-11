@@ -8,9 +8,8 @@ export default function OrderHistory(props) {
 
   const FetchOrderHistory = async () => {
     await props.KeepLoggedIn();
-   console.log(props.userEmail)
 
-      console.log("ok")
+  
       props.setProgress(30);
       //fetching order history
        axios
@@ -22,14 +21,12 @@ export default function OrderHistory(props) {
         }, 300))
         .catch((error) => console.log(error));
         if (!props.islogin) {
-          console.log("nok")
           document.getElementById("modalButton").click();
         }
 
   };
 
   const getProductTime=(time)=>{
-    console.log(time)
     const newTime = new Date(time).toLocaleString();
     return newTime
   }

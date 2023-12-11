@@ -37,13 +37,16 @@ export default function CompletedOrders(props) {
         </h1>
         {completedOrders.map((product) => (
           <div key={product.order_id} className="container mb-4">
+            <div className="row">
+              <div className="col-12 col-md-6 mx-auto">
+
             <div className="card HistoryPage">
               <div className="card-body">
                 <div className="row">
-                  <div className="col-4 text-center foodImage">
+                  <div className="col-4 text-center m-auto">
                     <img
                       src={product.product_image}
-                      className="card-img-top "
+                      className="card-img-top foodImage"
                       alt="food"
                     />
                     <p className="foodPriceHistory mb-3">
@@ -65,6 +68,18 @@ export default function CompletedOrders(props) {
                       </p>
                     </h6>
                     <h6 className="foodPriceHistory mb-3">
+                      Address:
+                      <p className="foodPriceHistory mb-3">
+                        {product.order_address}
+                      </p>
+                    </h6>
+                    <h6 className="foodPriceHistory mb-3">
+                      Contact:
+                      <p className="foodPriceHistory mb-3">
+                        {product.order_contact}
+                      </p>
+                    </h6>
+                    <h6 className="foodPriceHistory mb-3">
                       Order Status:{" "}
                       <b className="uppercase">{product.status}</b>
                     </h6>
@@ -72,6 +87,8 @@ export default function CompletedOrders(props) {
                     
                   </div>
                 </div>
+              </div>
+            </div>
               </div>
             </div>
           </div>

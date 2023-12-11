@@ -139,8 +139,6 @@ Body {
   margin: auto;
   max-width: 35vw;
   max-height: 171px;
-  min-height: 171px;
-  height: 100%;
   object-fit: contain;
 }
 
@@ -235,6 +233,7 @@ Body {
   @media (min-width: 768px) {
     margin: auto;
     min-height: 150px;
+    width: 75%;
   }
 
 }

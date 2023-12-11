@@ -158,7 +158,7 @@ export default function Body(props) {
                   <div className="card exploreMenuImage ">
                     <div className="card-body ">
                       <img
-                        src="/images/Beef_Burger.png"
+                        src="/images/beef-burger-deal.png"
                         className="cardImage card-img-top"
                         alt="..."
                       />
@@ -260,7 +260,7 @@ export default function Body(props) {
               <div className="card">
                 <div className="card-body">
                   <div className="row">
-                    <div className="col-6 col-md-5 text-center ">
+                    <div className="col-6 col-md-5 text-center m-auto">
                       <img
                         src={product.product_image}
                         className="card-img-top foodImage"

@@ -208,7 +208,7 @@ app.post('/orderHistory', (req,res)=> {
     
 app.post('/currentOrders', (req,res)=> {
 
-    db.query("SELECT `products`.*, `orders`.* FROM `products`,`orders` WHERE orders.status = 'paid' AND orders.order_product_id = products.product_id", (err,result)=>{
+    db.query("SELECT `products`.*, `orders`.* FROM `products`,`orders` WHERE orders.status = 'paid' AND orders.order_product_id = products.product_id ORDER BY orders.order_date_time DESC", (err,result)=>{
         if(err) {
             return (res.json("Error")) ;
         } 
@@ -224,7 +224,7 @@ app.post('/currentOrders', (req,res)=> {
     
 app.post('/completedOrders', (req,res)=> {
 
-    db.query("SELECT `products`.*, `orders`.* FROM `products`,`orders` WHERE orders.status = 'completed' AND orders.order_product_id = products.product_id", (err,result)=>{
+    db.query("SELECT `products`.*, `orders`.* FROM `products`,`orders` WHERE orders.status = 'completed' AND orders.order_product_id = products.product_id ORDER BY  orders.order_date_time DESC", (err,result)=>{
         if(err) {
             return (res.json("Error")) ;
         } 

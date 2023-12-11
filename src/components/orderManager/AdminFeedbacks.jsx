@@ -27,6 +27,9 @@ export default function AdminFeedbacks(props) {
         </h1>
         {feedbacks.map((feedback) => (
           <div key={feedback.feedback_id} className="container mb-4">
+            <div className="row">
+              <div className="col-12 col-md-6 mx-auto">
+
             <div className="card HistoryPage">
               <div className="card-body">
                 <div className="row">
@@ -56,6 +59,8 @@ export default function AdminFeedbacks(props) {
                     </h6>
                   </div>
                 </div>
+              </div>
+            </div>
               </div>
             </div>
           </div>

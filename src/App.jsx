@@ -20,6 +20,7 @@ import CurrentOrders from "./components/orderManager/CurrentOrders.jsx";
 import AdminFeedbacks from "./components/orderManager/AdminFeedbacks.jsx";
 import CompletedOrders from "./components/orderManager/completedOrders.jsx";
 import LoadingBar from "react-top-loading-bar";
+import Footer from "./components/footer.jsx";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -29,10 +30,12 @@ function App() {
   const [isAdminlogin, setIsAdminLogin] = useState(false);
   const [progress, setProgress] = useState(0);
 
+  const [exploreDeal, setExploreDeal] = useState(false);
   const [exploreFast, setExploreFast] = useState(false);
   const [exploreDesi, setExploreDesi] = useState(false);
   const [exploreDrinks, setExploreDrinks] = useState(false);
-  const ip = '182.185.144.69';
+  // const ip = '182.185.144.69';
+  const ip = 'localhost';
 
   return (
     <>
@@ -61,6 +64,7 @@ function App() {
             element={
               <Body
               ip={ip}
+              setExploreDeal={setExploreDeal}
                 setExploreFast={setExploreFast}
                 setExploreDesi={setExploreDesi}
                 setExploreDrinks={setExploreDrinks}
@@ -89,9 +93,11 @@ function App() {
             element={
               <Menu
               ip={ip}
+              exploreDeal={exploreDeal}
                 exploreFast={exploreFast}
                 exploreDesi={exploreDesi}
                 exploreDrinks={exploreDrinks}
+                setExploreDeal={setExploreDeal}
                 setExploreFast={setExploreFast}
                 setExploreDesi={setExploreDesi}
                 setExploreDrinks={setExploreDrinks}
@@ -188,6 +194,7 @@ function App() {
             element={<AdminFeedbacks ip={ip} setProgress={setProgress} />}
           />
         </Routes>
+        <Footer />
       </Router>
     </>
   );

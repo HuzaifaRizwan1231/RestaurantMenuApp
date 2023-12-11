@@ -86,8 +86,37 @@ export default function OrderItem(props) {
                     <b>{product.product_name}</b>
                   </h1>
                   <div className="row md:mt-4">
+
+
+                  <div className="col-12">
+                      <div className="container menuSection mb-1 mt-4">
+                        <div className="row">
+                          <div className="col-6">
+                            <h3 className="OrderHeading uppercase">
+                              <b>Description</b>
+                            </h3>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="container  mb-4 ">
+                        <div className="row ">
+                          <div className="col-6 underLine"></div>
+                        </div>
+                      </div>
+
+                      <div className="container text-center">
+                        <div className="row DrinksMenu mx-auto p-4 uppercase">
+                          <b><i>{product.product_desc}</i></b>
+                                  
+                          
+                        </div>
+                      </div>
+                  </div>
+
+
+                    {/* Quantity */}
                     <div className="col-12 col-md-6">
-                      {/* Quantity */}
                       <div className="container menuSection mb-1 mt-4">
                         <div className="row">
                           <div className="col-6">
@@ -131,8 +160,9 @@ export default function OrderItem(props) {
                         </div>
                       </div>
                     </div>
+
+                    {/* Drinks */}
                     <div className="col-12 col-md-6">
-                      {/* Drinks */}
                       <div className="container menuSection mb-1 mt-4">
                         <div className="row">
                           <div className="col-6">
@@ -183,31 +213,29 @@ export default function OrderItem(props) {
                         </div>
                       </div>
                     </div>
-                    
-                      <div className="row py-3 z-49 bottom-0 left-3 fixed rounded-lg text-center p-2 pt-1.5 bg-black">
-                        <div className="col-12 d-flex">
-                          
-                            <div className="col-6">
-                              <h1 className="PriceLabel">
-                                <b>
-                                  <i>{product.product_price}</i>
-                                </b>
-                              </h1>
-                            </div>
-                            <div className="col-6 p-0">
-                              <Link
-                                onClick={() =>
-                                  addToCart(product.product_id, Quantity)
-                                }
-                                className="btnOrder"
-                              >
-                                Add to Cart
-                              </Link>
-                            </div>
-                        
+
+                    {/* Add to Cart and price */}
+                    <div className="row py-3 z-49 bottom-0 left-3 fixed rounded-lg text-center p-2 pt-1.5 bg-black">
+                      <div className="col-12 d-flex">
+                        <div className="col-6">
+                          <h1 className="PriceLabel">
+                            <b>
+                              <i>{product.product_price}</i>
+                            </b>
+                          </h1>
+                        </div>
+                        <div className="col-6 p-0">
+                          <Link
+                            onClick={() =>
+                              addToCart(product.product_id, Quantity)
+                            }
+                            className="btnOrder"
+                          >
+                            Add to Cart
+                          </Link>
                         </div>
                       </div>
-                  
+                    </div>
                   </div>
                 </div>
               </div>

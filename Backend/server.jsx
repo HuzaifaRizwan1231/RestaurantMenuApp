@@ -83,7 +83,7 @@ app.post('/login', (req,res)=> {
 app.get('/products', (req,res)=> {
 
     
-    db.query("SELECT * FROM products ORDER BY RAND() LIMIT 3", (err,result)=>{
+    db.query("SELECT * FROM products WHERE product_category = 'deal' ORDER BY RAND() LIMIT 3", (err,result)=>{
 
         if(err) {
            return (res.json(err)) ;
@@ -281,6 +281,22 @@ app.post('/completeOrder', (req,res)=> {
     
     })
     
+
+//Give deals
+app.get('/deals', (req,res)=> {
+
+    
+    db.query("SELECT * FROM products WHERE product_category = 'deal'", (err,result)=>{
+        if(err) {
+            return (res.json("Error")) ;
+        } 
+        else {
+           return res.json({data : result});
+        }
+    }
+    )    
+    
+    })
 
 //Give fastFood
 app.get('/fastFood', (req,res)=> {

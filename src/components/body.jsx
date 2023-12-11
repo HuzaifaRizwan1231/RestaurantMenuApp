@@ -28,6 +28,7 @@ export default function Body(props) {
       props.setUserName("");
     }
 
+    props.setExploreDeal(false);
     props.setExploreFast(false);
     props.setExploreDesi(false);
     props.setExploreDrinks(false);
@@ -138,33 +139,55 @@ export default function Body(props) {
         </div>
       </div>
 
-      {/* FirstImage */}
-
       <div className="container mb-4">
         <div className="row ">
-          <div className="col-6 col-md-4 my-1">
-            <Link
-              to="/exploreMenu"
-              onClick={() => {
-                props.setExploreFast(true);
-              }}
-            >
-              <div className="card exploreMenuImage ">
-                <div className="card-body ">
-                  <img
-                    src="/images/Beef_Burger.png"
-                    className=" cardImage card-img-top"
-                    alt="..."
-                  />
-                </div>
+          <div className="col-6">
+            <div className="row">
+              {/* FirstImage */}
+              <div className="col-12 col-md-6 my-1">
+                <Link
+                  to="/exploreMenu"
+                  onClick={() => {
+                    props.setExploreDeal(true);
+                  }}
+                >
+                  <div className="card exploreMenuImage ">
+                    <div className="card-body ">
+                      <img
+                        src="/images/Beef_Burger.png"
+                        className="cardImage card-img-top"
+                        alt="..."
+                      />
+                    </div>
+                  </div>
+                </Link>
               </div>
-            </Link>
+
+              {/* SecondImage */}
+              <div className="col-12 col-md-6 my-1">
+                <Link
+                  to="/exploreMenu"
+                  onClick={() => {
+                    props.setExploreFast(true);
+                  }}
+                >
+                  <div className="card exploreMenuImage ">
+                    <div className="card-body ">
+                      <img
+                        src="/images/Beef_Burger.png"
+                        className=" cardImage card-img-top"
+                        alt="..."
+                      />
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            </div>
           </div>
 
-          {/* SecondImage */}
-
-          <div className="col-6 col-md-8">
+          <div className="col-6">
             <div className="row">
+              {/* ThirdImage */}
               <div className="col-12 col-md-6 my-1">
                 <Link
                   to="/exploreMenu"
@@ -184,8 +207,7 @@ export default function Body(props) {
                 </Link>
               </div>
 
-              {/* ThirdImage */}
-
+              {/* Fourth Image */}
               <div className="col-12 col-md-6 my-1">
                 <Link
                   to="/exploreMenu"
@@ -229,11 +251,8 @@ export default function Body(props) {
 
       <div className="container">
         <div className="row">
-
-      {products.map((product) => (
-        <div key={product.product_id} className="col-12 col-md-4 mb-4">
-          
-           
+          {products.map((product) => (
+            <div key={product.product_id} className="col-12 col-md-4 mb-4">
               <div className="card">
                 <div className="card-body">
                   <div className="row">
@@ -250,7 +269,10 @@ export default function Body(props) {
                       </h1>
 
                       <h1 className="foodPrice mb-3">
-                        <b>{"Rs. "}{product.product_price}</b>
+                        <b>
+                          {"Rs. "}
+                          {product.product_price}
+                        </b>
                       </h1>
 
                       <Link
@@ -263,10 +285,8 @@ export default function Body(props) {
                   </div>
                 </div>
               </div>
-            
-        
-        </div>
-      ))}
+            </div>
+          ))}
         </div>
       </div>
     </>

@@ -25,9 +25,6 @@ export default function Cart(props) {
       .post(`http://${props.ip}:3002/cartItems`, { userEmail: props.userEmail })
       .then((response) => setProducts(response.data.data),setTimeout(() => {
         props.setProgress(100)
-        products.map(product=>{
-          {updateTotal(product.product_price*product.order_quantity)}
-        })
       }, 300))
       .catch((error) => console.log(error));
     }
@@ -38,6 +35,8 @@ export default function Cart(props) {
   useEffect(() => {
     FetchData();
   }, []);
+
+  
 
   
   const removeFromCart=(order_id)=>{
@@ -77,11 +76,9 @@ export default function Cart(props) {
     }, 1500);
   }
 
-  const updateTotal=(price)=>{
-    console.log(price)
-    setTotalCost(totalCost+price)
-  }
  
+ 
+
   return (
     <>
       <div id="liveAlertPlaceholder"></div>
@@ -117,7 +114,7 @@ export default function Cart(props) {
                       <h1 className="foodPrice mb-3">
                         <b>Quantity: {" "}{product.order_quantity}</b>
                       </h1>
-                      <h1 className="foodPrice mb-3">
+                      <h1 className="foodPrice mb-3" >
                         <b>Total: {" Rs. "}{product.product_price*product.order_quantity}</b>
                       </h1>
                      

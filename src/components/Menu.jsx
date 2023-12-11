@@ -6,10 +6,18 @@ export default function Menu(props) {
   const [fastFoodProducts, setFastFoodProducts] = useState([]);
   const [desiProducts, setDesiProducts] = useState([]);
   const [drinkProducts, setDrinkProducts] = useState([]);
+  const [dealProducts, setDealProducts] = useState([]);
 
   useEffect(() => {
     props.setProgress(30);
     //fetching data
+
+    //Deals
+    axios
+    .get(`http://${props.ip}:3002/deals`)
+    .then((response) => setDealProducts(response.data.data))
+    .catch((error) => console.log(error));
+
 
     // FastFood
     axios
@@ -28,21 +36,30 @@ export default function Menu(props) {
       .then((response) => setDrinkProducts(response.data.data))
       .catch((error) => console.log(error));
 
+     
+
     setTimeout(() => {
       props.setProgress(100);
     }, 300);
 
-    if (props.exploreFast) {
+    if (props.exploreDeal) {
       setTimeout(() => {
         document.getElementById("firstNav").click();
       }, 301);
-    } else if (props.exploreDesi) {
+      
+    }
+    else if (props.exploreFast) {
       setTimeout(() => {
         document.getElementById("secondNav").click();
       }, 301);
-    } else if (props.exploreDrinks) {
+    }
+     else if (props.exploreDesi) {
       setTimeout(() => {
         document.getElementById("thirdNav").click();
+      }, 301);
+    } else if (props.exploreDrinks) {
+      setTimeout(() => {
+        document.getElementById("fourthNav").click();
       }, 301);
     }
   }, []);
@@ -60,25 +77,33 @@ export default function Menu(props) {
               data-hs-scrollspy-scrollable-parent="#scrollspy-scrollable-parent-1"
               className="flex d-flex gap-4 sm:flex-row sm:items-center sm:justify-end "
             >
-              <a
+               <a
                 id="firstNav"
                 className=" text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400 active"
                 href="#first"
+              >
+                Deals
+              </a>
+
+              <a
+                id="secondNav"
+                className=" text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400 active"
+                href="#second"
               >
                 Fast Food
               </a>
 
               <a
-                id="secondNav"
+                id="thirdNav"
                 className=" text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
-                href="#second"
+                href="#third"
               >
                 Desi
               </a>
               <a
-                id="thirdNav"
+                id="fourthNav"
                 className=" text-gray-700 leading-6 hover:text-gray-500 focus:outline-none focus:text-blue-600 dark:text-gray-400 dark:hover:text-gray-500 dark:focus:text-blue-500 hs-scrollspy-active:text-blue-600 dark:hs-scrollspy-active:text-blue-400"
-                href="#third"
+                href="#fourth"
               >
                 Drinks
               </a>
@@ -88,7 +113,64 @@ export default function Menu(props) {
       </header>
 
       <div id="scrollspy-1" className="mt-3  space-y-4 ">
-        <div id="first">
+      <div id="first">
+          <div className="container menuSection mb-1">
+            <div className="row">
+              <div className="col-6">
+                <h3 className="Heading">
+                  <b>Deals</b>
+                </h3>
+              </div>
+            </div>
+          </div>
+
+          <div className="container mb-4 ">
+            <div className="row ">
+              <div className="col-6 underLine"></div>
+            </div>
+          </div>
+
+          <div className="container">
+            <div className="row">
+              {dealProducts.map((dealProduct) => (
+                <div
+                  key={dealProduct.product_id}
+                  className="col-12 col-md-4 mb-4"
+                >
+                  <div className="card cardContainer">
+                    <div className="card-body">
+                      <div className="row">
+                        <div className="col-6 text-center ">
+                          <img
+                            src={dealProduct.product_image}
+                            className="card-img-top foodImage"
+                            alt="food"
+                          />
+                        </div>
+                        <div className="col-6 my-3 TopDealsCard">
+                          <h1 className="foodName mb-3">
+                            <b>{dealProduct.product_name}</b>
+                          </h1>
+
+                          <h1 className="foodPrice mb-3">
+                            <b>Rs. {dealProduct.product_price}</b>
+                          </h1>
+
+                          <Link to={`/order/${dealProduct.product_id}`}>
+                            <button className="button m-0">Order Now</button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              ))}
+             
+            </div>
+          </div>
+        </div>
+
+        <div id="second">
           <div className="container menuSection mb-1">
             <div className="row">
               <div className="col-6">
@@ -145,7 +227,7 @@ export default function Menu(props) {
           </div>
         </div>
 
-        <div id="second">
+        <div id="third">
           <div className="container menuSection mb-1">
             <div className="row">
               <div className="col-6">
@@ -201,7 +283,7 @@ export default function Menu(props) {
           </div>
         </div>
 
-        <div id="third">
+        <div id="fourth">
           <div className="container menuSection mb-1">
             <div className="row">
               <div className="col-6">

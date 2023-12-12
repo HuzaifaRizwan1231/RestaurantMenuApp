@@ -518,7 +518,7 @@ Body {
 .checkoutBar{
   border-top-right-radius: 50px;
   border-top-left-radius: 50px;
-  height: 48vh;
+  height: 75vh;
   border: #ffd100 0.5px solid;
   border-bottom: none;
   @media (min-width: 768px) {

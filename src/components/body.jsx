@@ -68,13 +68,7 @@ export default function Body(props) {
               alt="..."
             />
           </div>
-          <div className="carousel-item">
-            <img
-              src="/images/6024960.jpg"
-              className="d-block w-100 carouselImage"
-              alt="..."
-            />
-          </div>
+
         </div>
         <button
           className="carousel-control-prev"

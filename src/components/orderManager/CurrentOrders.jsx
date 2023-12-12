@@ -75,7 +75,7 @@ export default function CurrentOrders(props) {
                     </h6>
 
                     <h6 className="foodPriceHistory mb-3">
-                      Total Cost: <b>{product.product_price}</b>
+                      Total Cost: Rs. <b>{product.product_price}</b>
                     </h6>
                     <h6 className="foodPriceHistory mb-3">
                       Order By:

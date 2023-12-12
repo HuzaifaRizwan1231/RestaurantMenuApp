@@ -5,7 +5,7 @@ import "./App.css";
 
 import Navbar from "./components/Navbar";
 import Body from "./components/body";
-import Cart from "./components/Cart";
+import Cart from "./components/cart";
 import Menu from "./components/Menu";
 import OrderItem from "./components/OrderItem";
 import Login from "./components/Login";
@@ -41,6 +41,7 @@ function App() {
   const [navigateTo, setNavigateTo] = useState("");
 
   const KeepLoggedIn = ()=>{
+    
     const loggedInUser = localStorage.getItem('user')
     if (loggedInUser){
       setIsLogin(true)
@@ -56,7 +57,8 @@ function App() {
   
   
 
-  const ip = '182.185.144.69';
+  const ip = '192.168.1.8';
+  // const ip = '182.185.144.69';
   // const ip = 'localhost';
 
   return (

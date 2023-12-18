@@ -57,8 +57,8 @@ function App() {
   
   
 
-  const ip = '192.168.1.8';
-  // const ip = '182.185.144.69';
+  // const ip = '192.168.1.8';
+  const ip = '182.185.142.240';
   // const ip = 'localhost';
 
   return (

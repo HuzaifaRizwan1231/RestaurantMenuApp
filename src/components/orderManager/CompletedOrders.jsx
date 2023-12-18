@@ -58,8 +58,12 @@ export default function CompletedOrders(props) {
                     </h6>
 
                     <h6 className="foodPriceHistory mb-3">
-                      Total Cost: <b>{product.product_price}</b>
+                      Total Cost: Rs. <b>{product.product_price*product.order_quantity}</b>
                     </h6>
+                    <h6 className="foodPriceHistory mb-3">
+                      Quantity: <b>{product.order_quantity}</b>
+                    </h6>
+                    
                     <h6 className="foodPriceHistory mb-3">
                       Order By:
                       <p className="foodPriceHistory mb-3">

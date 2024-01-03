@@ -13,14 +13,13 @@ import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Feedback from "./components/Feedback";
 import OrderHistory from "./components/OrderHistory";
-import CurrentOrders from "./components/orderManager/CurrentOrders.jsx";
-import AdminFeedbacks from "./components/orderManager/AdminFeedbacks.jsx";
+import CurrentOrders from "./components/orderManager/CurrentOrders";
+import AdminFeedbacks from "./components/orderManager/AdminFeedbacks";
 import LoadingBar from "react-top-loading-bar";
 
-import Cart from "./components/cart.jsx";
-import Footer from "./components/footer.jsx";
-import Navbar from "./components/Navbar.jsx";
-import CompletedOrders from "./components/orderManager/completedOrders.jsx";
+import Footer from "./components/footer";
+import Navbar from "./components/Navbar";
+import CompletedOrders from "./components/orderManager/completedOrders";
 
 function App() {
   const [userName, setUserName] = useState("");

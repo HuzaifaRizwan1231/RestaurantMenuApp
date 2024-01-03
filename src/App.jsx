@@ -15,8 +15,8 @@ import Feedback from "./components/Feedback";
 import OrderHistory from "./components/OrderHistory";
 import CurrentOrders from "./components/orderManager/CurrentOrders.jsx";
 import AdminFeedbacks from "./components/orderManager/AdminFeedbacks.jsx";
-import CompletedOrders from "./components/orderManager/completedOrders.jsx";
 import LoadingBar from "react-top-loading-bar";
+import CompletedOrders from "./components/orderManager/completedOrders.jsx";
 import Footer from "./components/footer.jsx";
 import Cart from "./components/cart.jsx";
 

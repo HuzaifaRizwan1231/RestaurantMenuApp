@@ -15,7 +15,7 @@ export default function Navbar(props) {
     if (props.islogin) {
       //fetching cart items
       axios
-        .post(`http://${props.ip}:3002/cartItems`, { userEmail: props.userEmail })
+        .post(`http://${props.ip}/cartItems`, { userEmail: props.userEmail })
         .then((response) => setCartQuantity(response.data.data.length))
         .catch((error) => console.log(error));
     }

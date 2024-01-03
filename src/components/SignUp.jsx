@@ -13,7 +13,7 @@ export default function SignUp(props) {
     event.preventDefault();
     props.setProgress(30);
     axios
-      .post(`http://${props.ip}:3002/signup`, {
+      .post(`http://${props.ip}/signup`, {
         userName: props.userName,
         password: props.password,
         cpassword: cpassword,

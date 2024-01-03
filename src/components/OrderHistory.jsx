@@ -13,7 +13,7 @@ export default function OrderHistory(props) {
       props.setProgress(30);
       //fetching order history
        axios
-        .post(`http://${props.ip}:3002/orderHistory`, {
+        .post(`http://${props.ip}/orderHistory`, {
           userEmail: props.userEmail,
         })
         .then((response) => setHistoryProducts(response.data.data), setTimeout(() => {

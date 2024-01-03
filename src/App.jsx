@@ -58,9 +58,8 @@ function App() {
   
   
 
-  const ip = '192.168.1.9';
-  // const ip = '182.185.142.240';
-  // const ip = 'localhost';
+  const ip = 'restaurant-menu-app-backend.vercel.app';
+  // const ip = 'localhost:3002';
 
   return (
     <>

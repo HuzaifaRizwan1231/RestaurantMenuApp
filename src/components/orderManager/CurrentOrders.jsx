@@ -9,7 +9,7 @@ export default function CurrentOrders(props) {
   const FetchCurrentOrders = () => {
     //fetching order history
     axios
-      .post(`http://${props.ip}:3002/currentOrders`)
+      .post(`http://${props.ip}/currentOrders`)
       .then((response) => setCurrentOrders(response.data.data),setTimeout(() => {
         props.setProgress(100)
       }, 300))
@@ -29,7 +29,7 @@ export default function CurrentOrders(props) {
   const completeOrder = (order_id) => {
     props.setProgress(30)
     axios
-      .post(`http://${props.ip}:3002/completeOrder`, { order_id: order_id })
+      .post(`http://${props.ip}/completeOrder`, { order_id: order_id })
       .then((response) => FetchCurrentOrders(), ClickOnAlert(),setTimeout(() => {
         props.setProgress(100)
       }, 300))

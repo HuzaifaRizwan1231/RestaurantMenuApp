@@ -36,7 +36,7 @@ export default function OrderItem(props) {
     props.setProgress(30);
     //fetching product
     axios
-      .get(`http://${props.ip}:3002/products/${product_id}`)
+      .get(`http://${props.ip}/products/${product_id}`)
       .then(
         (res) => setProduct(res.data.data),
         setTimeout(() => {
@@ -49,7 +49,7 @@ export default function OrderItem(props) {
   const addToCart = (id, Quantity) => {
     props.setProgress(30);
     axios
-      .post(`http://${props.ip}:3002/addToCart`, {
+      .post(`http://${props.ip}/addToCart`, {
         id: id,
         Quantity: Quantity,
         userEmail: props.userEmail,

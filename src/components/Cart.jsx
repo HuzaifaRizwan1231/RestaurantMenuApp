@@ -16,7 +16,7 @@ export default function Cart(props) {
       props.setProgress(30);
       //fetching cart items
       axios
-        .post(`http://${props.ip}:3002/cartItems`, {
+        .post(`http://${props.ip}/cartItems`, {
           userEmail: props.userEmail,
         })
         .then(
@@ -46,7 +46,7 @@ const FetchQuantity=()=>{
   const removeFromCart = (order_id) => {
     props.setProgress(30);
     axios
-      .post(`http://${props.ip}:3002/removeCartItem`, {
+      .post(`http://${props.ip}/removeCartItem`, {
         userEmail: props.userEmail,
         order_id: order_id,
       })
@@ -64,7 +64,7 @@ const FetchQuantity=()=>{
     event.preventDefault();
     props.setProgress(30);
     axios
-      .post(`http://${props.ip}:3002/checkout`, { userEmail: props.userEmail ,contact:contact,address:address})
+      .post(`http://${props.ip}/checkout`, { userEmail: props.userEmail ,contact:contact,address:address})
       .then(
         (res) => FetchData(),
         ClickOnAlert(),

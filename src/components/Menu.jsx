@@ -20,25 +20,25 @@ export default function Menu(props) {
 
     //Deals
     axios
-    .get(`http://${props.ip}:3002/deals`)
+    .get(`http://${props.ip}/deals`)
     .then((response) => setDealProducts(response.data.data))
     .catch((error) => console.log(error));
 
 
     // FastFood
     axios
-      .get(`http://${props.ip}:3002/fastFood`)
+      .get(`http://${props.ip}/fastFood`)
       .then((response) => setFastFoodProducts(response.data.data))
       .catch((error) => console.log(error));
 
     // Desi
     axios
-      .get(`http://${props.ip}:3002/desi`)
+      .get(`http://${props.ip}/desi`)
       .then((response) => setDesiProducts(response.data.data))
       .catch((error) => console.log(error));
 
     axios
-      .get(`http://${props.ip}:3002/drinks`)
+      .get(`http://${props.ip}/drinks`)
       .then((response) => setDrinkProducts(response.data.data))
       .catch((error) => console.log(error));
 

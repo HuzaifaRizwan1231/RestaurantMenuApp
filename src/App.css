@@ -587,5 +587,5 @@ animation: fadeIn 0.5s;
 /* Footer */
 
 .footer{
-  background-color: #202020;
+  background-color: #202020 !important;
 }

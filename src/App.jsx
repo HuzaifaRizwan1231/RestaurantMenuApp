@@ -43,6 +43,7 @@ function App() {
   const KeepLoggedIn = ()=>{
     
     const loggedInUser = localStorage.getItem('user')
+    // localStorage.clear();
     if (loggedInUser){
       setIsLogin(true)
       const foundUser = JSON.parse(loggedInUser);
@@ -57,8 +58,8 @@ function App() {
   
   
 
-  // const ip = '192.168.1.8';
-  const ip = '182.185.142.240';
+  const ip = '192.168.1.9';
+  // const ip = '182.185.142.240';
   // const ip = 'localhost';
 
   return (

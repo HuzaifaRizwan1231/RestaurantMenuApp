@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 
 import Navbar from "./components/Navbar";
 import Body from "./components/body";
-import Cart from "./components/cart";
 import Menu from "./components/Menu";
 import OrderItem from "./components/OrderItem";
 import Login from "./components/Login";
@@ -21,6 +18,7 @@ import AdminFeedbacks from "./components/orderManager/AdminFeedbacks.jsx";
 import CompletedOrders from "./components/orderManager/completedOrders.jsx";
 import LoadingBar from "react-top-loading-bar";
 import Footer from "./components/footer.jsx";
+import Cart from "./components/cart.jsx";
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -28,8 +26,6 @@ function App() {
   const [userEmail, setUserEmail] = useState("");
   const [userAddress, setUserAddress] = useState("");
  
-
-
   const [islogin, setIsLogin] = useState(false);
   const [isAdminlogin, setIsAdminLogin] = useState(false);
   const [progress, setProgress] = useState(0);

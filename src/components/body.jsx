@@ -10,7 +10,7 @@ export default function Body(props) {
     props.setProgress(30);
     //fetching data
     axios
-      .get(`http://${props.ip}/products`)
+      .get(`https://${props.ip}/products`)
       .then(
         (response) => setProducts(response.data.data),
         setTimeout(() => {

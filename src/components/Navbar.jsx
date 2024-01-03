@@ -15,7 +15,7 @@ export default function Navbar(props) {
     if (props.islogin) {
       //fetching cart items
       axios
-        .post(`http://${props.ip}/cartItems`, { userEmail: props.userEmail })
+        .post(`https://${props.ip}/cartItems`, { userEmail: props.userEmail })
         .then((response) => setCartQuantity(response.data.data.length))
         .catch((error) => console.log(error));
     }
@@ -100,7 +100,7 @@ export default function Navbar(props) {
                   aria-hidden="true"
                   fill="currentColor"
                   viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns="https://www.w3.org/2000/svg"
                 >
                   <path
                     clipRule="evenodd"
@@ -115,7 +115,7 @@ export default function Navbar(props) {
                 className="flex ms-2 md:me-24"
               >
                 {/* <img
-                  src="https://flowbite.com/docs/images/logo.svg"
+                  src="httpss://flowbite.com/docs/images/logo.svg"
                   className="h-8 me-3"
                   alt="FlowBite Logo"
                 /> */}

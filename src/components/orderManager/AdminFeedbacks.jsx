@@ -7,7 +7,7 @@ export default function AdminFeedbacks(props) {
   const FetchFeedbacks = () => {
     //fetching feedbacks
     axios
-      .get(`http://${props.ip}/feedbacks`)
+      .get(`https://${props.ip}/feedbacks`)
       .then((response) => setFeedbacks(response.data.data),setTimeout(() => {
         props.setProgress(100)
       }, 300))

@@ -2,7 +2,6 @@
 const mysql = require('mysql')
 
 const db = mysql.createConnection({
-    connectionLimit : 100,
     waitForConnections : true,
     queueLimit :0,
     host: process.env.DB_HOST,

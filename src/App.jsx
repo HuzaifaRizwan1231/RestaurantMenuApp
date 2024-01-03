@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
 
@@ -7,7 +7,7 @@ import Menu from "./components/Menu";
 import OrderItem from "./components/OrderItem";
 import Login from "./components/Login";
 
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SignUp from "./components/SignUp";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
@@ -17,9 +17,10 @@ import CurrentOrders from "./components/orderManager/CurrentOrders";
 import AdminFeedbacks from "./components/orderManager/AdminFeedbacks";
 import LoadingBar from "react-top-loading-bar";
 
-import Footer from "./components/footer";
-import Navbar from "./components/Navbar";
-import CompletedOrders from "./components/orderManager/completedOrders";
+import Footer from "./components/Footer";
+import Navbar from "./components/NavBar";
+import CompletedOrders from "./components/orderManager/CompletedOrders";
+import Cart from "./components/Cart";
 
 function App() {
   const [userName, setUserName] = useState("");

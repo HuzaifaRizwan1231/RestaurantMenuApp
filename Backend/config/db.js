@@ -13,6 +13,7 @@ const db = mysql.createConnection({
     wait_timeout : 28800,
     connect_timeout :10
 })
+
 // const db = mysql.createPool({
 //     connectionLimit : 100,
 //     waitForConnections : true,

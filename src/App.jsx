@@ -18,7 +18,7 @@ import AdminFeedbacks from "./components/orderManager/AdminFeedbacks";
 import LoadingBar from "react-top-loading-bar";
 
 import Footer from "./components/Footer";
-import Navbar from "./components/NavBar";
+import Navbar from "./components/Navbar";
 import CompletedOrders from "./components/orderManager/CompletedOrders";
 import Cart from "./components/Cart";
 

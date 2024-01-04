@@ -121,7 +121,7 @@ app.post('/addToCart', (req,res)=> {
   
     db.query("INSERT INTO orders(order_user_email,order_product_id,order_quantity,status,order_date_time) VALUES(?,?,?,?,CURRENT_TIMESTAMP)",[userEmail,product_id,product_quantity,"cart"], (err,result)=>{
         if(err) {
-            return (res.json("Error")) ;
+            return (res.json(err.message)) ;
         } 
         else {
            return res.json({data : result});

@@ -15,61 +15,68 @@ export default function Menu(props) {
   };
 
   useEffect(() => {
-    props.setProgress(30);
-    //fetching data
+    const LoadMenu=async() =>{
+      props.setProgress(30);
 
-    //Deals
-    axios
-    .get(`https://${props.ip}/deals`)
-    .then((response) => setDealProducts(response.data.data))
-    .catch((error) => console.log(error));
+      const LoadAllItems = async ()=>{
 
-
-    // FastFood
-    axios
-      .get(`https://${props.ip}/fastFood`)
-      .then((response) => setFastFoodProducts(response.data.data))
-      .catch((error) => console.log(error));
-
-    // Desi
-    axios
-      .get(`https://${props.ip}/desi`)
-      .then((response) => setDesiProducts(response.data.data))
-      .catch((error) => console.log(error));
-
-    axios
-      .get(`https://${props.ip}/drinks`)
-      .then((response) => setDrinkProducts(response.data.data))
-      .catch((error) => console.log(error));
-
-     
-
-    setTimeout(() => {
-      props.setProgress(100);
-    }, 300);
-
-    if (props.exploreDeal) {
+        //fetching data
+    
+        //Deals
+        axios
+        .get(`https://${props.ip}/deals`)
+        .then((response) => setDealProducts(response.data.data))
+        .catch((error) => console.log(error));
+    
+    
+        // FastFood
+        axios
+          .get(`https://${props.ip}/fastFood`)
+          .then((response) => setFastFoodProducts(response.data.data))
+          .catch((error) => console.log(error));
+    
+        // Desi
+        axios
+          .get(`https://${props.ip}/desi`)
+          .then((response) => setDesiProducts(response.data.data))
+          .catch((error) => console.log(error));
+    
+        axios
+          .get(`https://${props.ip}/drinks`)
+          .then((response) => setDrinkProducts(response.data.data))
+          .catch((error) => console.log(error));
+      }
+      await LoadAllItems();
+       
+  
       setTimeout(() => {
-        document.getElementById("firstNav").click();
-      }, 301);
-      
+        props.setProgress(100);
+      }, 300);
+  
+      if (props.exploreDeal) {
+        setTimeout(() => {
+          document.getElementById("firstNav").click();
+        }, 476);
+        
+      }
+      else if (props.exploreFast) {
+        setTimeout(() => {
+          document.getElementById("secondNav").click();
+        }, 476);
+      }
+       else if (props.exploreDesi) {
+        setTimeout(() => {
+          document.getElementById("thirdNav").click();
+        }, 476);
+      } else if (props.exploreDrinks) {
+        setTimeout(() => {
+          document.getElementById("fourthNav").click();
+        }, 476);
+      }
+      props.setNavigateTo("exploreMenu")
+      props.KeepLoggedIn();
     }
-    else if (props.exploreFast) {
-      setTimeout(() => {
-        document.getElementById("secondNav").click();
-      }, 301);
-    }
-     else if (props.exploreDesi) {
-      setTimeout(() => {
-        document.getElementById("thirdNav").click();
-      }, 301);
-    } else if (props.exploreDrinks) {
-      setTimeout(() => {
-        document.getElementById("fourthNav").click();
-      }, 301);
-    }
-    props.setNavigateTo("exploreMenu")
-    props.KeepLoggedIn();
+    LoadMenu();
   }, []);
 
   return (

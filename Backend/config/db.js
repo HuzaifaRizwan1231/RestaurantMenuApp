@@ -1,7 +1,7 @@
 
 const mysql = require('mysql')
 
-const db = mysql.createConnection({
+const db = mysql.createPool({
     waitForConnections : true,
     queueLimit :0,
     host: process.env.DB_HOST,

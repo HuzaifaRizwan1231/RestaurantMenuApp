@@ -51,8 +51,6 @@ The app will be accessible at `http://localhost:5173/` in your browser.
 
 ## Feedback
 
-We'd love to hear your feedback! Share your thoughts by [contacting us](#contact-us).
+We'd love to hear your feedback! Share your thoughts by [huzaifa.rizwan1231@gmail.com].
 
-```
 
-This template reflects the information you provided. Feel free to adjust the wording or add any additional details as needed for your project.

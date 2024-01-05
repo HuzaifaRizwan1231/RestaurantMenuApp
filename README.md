@@ -1,4 +1,4 @@
-# TastyBites - Restaurant Menu App
+# RFC - Restaurant Menu App
 
 A delightful restaurant menu app that offers a variety of deals, desi, and fast food options. Explore our menu and enjoy a seamless ordering experience!
 
@@ -26,13 +26,13 @@ To run this project locally, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/tastybites-frontend.git
+git clone https://github.com/HuzaifaRizwan1231/RestaurantMenuApp.git
 ```
 
 2. Navigate to the project directory:
 
 ```bash
-cd tastybites-frontend
+cd RestaurantMenuApp
 ```
 
 3. Install dependencies:
@@ -47,7 +47,7 @@ npm install
 npm run dev
 ```
 
-The app will be accessible at `http://localhost:3000/` in your browser.
+The app will be accessible at `http://localhost:5173/` in your browser.
 
 ## Feedback
 

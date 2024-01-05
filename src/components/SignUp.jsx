@@ -9,7 +9,7 @@ export default function SignUp(props) {
 
   const navigate = useNavigate();
 
-  const SignUpUser = (event) => {
+  const SignUpUser = async (event) => {
     event.preventDefault();
     props.setProgress(30);
     axios
@@ -37,6 +37,7 @@ export default function SignUp(props) {
             res.data != "Passwords do not match"
           ) {
             props.setIsLogin(true);
+            console.log(res)
             localStorage.setItem('user', JSON.stringify(res.data.data))
             navigate(`/${props.navigateTo}`);
           }

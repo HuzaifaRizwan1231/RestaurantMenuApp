@@ -27,7 +27,7 @@ app.post('/signup', (req,res)=> {
     db.query("SELECT * FROM users WHERE user_email = ?", [userEmail], (err,result)=>{
         numOfRows = result.length;
         if(err) {
-            return (res.json("Error")) ;
+            return (res.json(err.message)) ;
         } 
         else if(numOfRows>0){
             return res.json("Email is already registered")
@@ -38,9 +38,16 @@ app.post('/signup', (req,res)=> {
         else{
             db.query("INSERT INTO users (user_username, user_password, user_email, user_address) VALUES (?,?,?,?)",[userName,password,userEmail,userAddress], (err,result)=>{
                 if(err) {
-                    return res.json("Error");
+                    return res.json(err.message);
                 } 
-                return res.json(result);
+                res.json({data: [
+                    {
+                      user_username: userName,
+                      user_address: userAddress,
+                      user_email: userEmail,
+                      user_password: password
+                    }
+                  ]});
              }
              );   
         }
@@ -65,7 +72,6 @@ app.post('/login', (req,res)=> {
             return (res.json("Error")) ;
         } 
         else if(numOfRows==1){
-
             res.json({data : result});
         }
         else {

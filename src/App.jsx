@@ -44,11 +44,11 @@ function App() {
     // localStorage.clear();
     if (loggedInUser){
       setIsLogin(true)
-      const foundUser = JSON.parse(loggedInUser);
-      setUserEmail(foundUser[0].user_email);
-      setPassword(foundUser[0].user_password);
-      setUserName(foundUser[0].user_username);
-      setUserAddress(foundUser[0].user_address);
+      // const foundUser = JSON.parse(loggedInUser);
+      // setUserEmail(foundUser[0].user_email);
+      // setPassword(foundUser[0].user_password);
+      // setUserName(foundUser[0].user_username);
+      // setUserAddress(foundUser[0].user_address);
       
     }
   }

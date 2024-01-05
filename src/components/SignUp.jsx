@@ -37,7 +37,6 @@ export default function SignUp(props) {
             res.data != "Passwords do not match"
           ) {
             props.setIsLogin(true);
-            console.log(res)
             localStorage.setItem('user', JSON.stringify(res.data.data))
             navigate(`/${props.navigateTo}`);
           }
